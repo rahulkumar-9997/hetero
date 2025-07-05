@@ -9,4 +9,9 @@ class BannerController extends Controller
     {
         return view('backend.pages.banner.index');
     }
+
+    public function create()
+    {
+        return view('backend.pages.banner.create');
+    }
 }

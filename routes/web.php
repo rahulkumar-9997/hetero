@@ -39,7 +39,8 @@ Route::prefix('admin')->group(function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/get-daily-visitors', [DashboardController::class, 'getDailyVisitors'])->name('get-daily-visitors');
-    Route::get('manage-banner', [BannerController::class, 'index'])->name('manage-banner.index');
+    
+    Route::resource('manage-banner', BannerController::class)->names('manage-banner');
 
     Route::get('/clear-cache', [CacheController::class, 'clearCache'])->name('clear-cache');
     Route::resource('pages', PageController::class);
