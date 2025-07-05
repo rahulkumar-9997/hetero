@@ -1,0 +1,209 @@
+
+.warning {
+	width: 5em;
+	max-width: 8vh;
+	height: 5em;
+	max-height: 8vh;
+	transform: translate(-50%, -50%);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url(../images/favicon.png);
+	background-size: 80%;
+	cursor: pointer;
+	pointer-events: all;
+	/* opacity:0;
+	transition: 0.5s; */
+}
+
+.blue-pointer,.pruple-pointer,.both-pointer {
+	width: 3em;
+	max-width: 3vh;
+	height: 3em;
+	max-height: 8vh;
+	transform: translate(-50%, -50%);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url(../images/blue-pointer.png);
+	background-size: 80%;
+	cursor: pointer;
+	pointer-events: all;
+	position: relative;
+	 opacity:0;
+	transition: 0.5s;
+}
+
+.pruple-pointer {
+	background-image: url(../images/pruple-pointer.png);
+}
+
+.both-pointer {
+	max-width: 9vh;
+	background-image: url(../images/both-pointer.png);
+}
+
+
+/* .warning-active { opacity:1; } */
+
+
+.earth-occluded .warning {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNGRjAwMDAiIGQ9Ik0yNCAyM2gtMjRsMTItMjIgMTIgMjJ6bS0yMi4zMTUtMWgyMC42M2wtMTAuMzE1LTE4LjkxMi0xMC4zMTUgMTguOTEyem0xMC4zMTUtMmMuNDY2IDAgLjg0NS0uMzc4Ljg0NS0uODQ1IDAtLjQ2Ni0uMzc5LS44NDQtLjg0NS0uODQ0LS40NjYgMC0uODQ1LjM3OC0uODQ1Ljg0NCAwIC40NjcuMzc5Ljg0NS44NDUuODQ1em0uNS0xMXY4aC0xdi04aDF6Ii8+PC9zdmc+);
+	opacity: 0.7;
+}
+
+#element::after {
+	content: "";
+	position: absolute;
+	top: 9.85%;
+	left: 9.85%;
+	bottom: 9.85%;
+	right: 9.85%;
+	box-sizing: border-box;
+	border: 1px #D0D0D0 solid;
+	border-radius: 50%;
+}
+
+
+#wrapper {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+	position: relative;
+	margin: 0 auto;
+	width: 92%;
+	max-width: 100em;
+	min-height: 100vh;
+	transform: translate(0px, -100px);
+	
+}
+
+#earth-col {
+	flex: 0 1 50vw;
+}
+#breaking-news {
+	flex: 0 1 25vw;
+	text-align: right;
+}
+#local-news {
+	flex: 0 1 25vw;
+}
+
+
+.news {
+	transition: color 0.2s ease;
+	padding: 0.25em 0;
+}
+.news-highlight {
+	color: red;
+}
+
+.news + .news {
+	border-top: 1px #D0D0D0 solid;
+}
+
+
+.has-news #please-click {
+	display: none;
+}
+
+#local-news .news {
+	display: none;
+}
+#local-news.has-news .news {
+	display: block;
+}
+#local-news.toggle-news .news:last-child {
+	display: none;
+}
+
+
+
+.map-tooltip { position: relative; }
+.map-tooltip p { position: absolute;
+    width: 100px;
+    height: 30px;
+	background-color:#FFFFFF;
+    box-shadow: 0px 3px 6px rgba(000,000,000,0.1);
+border-radius: 4px;
+    top: -50px;
+    left: -39px;
+    right: 0;
+    margin: auto;
+    color: #9F0C25;
+	font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px; z-index:9999 !important; }
+
+	.map-tooltip p:after {     content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		width: 2px;
+		bottom: -32px;
+		height: 31px;
+		border-left: dashed 1px #4A88C7;
+		margin: auto;  }
+
+
+
+@media (max-width: 1399px) {
+	#breaking-news,
+	#local-news {
+		font-size: 0.9em;
+	}
+}
+
+@media (max-width: 1199px) {
+	#wrapper {
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-align-items: flex-start;
+		align-items: flex-start;
+		width: 100%;
+	}
+	#earth-col {
+		-webkit-order: 0;
+		order: 0;
+		flex: 0 1 100vw;
+		max-width: 50em;
+	}
+	#breaking-news,
+	#local-news {
+		font-size: 0.9em;
+		flex: 0 1 46vw;
+		width: 50vw;
+		box-sizing: border-box;
+	}
+	#breaking-news {
+		-webkit-order: 1;
+		order: 1;
+		padding: 0 1.5em 0 0.5em;
+	}
+	#local-news {
+		-webkit-order: 2;
+		order: 2;
+		padding: 0 0.5em 0 1.5em;
+	}
+}
+@media (max-width: 511px) {
+	#breaking-news,
+	#local-news {
+		font-size: 2.75vw;
+	}
+}
+
+
+#breaking-news-0 .blue-pointer { position:relative; }
+#breaking-news-0 .blue-pointer:before { content:'INDIA'; position: absolute; top:0px; width: 100px; height:20px; background-color: #000; font-size: 20px; font-weight: 700; color: #000; }
+
+
+/* .asia-pin { opacity:0; } */
+/* .asia-pin-active,.csi-pin-active { opacity:1; } */
+.pin-active{opacity:1}
