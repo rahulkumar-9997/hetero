@@ -6,6 +6,7 @@ use App\Http\Middleware\TrackVisitor;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\ForgotPasswordController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CacheController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\MenuController;
@@ -38,6 +39,8 @@ Route::prefix('admin')->group(function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/get-daily-visitors', [DashboardController::class, 'getDailyVisitors'])->name('get-daily-visitors');
+    Route::get('manage-banner', [BannerController::class, 'index'])->name('manage-banner.index');
+
     Route::get('/clear-cache', [CacheController::class, 'clearCache'])->name('clear-cache');
     Route::resource('pages', PageController::class);
     Route::resource('menus', MenuController::class);
