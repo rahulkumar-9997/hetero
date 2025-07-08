@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','Add new banner')
+@section('title','Edit banner')
 @push('styles')
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
@@ -12,7 +12,7 @@
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
                 <h6>
-                    Add new Banner
+                    Edit Banner
                 </h6>
                            
             </div>
@@ -36,45 +36,55 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('manage-banner.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('manage-banner.update', $banner->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="banner_heading_name">
-                                Banner Heading Name
-                            </label>
-                            <textarea type="text" class="form-control" id="banner_heading_name" name="banner_heading_name"></textarea>
+                            <label class="form-label" for="banner_heading_name">Banner Heading Name</label>
+                            <textarea class="form-control" id="banner_heading_name" name="banner_heading_name">{{ old('banner_heading_name', $banner->banner_heading_name) }}</textarea>
+                           
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="banner_content">Banner Content</label>
-                            <textarea type="text" class="form-control" name="banner_content" id="banner_content"></textarea>
+                            <textarea class="form-control" name="banner_content" id="banner_content">{{ old('banner_content', $banner->banner_content) }}</textarea>
+                            
                         </div>
                     </div>
-                    <!-- <div class="col-sm-6 col-12">
-                        <div class="mb-3">
-                            <label class="form-label" for="banner_other_content">Banner Other  Content</label>
-                            <input type="text" class="form-control" name="banner_other_content" id="banner_other_content">
-                        </div>
-                    </div> -->
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="banner_link">Banner Link</label>
-                            <input type="text" class="form-control" name="banner_link" id="banner_link">
+                            <input type="text" class="form-control" name="banner_link" id="banner_link" value="{{ old('banner_link', $banner->banner_link) }}">
+                            
                         </div>
                     </div>
                     <div class="col-sm-3 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="banner_desktop_img">Banner Desktop Image *</label>
+                            <label class="form-label" for="banner_desktop_img">Banner Desktop Image</label>
                             <input type="file" class="form-control" name="banner_desktop_img" id="banner_desktop_img">
+                            
+                            @if($banner->banner_desktop_img)
+                                <div class="mt-2">
+                                    <img src="{{ asset('upload/banner/' . $banner->banner_desktop_img) }}" alt="Desktop Banner" class="img-thumbnail" style="max-height: 100px;">
+                                    <p class="small text-muted mt-1">Current Image</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-3 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="banner_mobile_img">Banner Mobile Image *</label>
+                            <label class="form-label" for="banner_mobile_img">Banner Mobile Image</label>
                             <input type="file" class="form-control" name="banner_mobile_img" id="banner_mobile_img">
+                            
+                            @if($banner->banner_mobile_img)
+                                <div class="mt-2">
+                                    <img src="{{ asset('upload/banner/' . $banner->banner_mobile_img) }}" alt="Mobile Banner" class="img-thumbnail" style="max-height: 100px;">
+                                    <p class="small text-muted mt-1">Current Image</p>
+                                </div>
+                            @endif
                         </div>
                     </div>                    
                 </div>                
@@ -82,7 +92,7 @@
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center justify-content-end mb-4">
                             <a href="{{ route('manage-banner.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
                 </div>

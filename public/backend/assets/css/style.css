@@ -7001,14 +7001,12 @@ caption {
   vertical-align: middle;
   line-height: 1.462;
   font-size: 0.813rem;
-  white-space: nowrap;
 }
 .table td {
   padding: 5px 10px;
   vertical-align: middle;
   line-height: 1.462;
   font-size: 0.813rem;
-  white-space: nowrap;
 }
 .table thead tr th {
   font-weight: 600;
@@ -7967,7 +7965,7 @@ table tbody td.action-table-data a {
   padding: 8px;
 }
 table tbody td.action-table-data a .feather-edit {
-  color: #212B36;
+  color: #ffffff;
   width: 14px;
   height: 14px;
 }
@@ -11160,7 +11158,7 @@ svg.collapse-open, svg.collapse-close {
   }
 }
 .modal .modal-body {
-  padding: 20px;
+  padding: 12px;
 }
 .modal .modal-body .close {
   position: absolute;
@@ -11200,7 +11198,7 @@ svg.collapse-open, svg.collapse-close {
   border-top: 1px solid #E6EAED;
 }
 .modal .modal-footer .btn {
-  margin: 0;
+  margin: 5;
 }
 .modal .modal-footer .btn-print {
   display: -webkit-box;
@@ -16374,7 +16372,7 @@ div#global-loader .whirly-loader:not(:required) {
   }
 }
 .sidebar .sidebar-menu, .settings-sidebar .sidebar-menu {
-  padding: 24px;
+  padding: 10px 2px;
 }
 .sidebar .sidebar-menu > ul > li, .settings-sidebar .sidebar-menu > ul > li {
   margin-bottom: 16px;
@@ -16513,7 +16511,7 @@ div#global-loader .whirly-loader:not(:required) {
   font-size: 14px;
   position: relative;
   width: 100%;
-  padding: 8px 12px;
+  padding: 8px 5px;
   border-radius: 5px;
 }
 .sidebar .sidebar-menu > ul > li.submenu-open ul li a span, .settings-sidebar .sidebar-menu > ul > li.submenu-open ul li a span {

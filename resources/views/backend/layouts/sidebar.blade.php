@@ -35,6 +35,18 @@
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
+                        <i class="ti ti-file fs-16 me-2"></i>
+                        <span>Manage Milestones & Awards</span>
+                        <span class="menu-arrow"></span>
+                     </a>
+                     <ul>
+                        <li><a href="{{ route('manage-year.index') }}">Year</a></li>
+                        <li><a href="{{ route('manage-award-category.index') }}">Category</a></li>
+                        <li><a href="{{ route('manage-awards.index') }}">Add Milestones & Awards</a></li>
+                     </ul>
+                  </li>
+                  <li class="submenu">
+                     <a href="javascript:void(0);">
                         <i class="ti ti-brand-apple-arcade fs-16 me-2"></i>
                         <span>Manage Pages</span>
                         <span class="menu-arrow"></span>

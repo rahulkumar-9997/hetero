@@ -17,6 +17,7 @@
                 @include('backend.layouts.footer')
             </div>
         </div>
+        @include('backend.layouts.common-modal-form')  
         @include('backend.layouts.footer-js')        
     </body>
 </html>

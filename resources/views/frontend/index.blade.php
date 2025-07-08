@@ -426,6 +426,7 @@
       effect: "fade",
       loop: "true",
       speed: 1e3,
+      // autoplay: false,
       autoplay: {
          delay: 5e3,
          disableOnInteraction: !1
@@ -442,7 +443,8 @@
          nextEl: ".Shaping-button-next",
          prevEl: ".Shaping-button-prev"
       }
-   }), swiper = new Swiper(".swiper-vast", {
+   }),
+   swiper = new Swiper(".swiper-vast", {
       slidesPerView: 3,
       spaceBetween: 30,
       navigation: {
