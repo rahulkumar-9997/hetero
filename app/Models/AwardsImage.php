@@ -10,7 +10,7 @@ class AwardsImage extends Model
     use HasFactory;
     protected $table = 'awards_images';
     protected $fillable = [
-        'award_id',
+        'awards_id',
         'file',
     ];
 
