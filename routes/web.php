@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Backend\AwardsCategoryController;
 use App\Http\Controllers\Backend\AwardsController;
+use App\Http\Controllers\Backend\NewsMediaCategoryController;
 use App\Http\Controllers\Backend\CacheController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\MenuController;
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('manage-year', YearController::class)->names('manage-year');
     Route::resource('manage-award-category', AwardsCategoryController::class)->names('manage-award-category');
     Route::resource('manage-awards', AwardsController::class)->names('manage-awards');
+    Route::resource('manage-news-media-category', NewsMediaCategoryController::class)->names('manage-news-media-category');
 
     Route::get('/clear-cache', [CacheController::class, 'clearCache'])->name('clear-cache');
     Route::resource('pages', PageController::class);

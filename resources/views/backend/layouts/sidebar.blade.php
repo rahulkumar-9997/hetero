@@ -35,7 +35,7 @@
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
-                        <i class="ti ti-file fs-16 me-2"></i>
+                        <i class="ti ti-award-filled fs-16 me-2"></i>
                         <span>Manage Milestones & Awards</span>
                         <span class="menu-arrow"></span>
                      </a>
@@ -43,6 +43,25 @@
                         <li><a href="{{ route('manage-year.index') }}">Year</a></li>
                         <li><a href="{{ route('manage-award-category.index') }}">Category</a></li>
                         <li><a href="{{ route('manage-awards.index') }}">Add Milestones & Awards</a></li>
+                     </ul>
+                  </li>
+                  <li class="submenu">
+                     <a href="javascript:void(0);">
+                        <i class="ti ti-news fs-16 me-2"></i>
+                        <span>Manage News & Media</span>
+                        <span class="menu-arrow"></span>
+                     </a>
+                     <ul>
+                        <li>
+                        <a href="{{ route('manage-news-media-category.index') }}">
+                           Add News and Media Category
+                        </a>
+                        </li>
+                        <li>
+                           <a href="{{ route('manage-award-category.index') }}">
+                              Add News and Media
+                           </a>
+                        </li>
                      </ul>
                   </li>
                   <li class="submenu">
