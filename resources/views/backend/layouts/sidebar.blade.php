@@ -58,7 +58,7 @@
                         </a>
                         </li>
                         <li>
-                           <a href="{{ route('manage-award-category.index') }}">
+                           <a href="{{ route('manage-news-media.index') }}">
                               Add News and Media
                            </a>
                         </li>
