@@ -9,6 +9,7 @@ use App\Models\NewsAndMediaCategory;
 class NewsMediaController extends Controller
 {
     public function index(){
-        return view('backend.pages.news-media.index');
+        $newsMediaCategory = NewsAndMediaCategory::orderBy('id', 'desc')->get();
+        return view('backend.pages.news-media.index', compact('newsMediaCategory'));
     }
 }
