@@ -9,7 +9,8 @@ class MenuItems extends Model
 {
     protected $table = 'menu_items';
     protected $fillable = [
-        'menu_id', 'page_id', 'title', 'url', 'route', 'parent_id', 'order', 'is_active'
+        'menu_id', 'page_id', 'title', 'short_content', 'image', 'url', 'route',
+        'parent_id', 'order', 'is_active', 'icon', 'target'
     ];
 
     public function menu(): BelongsTo

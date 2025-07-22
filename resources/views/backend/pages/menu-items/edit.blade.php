@@ -28,14 +28,33 @@
                 <div class="row">
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title*</label>
+                            <label for="title" class="form-label">
+                                Title <span class="text-danger">*</span>
+                            </label>
                             <input type="text" name="title" id="title" class="form-control" 
-                                   value="{{ old('title', $item->title) }}" required>
+                                   value="{{ old('title', $item->title) }}">
+                            @error('title') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label for="type" class="form-label">Link Type*</label>
+                            <label for="short_desc" class="form-label">Short Description</label>
+                            <textarea name="short_desc" id="short_desc" class="form-control">
+                                {{ old('short_desc', $item->short_content) }}
+                            </textarea>
+                            @error('short_desc') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image File</label>
+                            <input type="file" name="image" id="image" class="form-control">
+                            @error('image') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="mb-3">
+                            <label for="type" class="form-label">Link Type</label>
                             <select name="type" id="type" class="form-control" onchange="toggleFields(this.value)">
                                 <option value="url" {{ $item->url ? 'selected' : '' }}>Custom URL</option>
                                 <option value="route" {{ $item->route ? 'selected' : '' }}>Route</option>
@@ -48,7 +67,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-12" id="url-field" style="{{ $item->url ? '' : 'display:none' }}">
                         <div class="mb-3">
-                            <label for="url" class="form-label">URL*</label>
+                            <label for="url" class="form-label">URL</label>
                             <input type="text" name="url" id="url" class="form-control" 
                                    value="{{ old('url', $item->url) }}" {{ $item->url ? 'required' : '' }}>
                         </div>

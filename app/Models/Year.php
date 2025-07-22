@@ -22,6 +22,11 @@ class Year extends Model
         return $this->hasMany(Awards::class);
     }
 
+    public function newsRooms()
+    {
+        return $this->hasMany(NewsRoom::class, 'year_id');
+    }
+
     protected static function boot()
     {
         parent::boot();

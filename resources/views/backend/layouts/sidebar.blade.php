@@ -64,17 +64,7 @@
                         </li>
                      </ul>
                   </li>
-                  <li class="submenu">
-                     <a href="javascript:void(0);">
-                        <i class="ti ti-brand-apple-arcade fs-16 me-2"></i>
-                        <span>Manage Pages</span>
-                        <span class="menu-arrow"></span>
-                     </a>
-                     <ul>
-                        <li><a href="{{ route('pages.index') }}">All Pages</a></li>
-                        <li><a href="{{ route('pages.create') }}">Create Page</a></li>
-                     </ul>
-                  </li>
+                  
 
                   <li class="submenu">
                      <a href="javascript:void(0);">
@@ -85,6 +75,17 @@
                      <ul>
                         <li><a href="{{ route('menus.index') }}">All Menus</a></li>
                         <li><a href="{{ route('menus.create') }}">Create Menu</a></li>
+                     </ul>
+                  </li>
+                  <li class="submenu">
+                     <a href="javascript:void(0);">
+                        <i class="ti ti-brand-apple-arcade fs-16 me-2"></i>
+                        <span>Manage Pages</span>
+                        <span class="menu-arrow"></span>
+                     </a>
+                     <ul>
+                        <li><a href="{{ route('pages.index') }}">All Pages</a></li>
+                        <li><a href="{{ route('pages.create') }}">Create Page</a></li>
                      </ul>
                   </li>
 

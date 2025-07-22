@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class PressKit extends Model
+{
+    use HasFactory;
+    protected $table = 'press_kits';
+    protected $fillable = [
+        'new_and_media_category_id',
+        'title',
+        'slug',
+        'content',
+        'image',
+        'download_pdf_file',
+        'status',
+    ];
+
+    public function newsMediaCategory()
+    {
+        return $this->belongsTo(NewsAndMediaCategory::class, 'new_and_media_category_id');
+    }
+}

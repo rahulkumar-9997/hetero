@@ -1,6 +1,7 @@
 @extends('backend.layouts.master')
 @section('title','News and Media')
 @push('styles')
+
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/dataTables.bootstrap5.min.css')}}">
@@ -15,7 +16,7 @@
             </div>
         </div>
         <div class="page-btn">
-            <a href="javascript:;" data-title="Add new News and Media Category" data-size="md" data-news-media-category-add="true" data-url="{{ route('manage-news-media-category.create') }}" class="btn btn-primary">
+            <a href="{{ route('manage-news-media.create') }}" class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
                 Create News and Media
             </a>
@@ -24,12 +25,23 @@
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
             <h5>News and Media</h5>
+            <div class="filter-search d-flex align-items-center gap-2">
+                <h4>Filter</h4>
+                <select class="form-select w-auto" id="news-media-category-filter">
+                    <option value="">New & Media Category</option>
+                    @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
+                        @foreach($newsMediaCategories as $category)
+                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        @endforeach
+                    @endif
+                </select>
+            </div>            
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <div class="display-newsmedia-category">
                     @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
-                        @include('backend.pages.new-media-category.partials.news-media-category-list', ['newsMediaCategories' => $newsMediaCategories])
+                        @include('backend.pages.news-media.partials.new_media_list', ['newsMediaCategories' => $newsMediaCategories])
                     @endif
                 </div>
             </div>

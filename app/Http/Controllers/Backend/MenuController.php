@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Str;
 use App\Models\Menu;
 use App\Models\MenuItems;
 use App\Models\Page;
@@ -117,19 +122,52 @@ class MenuController extends Controller
             'parent_id' => 'nullable|exists:menu_items,id',
             'icon' => 'nullable|string|max:255',
             'target' => 'nullable|in:_self,_blank',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'short_desc' => 'nullable|string|max:500',
         ]);
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            if ($request->hasFile('image')) {
+                $safeTitle = Str::slug($data['title']);
+                $image = $request->file('image');
+                $destinationPath = public_path('upload/menu-item');
+                if (!File::exists($destinationPath)) {
+                    File::makeDirectory($destinationPath, 0755, true);
+                }
+                $filename = $safeTitle . '-' . uniqid() . '.webp';
+                $img = Image::make($image->getRealPath())->encode('webp', 75);
+                $img->save($destinationPath . '/' . $filename);
+                $data['image'] = $filename;
+            }
 
-        $menu->items()->create($request->all());
-
-        return redirect()->route('menus.items', $menu->id)
-            ->with('success', 'Menu item added successfully.');
+            $menu->items()->create([
+                'title' => $data['title'],
+                'short_content' => $data['short_desc'] ?? null,
+                'image' => $data['image'] ?? null,
+                'url' => $data['type'] === 'url' ? $data['url'] : null,
+                'route' => $data['type'] === 'route' ? $data['route'] : null,
+                'page_id' => $data['type'] === 'page' ? $data['page_id'] : null,
+                'parent_id' => $data['parent_id'] ?? null,
+                'icon' => $data['icon'] ?? null,
+                'target' => $data['target'] ?? '_self',
+            ]);
+            DB::commit();
+            return redirect()->route('menus.items', $menu->id)
+                ->with('success', 'Menu item added successfully.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Failed to store menu item: ' . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', $e->getMessage());
+        }
     }
 
     public function editItem(Menu $menu, MenuItems $item)
     {
         $pages = Page::where('is_active', true)->get();
-        $menuItems = $menu->allItems;
-        
+        $menuItems = $menu->allItems;        
         return view('backend.pages.menu-items.edit', compact('menu', 'item', 'pages', 'menuItems'));
     }
 
@@ -143,11 +181,45 @@ class MenuController extends Controller
             'parent_id' => 'nullable|exists:menu_items,id',
             'icon' => 'nullable|string|max:255',
             'target' => 'nullable|in:_self,_blank',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'short_desc' => 'nullable|string|max:500',
         ]);
-
-        $item->update($request->all());
-        return redirect()->route('menus.items', $menu->id)
-            ->with('success', 'Menu item updated successfully.');
+        DB::beginTransaction();
+        try {
+            $data = $request->all();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $destinationPath = public_path('upload/menu-item');
+                if (!File::exists($destinationPath)) {
+                    File::makeDirectory($destinationPath, 0755, true);
+                }
+                if ($item->image && File::exists(public_path($item->image))) {
+                    File::delete(public_path($item->image));
+                }
+                $safeTitle = Str::slug($data['title']);
+                $filename = $safeTitle . '-' . uniqid() . '.webp';
+                $img = Image::make($image->getRealPath())->encode('webp', 75);
+                $img->save($destinationPath . '/' . $filename);
+                $data['image'] = $filename;
+            } else {
+                $data['image'] = $item->image;
+            }
+            $data['url'] = $data['type'] === 'url' ? $data['url'] : null;
+            $data['route'] = $data['type'] === 'route' ? $data['route'] : null;
+            $data['page_id'] = $data['type'] === 'page' ? $data['page_id'] : null;
+            $data['short_content'] = $data['short_desc'] ?? null;
+            unset($data['short_desc'], $data['type']);
+            $item->update($data);
+            DB::commit();
+            return redirect()->route('menus.items', $menu->id)
+                ->with('success', 'Menu item updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Menu item update failed: ' . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', $e->getMessage());
+        }
     }
 
     public function destroyItem(Menu $menu, MenuItems $item)

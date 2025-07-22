@@ -52,26 +52,42 @@
     <!-- /product list -->
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-
-
+            <a href="{{ route('menus.index') }}" class="btn btn-info"><< Back to Previous page</a>
         </div>
         <div class="card-body p-3">
-            <form action="{{ route('menu.item.store', $menu->id) }}" method="POST">
+            <form action="{{ route('menu.item.store', $menu->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" id="title" class="form-control" required>
+                            <label for="title" class="form-label">Title
+                                 <label class="text-danger"> *</label>
+                            </label>
+                            <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
+                            @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="mb-3">
+                            <label for="short_desc" class="form-label">Short Description</label>
+                            <textarea name="short_desc" id="short_desc" class="form-control">{{ old('short_desc') }}</textarea>
+                            @error('short_desc') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image File</label>
+                            <input type="file" name="image" id="image" class="form-control">
+                            @error('image') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label for="type" class="form-label">Link Type</label>
                             <select name="type" id="type" class="form-control form-select" onchange="toggleFields(this.value)">
-                                <option value="url">Custom URL</option>
-                                <option value="route">Route</option>
-                                <option value="page">Page</option>
+                                <option value="url" {{ old('type') == 'url' ? 'selected' : '' }}>Custom URL</option>
+                                <option value="route" {{ old('type') == 'route' ? 'selected' : '' }}>Route</option>
+                                <option value="page" {{ old('type') == 'page' ? 'selected' : '' }}>Page</option>
                             </select>
                         </div>
                     </div>
@@ -80,13 +96,13 @@
                     <div class="col-sm-6 col-12" id="url-field">
                         <div class="mb-3">
                             <label for="url" class="form-label">URL</label>
-                            <input type="text" name="url" id="url" class="form-control">
+                             <input type="text" name="url" id="url" class="form-control" value="{{ old('url') }}">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 d-none" id="route-field">
                         <div class="mb-3">
                             <label for="route" class="form-label">Route</label>
-                            <input type="text" name="route" id="route" class="form-control">
+                            <input type="text" name="route" id="route" class="form-control" value="{{ old('route') }}">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12 d-none" id="page-field">
@@ -94,7 +110,7 @@
                             <label for="page_id" class="form-label">Page</label>
                             <select name="page_id" id="page_id" class="form-control form-select">
                                 @foreach($pages as $page)
-                                <option value="{{ $page->id }}">{{ $page->title }}</option>
+                                <option value="{{ $page->id }}" {{ old('page_id') == $page->id ? 'selected' : '' }}>{{ $page->title }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -105,7 +121,7 @@
                             <select name="parent_id" id="parent_id" class="form-select form-control">
                                 <option value="">-- No Parent --</option>
                                 @foreach($menu->allItems as $item)
-                                <option value="{{ $item->id }}">{{ $item->title }}</option>
+                                <option value="{{ $item->id }}" {{ old('parent_id') == $item->id ? 'selected' : '' }}>{{ $item->title }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -115,15 +131,15 @@
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label for="icon" class="form-label">Icon (optional)</label>
-                            <input type="text" name="icon" id="icon" class="form-control" placeholder="e.g. ti ti-home">
+                            <input type="text" name="icon" id="icon" class="form-control" value="{{ old('icon') }}" placeholder="e.g. ti ti-home">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label for="target" class="form-label">Target</label>
                             <select name="target" id="target" class="form-control">
-                                <option value="_self">Same Tab</option>
-                                <option value="_blank">New Tab</option>
+                                <option value="_self" {{ old('target') == '_self' ? 'selected' : '' }}>Same Tab</option>
+                                <option value="_blank" {{ old('target') == '_blank' ? 'selected' : '' }}>New Tab</option>
                             </select>
                         </div>
                     </div>
