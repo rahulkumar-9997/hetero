@@ -15,13 +15,13 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <div class="content-text" style="max-width: 300px; overflow-x: auto; height: 50px;">
+                    <div class="content-text" style="max-width: 300px; overflow-x: auto; height: 100px;">
                         {{ $featuredStory->title }}
                     </div>
                 </td>
                 <td>{{ $featuredStory->sub_title }}</td>
                 <td>
-                    <div class="overflow-auto" style="max-width: 250px; max-height: 50px; overflow: auto; white-space: nowrap;">
+                    <div class="overflow-auto" style="max-width: 250px; max-height: 100px; overflow: auto; white-space: nowrap;">
                         {!! $featuredStory->content !!}
                     </div>                    
                 </td>
