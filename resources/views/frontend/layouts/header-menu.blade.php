@@ -34,86 +34,62 @@
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
+                        class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="javascript:;"
-                                id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">About Us</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <div class="container">
-                                    <a class="dropdown-item back-drop"
-                                        href="javascript:void(0)">Back</a>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="nav-left">
-                                                <h2>About Us</h2>
-                                                <p>We are inspiring human belief in a healthier world</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="nav-tab-container">
-                                                <ul>
-                                                    <li>
-                                                        <a href="about-us.html">Company</a>
-                                                        <div class="nav-box">
-                                                            <img src="{{asset('fronted/assets/images/nav-company.jpg')}}"
-                                                                width="100%">
-                                                            <p>Our founding mission is to make highly quality
-                                                                medicines affordable and accessible to the world
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="who-we-are.html">Who we are</a>
-                                                        <div class="nav-box">
-                                                            <img src="{{asset('fronted/assets/images/nav-pic1.jpg')}}"
-                                                                width="100%">
-                                                            <p>30 years of Service in the pharmaceutical industry,
-                                                                backed by proven track record in R&D excellence
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="leadership.html">Leadership</a>
-                                                        <div class="nav-box">
-                                                            <img src="{{asset('fronted/assets/images/nav-leadership.jpg')}}"
-                                                                width="100%">
-                                                            <p>Our mission to enable access to affordable medicines
-                                                                and improve lives flow from the top
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="presence.html">Presence</a>
-                                                        <div class="nav-box">
-                                                            <img src="{{asset('fronted/assets/images/nav-presence.jpg')}}"
-                                                                width="100%">
-                                                            <p>Expanding our presence to serve more people and
-                                                                create meaningful impact
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="milestones-and-awards.html">Milestones and
-                                                            Awards</a>
-                                                        <div class="nav-box">
-                                                            <img src="{{asset('fronted/assets/images/nav-milestone1.jpg')}}"
-                                                                width="100%">
-                                                            <p>Being acknowledged for our efforts motivates our
-                                                                entire team
-                                                            </p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                        @if($menu && $menu->items->count())
+                            @foreach($menu->items as $item)
+                                <li class="nav-item {{ $item->children->count() ? 'dropdown' : '' }}">
+                                    <a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }}" href="javascript:;"
+                                        id="navbarDropdown-{{ $item->id }}" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">{{ $item->title }}</a>
+                                    <div class="dropdown-menu" aria-labelledby="nnavbarDropdown-{{ $item->id }}">
+                                        <div class="container">
+                                            <a class="dropdown-item back-drop"
+                                                href="javascript:void(0)">Back</a>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="nav-left">
+                                                        @if ($item->sub_title)
+                                                            <h2>{{ $item->sub_title }}</h2>
+                                                        @endif                                          @if ($item->short_content)            
+                                                            <p>{{ $item->short_content }}</p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="nav-tab-container">
+                                                        @if($item->children->count())
+                                                            <ul>
+                                                                @foreach($item->children as $child)
+                                                                    <li>
+                                                                        <a href="{{ $child->url }}">{{ $child->title }}</a>
+                                                                        <div class="nav-box">
+                                                                            @if (!empty($child->image) && file_exists(public_path('upload/menu-item/' . $child->image)))
+                                                                                <img src="{{ asset('upload/menu-item/' . $child->image) }}"
+                                                                                width="100%" alt="{{ $child->title }}">
+                                                                                    
+                                                                            @else
+                                                                                <img src="{{asset('fronted/assets/images/nav-company.jpg')}}"
+                                                                                width="100%" alt="{{ $child->title }}">
+                                                                            @endif                     <p>
+                                                                                {{$child->short_content }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </li>
+                                                                @endforeach                                                               
+                                                            </ul>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                                </li>
+                            @endforeach
+                        @endif
+                        <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle " href="javascript:;"
                                 id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">Focus Areas</a>
@@ -417,19 +393,24 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>-->
                         <div class="top-header">
                             <ul>
-                                <li><a href="covid-19.html" class="covid-text">COVID-19</a></li>
-                                <li><a href="life-at-hetero.html">Careers</a></li>
-                                <li><a href="contact-us.html">Contact us</a></li>
+                                <li><a href="covid-19.html">Контакты</a></li>
+                                <li><a href="tel:+74959810088" class="icon-phone">+7 (495) 981 00 88</a></li>
+                                <!-- <li><a href="contact-us.html">Contact us</a></li> -->
                             </ul>
                         </div>
-                        <li class="nav-item show-nav"><a class="nav-link Covid-19" href="covid-19.html">COVID-19</a>
+                        <li class="nav-item show-nav">
+                            <a class="nav-link Covid-19" href="#">Контакты</a>
                         </li>
-                        <li class="nav-item show-nav"><a class="nav-link" href="life-at-hetero.html"
-                                target="_blank">Careers</a></li>
-                        <li class="nav-item show-nav"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item show-nav">
+                            <a class="icon-phone" href="tel:+74959810088"
+                            >+7 (495) 981 00 88</a>
+                        </li>
+                        <!-- <li class="nav-item show-nav">
+                            <a class="nav-link" href="contact-us.html">Contact Us</a>
+                        </li> -->
                     </ul>
                 </div>
             </nav>

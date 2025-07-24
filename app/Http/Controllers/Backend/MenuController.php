@@ -116,6 +116,7 @@ class MenuController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'sub_title' => 'nullable|string|max:255',
             'url' => 'nullable|string|max:255',
             'route' => 'nullable|string|max:255',
             'page_id' => 'nullable|exists:pages,id',
@@ -143,6 +144,7 @@ class MenuController extends Controller
 
             $menu->items()->create([
                 'title' => $data['title'],
+                'sub_title' => $data['sub_title'] ?? null,
                 'short_content' => $data['short_desc'] ?? null,
                 'image' => $data['image'] ?? null,
                 'url' => $data['type'] === 'url' ? $data['url'] : null,
@@ -175,6 +177,7 @@ class MenuController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'sub_title' => 'nullable|string|max:255',
             'url' => 'nullable|string|max:255',
             'route' => 'nullable|string|max:255',
             'page_id' => 'nullable|exists:pages,id',
@@ -208,6 +211,7 @@ class MenuController extends Controller
             $data['route'] = $data['type'] === 'route' ? $data['route'] : null;
             $data['page_id'] = $data['type'] === 'page' ? $data['page_id'] : null;
             $data['short_content'] = $data['short_desc'] ?? null;
+            $data['sub_title'] = $data['sub_title'] ?? null;
             unset($data['short_desc'], $data['type']);
             $item->update($data);
             DB::commit();

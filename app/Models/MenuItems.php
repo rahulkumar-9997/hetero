@@ -9,7 +9,7 @@ class MenuItems extends Model
 {
     protected $table = 'menu_items';
     protected $fillable = [
-        'menu_id', 'page_id', 'title', 'short_content', 'image', 'url', 'route',
+        'menu_id', 'page_id', 'title', 'sub_title',  'short_content', 'image', 'url', 'route',
         'parent_id', 'order', 'is_active', 'icon', 'target'
     ];
 

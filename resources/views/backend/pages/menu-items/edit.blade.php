@@ -26,7 +26,7 @@
                 @method('PUT')
                 
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label for="title" class="form-label">
                                 Title <span class="text-danger">*</span>
@@ -36,11 +36,19 @@
                             @error('title') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label for="sub_title" class="form-label">Sub-title
+                                
+                            </label>
+                            <input type="text" name="sub_title" id="sub_title" class="form-control" value="{{ old('sub_title', $item->sub_title) }}">
+                            @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label for="short_desc" class="form-label">Short Description</label>
-                            <textarea name="short_desc" id="short_desc" class="form-control">
-                                {{ old('short_desc', $item->short_content) }}
+                            <textarea name="short_desc" id="short_desc" class="form-control">{{ old('short_desc', $item->short_content) }}
                             </textarea>
                             @error('short_desc') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
@@ -50,6 +58,11 @@
                             <label for="image" class="form-label">Image File</label>
                             <input type="file" name="image" id="image" class="form-control">
                             @error('image') <small class="text-danger">{{ $message }}</small> @enderror
+                            @if (!empty($item->image) && file_exists(public_path('upload/menu-item/' . $item->image)))
+                                <div class="mb-2">
+                                    <img src="{{ asset('upload/menu-item/' . $item->image) }}" alt="Current Image" class="img-thumbnail" style="max-height: 50px;">
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">

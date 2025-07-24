@@ -58,7 +58,7 @@
             <form action="{{ route('menu.item.store', $menu->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title
                                  <label class="text-danger"> *</label>
@@ -67,7 +67,16 @@
                             @error('title') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label for="sub_title" class="form-label">Sub-title
+                                
+                            </label>
+                            <input type="text" name="sub_title" id="sub_title" class="form-control" value="{{ old('sub_title') }}">
+                            @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label for="short_desc" class="form-label">Short Description</label>
                             <textarea name="short_desc" id="short_desc" class="form-control">{{ old('short_desc') }}</textarea>
