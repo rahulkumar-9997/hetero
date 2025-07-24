@@ -22,6 +22,7 @@
             </a>
         </div>
     </div>
+    <!--this is the card section--->
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
             <h5>News and Media</h5>
@@ -37,6 +38,7 @@
                 </select>
             </div>            
         </div>
+        <!--end-->
         <div class="card-body p-0">
             <div class="table-responsive">
                 <div class="display-newsmedia-category">

@@ -12,6 +12,6 @@ class MenuComposer
             ->where('location', 'Header')
             ->first();
         //dd($menu->toJson(JSON_PRETTY_PRINT));
-        $view->with('menu', $menu);       
+        $view->with('headerMenu', $menu);       
     }
 }

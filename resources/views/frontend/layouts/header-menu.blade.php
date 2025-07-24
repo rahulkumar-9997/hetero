@@ -38,8 +38,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        @if($menu && $menu->items->count())
-                            @foreach($menu->items as $item)
+                        @if($headerMenu && $headerMenu->items->count())
+                            @foreach($headerMenu->items as $item)
                                 <li class="nav-item {{ $item->children->count() ? 'dropdown' : '' }}">
                                     <a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }}" href="javascript:;"
                                         id="navbarDropdown-{{ $item->id }}" role="button" data-toggle="dropdown" aria-haspopup="true"

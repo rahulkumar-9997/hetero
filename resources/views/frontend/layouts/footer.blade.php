@@ -9,85 +9,82 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-6">
                     <div class="footer-links">
-                        <h2>About Us</h2>
+                        <h2>Hetero в России</h2>
                         <ul>
-                            <li><a href="who-we-are.html">Who we are</a></li>
-                            <li><a href="leadership.html">Leadership</a></li>
-                            <li><a href="presence.html">Presence</a></li>
-                            <li><a href="milestones-and-awards.html">Milestones and Awards</a></li>
+                            <li><a href="#">История</a></li>
+                            <li><a href="#">Производство</a></li>
+                            <li><a href="#">Руководство</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-6">
                     <div class="footer-links">
-                        <h2>Focus Areas</h2>
+                        <h2>Hetero в мире</h2>
                         <ul>
-                            <li><a href="APIs.html">APIs</a></li>
-                            <li><a href="global-generics.html">Global generics</a></li>
-                            <li><a href="biosimilars.html">Biosimilars</a></li>
-                            <li><a href="CPS.html">CPS</a></li>
-                            <li><a href="global-access.html">Global Access</a></li>
-                            <li><a href="key-therapies.html">Key Therapies</a></li>
-                            <!-- <li><a href="key-therapies">Key Therapies</a></li> -->
-                            <li><a href="arv/index.htm">ARVs</a></li>
+                            <li><a href="#">История</a></li>
+                            <li><a href="#">Философия</a></li>
+                            <li><a href="#">Миссия</a></li>
+                            <li><a href="#">Корпоративная и социальная ответственность</a></li>                            
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-6">
                     <div class="footer-links">
-                        <h2>Expertise</h2>
+                        <h2>Производство</h2>
                         <ul>
-                            <li><a href="research-development.html">Research & Development</a></li>
-                            <li><a href="global-manufacturing-facilities.html">Global Manufacturing Facilities</a>
+                            <li><a href="#">Лекарственные препараты</a></li>
+                            <li><a href="#">Технологическая платформа</a>
                             </li>
-                            <li><a href="quality-focus.html">Quality Focus</a></li>
-                            <li><a href="partnerships.html">Partnerships</a></li>
+                            <li><a href="#">Контроль качества и технологий</a></li>
+                            <li><a href="#">Контрактное производство</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-6">
                     <div class="footer-links">
-                        <h2>Responsibility</h2>
+                        <h2>Фармаконадзор</h2>
                         <ul>
-                            <li><a href="environment-health-safety.html">Environment, Health & Safety</a></li>
-                            <li><a href="community.html">Community</a></li>
-                            <li><a href="sustainability-reporting.html">Sustainability Reporting</a></li>
-                            <li><a href="download-reports.html">Download Reports</a></li>
+                            <li><a href="#">Нормативно-справочная информация</a></li>
+                            <li><a href="#">Фармаконадзор ГК "HETERO"</a></li>
+                            <li><a href="#">О каких случаях сообщать</a></li>
+                            <li><a href="#">Защита персональных данных</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-6">
                     <div class="footer-links">
-                        <h2>News and media</h2>
+                        <h2>Информация</h2>
                         <ul>
-                            <li><a href="featured-stories.html">Featured Stories</a></li>
-                            <li><a href="newsroom.html">Newsroom</a></li>
-                            <li><a href="press-kit.html">Press Kit</a></li>
+                            <li><a href="#">Новости</a></li>
+                            <li><a href="#">Карьера</a></li>
+                            <li><a href="#">Партнеры</a></li>
+                            <li><a href="#">Контакты</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-6 blank-cell"></div>
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="Caution">
                         <p class="MontserratBold fs14 mb-2">Caution Notice</p>
-                        <p class="fs12">Please beware of fake online pharmacies. Kindly note that Hetero does not
-                            engage in any form of online distribution or retailing of medicines. Hetero and its
-                            group subsidiaries supply the products worldwide, only through their exclusive
-                            distribution networks.
+                        <p class="fs12">Обратите внимание, что Hetero не занимается какой-либо формой онлайн-распространения или розничной торговли лекарствами. Hetero и ее дочерние компании поставляют продукцию по всему миру только через свои эксклюзивные дистрибьюторские сети.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="footer-end">
         <div class="common-container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-6 blank-cell"></div>
                 <div class="col-md-3">
-                    <div class="copyright blue fs12 MulishBold">Copyright © 2023 Hetero. All rights reserved</div>
+                    <div class="copyright blue fs12 MulishBold">
+                        Copyright © 2017-{{ date('Y') }} Hetero. All rights reserved
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="bottom-links">
