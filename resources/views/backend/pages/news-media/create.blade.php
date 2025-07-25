@@ -127,11 +127,11 @@
                             </div>
                         </div>
                     </div>
-                @elseif(request('newsMediaSlug') == 'newsroom')
+                @elseif(request('newsMediaSlug') == 'novosti')
                     <div class="newsroom-form">
                         <input type="hidden" name="media-action-type" value="newsroom">
                         <div class="row">
-                            <div class="col-sm-6 col-12">
+                            <div class="col-sm-4 col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Title<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control" name="title" value="{{ old('title') }}">
@@ -140,9 +140,9 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-12">
+                            <div class="col-sm-4 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Select year <span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Select year </label>
                                     <select class="select" name="years">
                                         <option>-- Select year --</option>
                                         @foreach($years as $year)
@@ -156,11 +156,29 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-12">
+                            <div class="col-sm-4 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Location<span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Post Date<span class="text-danger ms-1">*</span></label>
+                                    <input type="text" class="form-control flatpickr-input" name="post_date" value="{{ old('post_date') }}" placeholder="YYYY-MM-DD" id="flatpickr-date" readonly="readonly">
+                                    @error('post_date')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Location<span class="text-danger ms-1"></label>
                                     <input type="text" class="form-control" name="location" value="{{ old('location') }}">
                                     @error('location')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-5 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Images<span class="text-danger ms-1"></label>
+                                    <input type="file" class="form-control" name="image" value="{{ old('image') }}">
+                                    @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -289,6 +307,7 @@
 
 @endsection
 @push('scripts')
+
 <script>
     function redirectToCategory(select) {
         const selectedOption = select.options[select.selectedIndex];

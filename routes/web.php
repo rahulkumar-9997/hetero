@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('manage-awards', AwardsController::class)->names('manage-awards');
     Route::resource('manage-news-media-category', NewsMediaCategoryController::class)->names('manage-news-media-category');
     Route::resource('manage-news-media', NewsMediaController::class)->names('manage-news-media');
+    Route::post('news-room/update/{id}', [NewsMediaController::class, 'newRoomUpdate'])->name('news-room.update');
 
     Route::get('/clear-cache', [CacheController::class, 'clearCache'])->name('clear-cache');
     Route::resource('pages', PageController::class);

@@ -13,6 +13,7 @@ class NewsRoom extends Model
         'new_and_media_category_id',
         'title',
         'slug',
+        'image', 
         'year_id',
         'location',
         'content',

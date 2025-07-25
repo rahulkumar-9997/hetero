@@ -52,53 +52,8 @@
             </div>
          </div>
          <div class="col-md-6">
-            <div class="shaping-right">
-               <div class="swiper-container swiper-Shaping wow fadeInUp" data-wow-offset="250"
-                  data-wow-duration="1s" data-wow-delay="0.2s">
-                  <div class="swiper-wrapper">
-                     <div class="swiper-slide">
-                        <div class="shaping-right-box">
-                           <div class="shaping-top">
-                              <h2>Partnering with MPP to expand access of nirmatrelvir & ritonavir
-                                 generics for COVID-19 treatment
-                              </h2>
-                              <p>To ensure significant increase in access to COVID-19 treatments for all
-                                 people, particularly those living in
-                                 the poorest parts of the world.
-                              </p>
-                              <a href="press-release-2022-2.html" class="readmore">Read More</a>
-                           </div>
-                           <div class="shaping-img">
-                              <img src="{{asset('fronted/assets/images/shaping1.jpg')}}" width="100%">
-                           </div>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="shaping-right-box">
-                           <div class="shaping-top">
-                              <h2>Positive results in Phase III trials of Hetero’s Movfor (Molnupiravir)
-                              </h2>
-                              <p>Demonstrated that Molnupiravir along with Standard of Care (SOC) reduced
-                                 the risk of hospitalization
-                                 by over 65% compared to SOC alone.
-                              </p>
-                              <a href="pdf/Hetero_Molnupiravir%20trials_Press%20Release_Final.pdf"
-                                 class="readmore" target="_blank">Read More</a>
-                           </div>
-                           <div class="shaping-img">
-                              <img src="{{asset('fronted/assets/images/shaping2.jpg')}}" width="100%">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Add Arrows -->
-                  <div class="swiper-button-next Shaping-button-next">
-                     <img src="{{asset('fronted/assets/images/white-slide-next.png')}}" width="100%">
-                  </div>
-                  <div class="swiper-button-prev Shaping-button-prev">
-                     <img src="{{asset('fronted/assets/images/white-slide-prev.png')}}" width="100%">
-                  </div>
-               </div>
+            <div class="right-pic">
+               <img src="{{ asset('fronted/assets/hetero-img/about-us.jpg') }}" width="100%">
             </div>
          </div>
       </div>

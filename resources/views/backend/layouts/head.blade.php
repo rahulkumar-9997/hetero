@@ -11,15 +11,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/assets/back-img/logo.png')}}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset('backend/assets/back-img/logo.png')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-datetimepicker.min.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/plugins/flatpickr/flatpickr.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/animate.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/select2/css/select2.min.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/daterangepicker/daterangepicker.css')}}">
-
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/fontawesome/css/fontawesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/fontawesome/css/all.min.css')}}">
-
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/toastr/toastify.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}">
 @stack('styles')

@@ -31,8 +31,10 @@ class StoreNewsMediaRequest extends FormRequest
             case 'newsroom':
                 $rules = array_merge($rules, [
                     'title' => 'required|string|max:255',
-                    'years' => 'required|exists:years,id',
-                    'location' => 'required|string|max:255',
+                    'years' => 'nullable|exists:years,id',
+                    'post_date' => 'nullable|date',
+                    'location' => 'nullable|string|max:255',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
                     'content' => 'required|string',
                     'meta_title' => 'nullable|string|max:255',
                     'meta_description' => 'nullable|string|max:500',

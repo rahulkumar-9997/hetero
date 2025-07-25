@@ -28,11 +28,14 @@
             <h5>News and Media</h5>
             <div class="filter-search d-flex align-items-center gap-2">
                 <h4>Filter</h4>
-                <select class="form-select w-auto" id="news-media-category-filter">
+                <select class="form-select w-auto" id="news-media-category-filter" onchange="redirectToCategory(this)">
                     <option value="">New & Media Category</option>
                     @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
                         @foreach($newsMediaCategories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            <option  data-id="{{ $category->id }}"
+                            value="{{ $category->id }}"
+                            {{ request('newsMediaId') == $category->id ? 'selected' : '' }}
+                            >{{ $category->title }}</option>
                         @endforeach
                     @endif
                 </select>
@@ -42,8 +45,12 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <div class="display-newsmedia-category">
-                    @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
-                        @include('backend.pages.news-media.partials.new_media_list', ['newsMediaCategories' => $newsMediaCategories])
+                    @if(isset($featuredStories) && $featuredStories->count() > 0)
+                        @include('backend.pages.news-media.partials.feature_story_list', ['featuredStories' => $featuredStories])
+                    @endif
+                    @if(isset($newsRooms) && $newsRooms->count() > 0)
+                    
+                        @include('backend.pages.news-media.partials.news_rooms_list', ['newsRooms' => $newsRooms])
                     @endif
                 </div>
             </div>
@@ -54,5 +61,15 @@
 @endsection
 @push('scripts')
 <script src="{{asset('backend/assets/js/pages/newAndMediaCategory.js')}}"></script>
-
+<script>
+    function redirectToCategory(select) {
+        const selectedOption = select.options[select.selectedIndex];
+        const id = selectedOption.getAttribute('data-id');
+        if (id) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('newsMediaId', id);
+            window.location.href = url.toString();
+        }
+    }
+</script>
 @endpush
