@@ -2,81 +2,52 @@
 @section('title','Leading Global Pharmaceutical Company in India | Anti Retroviral Drugs')
 @section('description', 'Hetero is the first company in India to launch the generic version of Remdesivir injection, COVIFOR, in India, which is used to treat hospitalization cases of COVID-19. Click here to know more.')
 @section('main-content')
+@if(isset($data['banners']) && $data['banners']->count() > 0)
 <section id="banner">
    <div class="swiper-container bannerSlider">
       <div class="swiper-wrapper">
+         @foreach($data['banners'] as $banner)
          <div class="swiper-slide">
-            <img src="{{asset('fronted/assets/images/desktop%20version.png')}}" class="dexImg" width="100%" alt="">
-            <img src="{{asset('fronted/assets/images/480x304%20%281%29.png')}}" class="mobileBanner" width="100%" alt="">
+            <img src="{{ asset('upload/banner/' . $banner->banner_desktop_img) }}" class="dexImg" width="100%" alt="{{ $banner->banner_heading_name }}">
+            <img src="{{ asset('upload/banner/' . $banner->banner_mobile_img) }}" class="mobileBanner" width="100%" alt="{{ $banner->banner_heading_name }}">
             <div class="common-container">
                <div class="bannerTextBox">
-                  <h3><span style="font-size:60px;"><b>30</b></span><br> <i>feels</i> <b>GREAT!</b></h3>
-                  <p>Celebrating three decades of<br> inclusive pharmaceutical excellence.</p>
-                  <p style="padding-top:15px;">Thank you for all the encouragement and <br> unwavering
-                     support.
-                  </p>
-                  <p style="padding-top:25px;">#Hetero30</p>
-               </div>
-            </div>
-         </div>
-         <div class="swiper-slide">
-            <img src="{{asset('fronted/assets/images/home-banner1.jpg')}}" class="dexImg" width="100%" alt="Doctor in Pharma Lab">
-            <img src="{{asset('fronted/assets/images/mobile-banner1.jpg')}}" class="mobileBanner" width="100%" alt="Doctor in Pharma Lab">
-            <div class="common-container">
-               <div class="bannerTextBox">
-                  <h3 class="white">Combining R&D expertise with state-of-the-art infrastructure.</h3>
+                  @if($banner->banner_heading_name)
+                     <h3>
+                        {{ $banner->banner_heading_name }}
+                     </h3>
+                  @endif
+                  @if($banner->banner_content)
+                     <p>
+                        {!! $banner->banner_content !!}
+                     </p>
+                  @endif
+                  @if($banner->banner_link)
                   <a href="expertise-overview.html" class="readmore">Read More</a>
+                  @endif
                </div>
             </div>
          </div>
-         <div class="swiper-slide">
-            <img src="{{asset('fronted/assets/images/home-banner2.jpg')}}" class="dexImg" width="100%" alt="Doctor in Pharma Lab">
-            <img src="{{asset('fronted/assets/images/mobile-banner3.jpg')}}" class="mobileBanner" width="100%" alt="medicine in Hand">
-            <div class="common-container">
-               <div class="bannerTextBox">
-                  <h3>United against COVID-19</h3>
-                  <p>By asserting our role as a responsible corporate citizen, the entire team of Hetero is
-                     playing their part in helping the world to cope with the pandemic
-                  </p>
-                  <a href="covid-19.html" class="readmore">Read More</a>
-               </div>
-            </div>
-         </div>
-         <div class="swiper-slide">
-            <img src="{{asset('fronted/assets/images/banner3.jpg')}}" class="dexImg" width="100%" alt="medicine in Hand">
-            <img src="{{asset('fronted/assets/images/mobile-banner3.jpg')}}" class="mobileBanner" width="100%" alt="medicine in Hand">
-            <div class="common-container">
-               <div class="bannerTextBox">
-                  <h3>Wide range of innovations; diverse and differentiated product portfolio</h3>
-                  <!-- <p>Hetero has Asia’s largest API manufacturing complex in Visakhapatnam, Andhra Pradesh</p> -->
-                  <a href="focus-areas-overview.html" class="readmore">Read More</a>
-               </div>
-            </div>
-         </div>
+         @endforeach
       </div>
       <div class="swiper-pagination bannerSlider-pagination"></div>
    </div>
 </section>
+@endif
 <section id="shaping-a-healthier" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
          <div class="col-md-6">
             <div class="shaping-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                data-wow-delay="0.1s">
-               <h2 class="home-title HeteroRed mb-4" style="font-weight:600">At Hetero, our every action seeks
-                  to inspire human belief in accessibility and affordability of life-saving medicines across
-                  the world.
+               <h2 class="home-title HeteroRed mb-4" style="font-weight:600">
+                  HETERO Россия
                </h2>
-               <p class="MontserratMedium">
-                  With unparalleled strengths in pharmaceutical research,
-                  manufacturing, and marketing, we are
-                  positioned to serve people regardless of geographies. Our new identity embodies this drive
-                  to expand
-                  our reach and capabilities in order to respond with agility to the world’s evolving health
-                  needs. Our
-                  every action seeks to inspire human belief in accessibility and affordability of life-saving
-                  medicines
-                  across the world.
+               <p class="MontserratMedium text-justify">
+                  На сегодняшний день группа компаний "HETERO" в России ставит перед собой цель - повышение доступности качественного и эффективного лечения для российских больных через выпуск современных лекарственных средств и создание производства полного цикла на базе российских производственных мощностей.
+               </p>
+               <p class="MontserratMedium text-justify">
+                  Основная производственная площадка ГК "HETERO" - ООО "МАКИЗ-ФАРМА" с 2000 года обладает технологической платформой, отвечающей мировым стандартам в области производства лекарственных средств, и находится в Москве.
                </p>
             </div>
          </div>
@@ -136,45 +107,45 @@
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">30</span></h2>
-                  <p>Years of Service</p>
+                  <h2 class="HeteroRed"><span class="counter">20</span>+</h2>
+                  <p>Лет в России</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">300</span>+</h2>
-                  <p>APIs</p>
+                  <h2 class="HeteroRed"><span class="counter">40</span>+</h2>
+                  <p>Лекарственных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">200</span>+</h2>
-                  <p>FDFs</p>
+                  <h2 class="HeteroRed"><span class="counter">30</span>+</h2>
+                  <p>Антиретровирусных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.3s">
-                  <h2 class="HeteroRed"><span class="counter">140</span>+</h2>
-                  <p>Countries</p>
+                  <h2 class="HeteroRed"><span class="counter">25</span>+</h2>
+                  <p>Производственных площадок</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.4s">
-                  <h2 class="HeteroRed"><span class="counter">36</span>+</h2>
-                  <p>State-of-the-art
-                     manufacturing facilities
+                  <h2 class="HeteroRed"><span class="counter">50</span>+</h2>
+                  <p>
+                     Партнеров
                   </p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.5s">
-                  <h2 class="HeteroRed"><span class="counter">30</span>,000+</h2>
-                  <p>Employees globally</p>
+                  <h2 class="HeteroRed"><span class="counter">100</span>+</h2>
+                  <p>Сотрудников</p>
                </div>
             </div>
          </div>

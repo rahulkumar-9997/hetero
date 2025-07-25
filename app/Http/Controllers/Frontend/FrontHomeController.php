@@ -8,15 +8,16 @@ use Illuminate\Support\Facades\Log;
 use App\Mail\ContactFormMail; 
 use App\Mail\EachPageFormMail; 
 use Exception;
-use Auth;
-use Session;
-use DB;
-use Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Banner;
 class FrontHomeController extends Controller
 {
     public function home(){
-        return view('frontend.index');
+        $data['banners'] = Banner::select('id', 'banner_heading_name', 'banner_content', 'banner_link', 'banner_desktop_img', 'banner_mobile_img')
+        ->orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
+        return view('frontend.index', compact('data'));
     }
 
     public function aboutUs(){
