@@ -221,6 +221,51 @@ class NewsMediaController extends Controller
             'meta_description' => 'nullable|string|max:500',
             'is_active' => 'nullable|boolean',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)
+                ->withInput();
+        }
+        try {
+            $data = $validator->validated();
+            if ($request->hasFile('image')) {
+                if ($newsRoomRow->image) {
+                    $this->deleteImage($newsRoomRow->image, 'news-room');
+                }
+                $data['image'] = $this->processAndStoreImage(
+                    $request->file('image'), 
+                    $data['title'], 
+                    public_path('upload/news-room')
+                );
+            }
+           
+            $newsRoomRow->update([
+                'new_and_media_category_id' => $request->news_media_title,
+                'title' => $request->news_media_content,
+                'image' => $imageName,
+                'year_id' => $imageName,
+                'location' => $imageName,
+                'content' => $imageName,
+                'post_date' => $imageName,
+                'meta_title' => $imageName,
+                'meta_description' => $imageName,
+                'status' => $imageName,
+            ]);           
+        //    // return redirect()->route('manage-news-media.index'?newsMediaId=$data['news_media_categories'])
+        //         ->with('success', 'News Room updated successfully');
+                
+        } catch (\Exception $e) {
+            return back()->withInput()
+                ->with('error', 'Error: ' . $e->getMessage());
+        }
+    }
+
+    protected function deleteImage($filename, $folder)
+    {
+        $path = public_path("upload/{$folder}/{$filename}");
+        if (file_exists($path)) {
+            unlink($path);
+        }
     }
 
 }
