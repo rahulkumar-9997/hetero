@@ -48,8 +48,7 @@
                     @if(isset($featuredStories) && $featuredStories->count() > 0)
                         @include('backend.pages.news-media.partials.feature_story_list', ['featuredStories' => $featuredStories])
                     @endif
-                    @if(isset($newsRooms) && $newsRooms->count() > 0)
-                    
+                    @if(isset($newsRooms) && $newsRooms->count() > 0)                    
                         @include('backend.pages.news-media.partials.news_rooms_list', ['newsRooms' => $newsRooms])
                     @endif
                 </div>
@@ -71,5 +70,28 @@
             window.location.href = url.toString();
         }
     }
+    $(document).ready(function() {
+        $(document).on('click', '.newsroom_show_confirm', function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+
+            Swal.fire({
+                title: `Are you sure you want to delete this ${name}?`,
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel",
+                dangerMode: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+
+        
+    });
 </script>
 @endpush

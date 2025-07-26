@@ -3,7 +3,7 @@
         <div class="common-container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand"
-                    href="index.htm">
+                    href="{{ url('/') }}">
                     <svg width="108" heigh="60" version="1.1" id="Layer_1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewbox="270 140 650 560" style="enable-background:new 270 140 650 560; fill:red"
@@ -396,7 +396,7 @@
                         </li>-->
                         <div class="top-header">
                             <ul>
-                                <li><a href="covid-19.html">Контакты</a></li>
+                                <li><a href="#">Контакты</a></li>
                                 <li><a href="tel:+74959810088" class="icon-phone">+7 (495) 981 00 88</a></li>
                                 <!-- <li><a href="contact-us.html">Contact us</a></li> -->
                             </ul>

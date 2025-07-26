@@ -7,61 +7,26 @@
                         <img src="{{asset('fronted/assets/images/Logo.png')}}" width="100px">
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="footer-links">
-                        <h2>Hetero в России</h2>
-                        <ul>
-                            <li><a href="#">История</a></li>
-                            <li><a href="#">Производство</a></li>
-                            <li><a href="#">Руководство</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="footer-links">
-                        <h2>Hetero в мире</h2>
-                        <ul>
-                            <li><a href="#">История</a></li>
-                            <li><a href="#">Философия</a></li>
-                            <li><a href="#">Миссия</a></li>
-                            <li><a href="#">Корпоративная и социальная ответственность</a></li>                            
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="footer-links">
-                        <h2>Производство</h2>
-                        <ul>
-                            <li><a href="#">Лекарственные препараты</a></li>
-                            <li><a href="#">Технологическая платформа</a>
-                            </li>
-                            <li><a href="#">Контроль качества и технологий</a></li>
-                            <li><a href="#">Контрактное производство</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="footer-links">
-                        <h2>Фармаконадзор</h2>
-                        <ul>
-                            <li><a href="#">Нормативно-справочная информация</a></li>
-                            <li><a href="#">Фармаконадзор ГК "HETERO"</a></li>
-                            <li><a href="#">О каких случаях сообщать</a></li>
-                            <li><a href="#">Защита персональных данных</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-6">
-                    <div class="footer-links">
-                        <h2>Информация</h2>
-                        <ul>
-                            <li><a href="#">Новости</a></li>
-                            <li><a href="#">Карьера</a></li>
-                            <li><a href="#">Партнеры</a></li>
-                            <li><a href="#">Контакты</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @if($footerMenu && $footerMenu->items->count())
+                    @foreach($footerMenu->items as $item)
+                        <div class="col-lg-2 col-md-2 col-6">
+                            <div class="footer-links">
+                                <h2>{{ $item->title }}</h2>
+                                @if($item->children->count())
+                                    <ul>
+                                        @foreach($item->children as $child)
+                                        <li>
+                                            <a href="{{ $child->url }}">
+                                               {{ $child->title }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             
             <div class="row">

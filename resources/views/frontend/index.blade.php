@@ -13,14 +13,14 @@
             <div class="common-container">
                <div class="bannerTextBox">
                   @if($banner->banner_heading_name)
-                     <h3>
-                        {{ $banner->banner_heading_name }}
-                     </h3>
+                  <h3>
+                     {{ $banner->banner_heading_name }}
+                  </h3>
                   @endif
                   @if($banner->banner_content)
-                     <p>
-                        {!! $banner->banner_content !!}
-                     </p>
+                  <p>
+                     {!! $banner->banner_content !!}
+                  </p>
                   @endif
                   @if($banner->banner_link)
                   <a href="expertise-overview.html" class="readmore">Read More</a>
@@ -108,6 +108,7 @@
       <a href="who-we-are.html" class="readmore mt-4">Read More</a>
    </div>
 </section>
+<!--
 <section id="vast-product" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
@@ -192,9 +193,9 @@
                      </div>
                   </div>
                </div>
-               <!-- If we need pagination -->
+              
                <div class="swiper-pagination vast-pagination"></div>
-               <!-- Add Arrows -->
+             
                <div class="swiper-button-next vast-button-next">
                   <img src="{{asset('fronted/assets/images/slide-next2.png')}}" width="100%">
                </div>
@@ -206,6 +207,8 @@
       </div>
    </div>
 </section>
+-->
+<!--
 <section id="home-people" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
@@ -232,107 +235,43 @@
       </div>
    </div>
 </section>
-<section id="home-responsibility" class="common-t-pad common-b-pad">
-   <div class="common-container">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
-               data-wow-delay="0.1s">
-               <h2 class="home-title2 pruple mb-3">Responsibility</h2>
-               <p class="MontserratMedium">As a responsible corporate citizen, we conduct our business with
-                  complete respect for the environment and community
-               </p>
-               <a href="community.html" class="readmore mt-3">Read More</a>
+-->
+@if(isset($data['newsroom']) && $data['newsroom']->count() > 0)
+   <section id="home-responsibility" class="common-t-pad common-b-pad">
+      <div class="common-container">
+         <div class="row">
+            <div class="col-md-4">
+               <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
+                  data-wow-delay="0.1s">
+                  <h2 class="home-title2 pruple mb-3">Новости</h2>
+                  <p class="MontserratMedium">
+                     Последние новости<br>
+                     и события в ГК "HETERO"
+                  </p>
+                  <a href="{{ route('novosti')}}" class="readmore mt-3">Все новости</a>
+               </div>
             </div>
-         </div>
-         <div class="col-md-8">
-            <div class="home-responsibility-right wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
-               data-wow-delay="0.3s">
-               <div class="swiper-container swiper-Responsibility">
-                  <div class="swiper-wrapper">
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-1.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Education</h2>
-                           <p>Power to nurture talent</p>
+            <div class="col-md-8">               
+               <div class="row">
+                 
+                  @foreach($data['newsroom'] as $newsRoom)
+                     <div class="col-md-4 vast-product-box">
+                        <div class="box-date">{{ \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') }}</div>
+                        <div class="box-title">
+                           <a href="{{ route('novosti.detail', $newsRoom->slug) }}">
+                              {{ $newsRoom->title }}
+                           </a>
                         </div>
                      </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-2.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Healthcare</h2>
-                           <p>Spreading smiles with good health</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-3.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Infrastructure</h2>
-                           <p>Connecting communities with development</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-4.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Drinking Water</h2>
-                           <p>Ensuring access to safe drinking water</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-5.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Eyecare</h2>
-                           <p>Spreading the light to sight</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/images/responsibility-6.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Green Initiative</h2>
-                           <p>Greening our world</p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- If we need pagination -->
-               <div class="swiper-pagination Responsibility-pagination"></div>
-               <!-- If we need navigation buttons -->
-               <div class="swiper-button-prev Responsibility-button-prev">
-                  <img src="{{asset('fronted/assets/images/slide-prev2.png')}}" width="100%">
-               </div>
-               <div class="swiper-button-next Responsibility-button-next">
-                  <img src="{{asset('fronted/assets/images/slide-next2.png')}}" width="100%">
+                     
+                  @endforeach
                </div>
             </div>
          </div>
       </div>
-   </div>
-</section>
-<section id="partnership">
+   </section>
+@endif
+<!--<section id="partnership">
    <div class="common-container">
       <div class="partner-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.3s">
          <h2 class="home-title2 white mb-3">Partnerships</h2>
@@ -344,6 +283,7 @@
       </div>
    </div>
 </section>
+-->
 @endsection
 @push('scripts')
 <script>
@@ -363,64 +303,64 @@
       }
    });
    swiper = new Swiper(".swiper-Shaping", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      navigation: {
-         nextEl: ".Shaping-button-next",
-         prevEl: ".Shaping-button-prev"
-      }
-   }),
-   swiper = new Swiper(".swiper-vast", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      navigation: {
-         nextEl: ".vast-button-next",
-         prevEl: ".vast-button-prev"
-      },
-      pagination: {
-         el: ".vast-pagination",
-         clickable: !0
-      },
-      autoplay: {
-         delay: 4e3,
-         disableOnInteraction: !1
-      },
-      breakpoints: {
-         640: {
-            slidesPerView: 1,
-            spaceBetween: 0
-         },
-         768: {
-            slidesPerView: 1,
-            spaceBetween: 0
+         slidesPerView: 1,
+         spaceBetween: 30,
+         navigation: {
+            nextEl: ".Shaping-button-next",
+            prevEl: ".Shaping-button-prev"
          }
-      }
-   }), swiper = new Swiper(".swiper-Responsibility", {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      pagination: {
-         el: ".Responsibility-pagination",
-         clickable: !0
-      },
-      navigation: {
-         nextEl: ".Responsibility-button-next",
-         prevEl: ".Responsibility-button-prev"
-      },
-      autoplay: {
-         delay: 4e3,
-         disableOnInteraction: !1
-      },
-      breakpoints: {
-         640: {
-            slidesPerView: 1,
-            spaceBetween: 0
+      }),
+      swiper = new Swiper(".swiper-vast", {
+         slidesPerView: 3,
+         spaceBetween: 30,
+         navigation: {
+            nextEl: ".vast-button-next",
+            prevEl: ".vast-button-prev"
          },
-         768: {
-            slidesPerView: 1,
-            spaceBetween: 0
+         pagination: {
+            el: ".vast-pagination",
+            clickable: !0
+         },
+         autoplay: {
+            delay: 4e3,
+            disableOnInteraction: !1
+         },
+         breakpoints: {
+            640: {
+               slidesPerView: 1,
+               spaceBetween: 0
+            },
+            768: {
+               slidesPerView: 1,
+               spaceBetween: 0
+            }
          }
-      }
-   });
+      }), swiper = new Swiper(".swiper-Responsibility", {
+         slidesPerView: 3,
+         spaceBetween: 30,
+         pagination: {
+            el: ".Responsibility-pagination",
+            clickable: !0
+         },
+         navigation: {
+            nextEl: ".Responsibility-button-next",
+            prevEl: ".Responsibility-button-prev"
+         },
+         autoplay: {
+            delay: 4e3,
+            disableOnInteraction: !1
+         },
+         breakpoints: {
+            640: {
+               slidesPerView: 1,
+               spaceBetween: 0
+            },
+            768: {
+               slidesPerView: 1,
+               spaceBetween: 0
+            }
+         }
+      });
    jQuery(document).ready(function(e) {
       e(".counter").counterUp({
          delay: 10,

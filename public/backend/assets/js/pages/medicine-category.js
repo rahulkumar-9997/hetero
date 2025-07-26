@@ -1,6 +1,6 @@
 $(document).ready(function () {
-
-    $(document).on('click', 'a[data-news-media-category-add="true"]', function () {
+    //initSummernoteEditor();
+    $(document).on('click', 'a[data-medicine-category-add="true"]', function () {
         var title = $(this).data('title');
         var size = ($(this).data('size') == '') ? 'md' : $(this).data('size');
         var url = $(this).data('url');
@@ -18,14 +18,20 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
                 $('#commanModel .render-data').html(data.form);
+               // $('.editor_class_multiple').summernote('destroy');
                 $("#commanModel").modal('show');
+                $('#commanModel').on('shown.bs.modal', function() {
+                    initSummernoteEditor();
+                    // Remove the event handler to prevent multiple bindings
+                    $(this).off('shown.bs.modal');
+                });
             },
             error: function (data) {
                 data = data.responseJSON;
             }
         });
     });
-    $(document).off('submit', '#addNewsMediaCatFrm').on('submit', '#addNewsMediaCatFrm', function (event) {
+    $(document).off('submit', '#awardsCategoryAddForm').on('submit', '#awardsCategoryAddForm', function (event) {
         event.preventDefault();
         var form = $(this);
         var submitButton = form.find('button[type="submit"]');
@@ -45,7 +51,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     form[0].reset();
                     $('#commanModel').modal('hide');
-                    $('.display-newsmedia-category').html(response.newsAndMediaData);
+                    $('.display-awards-category').html(response.awardCategory);
                     feather.replace();
                     Toastify({
                         text: response.message,
@@ -78,14 +84,14 @@ $(document).ready(function () {
         });
     });
     
-   
-    $(document).on('click', 'a[data-newmedia-cat-edit="true"]', function () {
+    /**Edit group modal js */
+    $(document).on('click', 'a[data-award-category-edit="true"]', function () {
         var title = $(this).data('title');
         var size = ($(this).data('size') == '') ? 'md' : $(this).data('size');
         var url = $(this).data('url');
-        var id = $(this).data('id');
+        var awcateid = $(this).data('awcateid');
         var data = {
-            id: id,
+            awcateid: awcateid,
         };
         $("#commanModel .modal-title").html(title);
         $("#commanModel .modal-dialog").addClass('modal-' + size);
@@ -104,7 +110,7 @@ $(document).ready(function () {
         });
     });
     /**Edit group modal js */
-    $(document).off('submit', '#editNewsMediaCatFrm').on('submit', '#editNewsMediaCatFrm', function (event) {
+    $(document).off('submit', '#awardsCategoryEditForm').on('submit', '#awardsCategoryEditForm', function (event) {
         event.preventDefault();
         var form = $(this);
         var submitButton = form.find('button[type="submit"]');
@@ -124,7 +130,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     form[0].reset();
                     $('#commanModel').modal('hide');
-                    $('.display-newsmedia-category').html(response.newsAndMediaData);
+                    $('.display-awards-category').html(response.awardCategory);
                     feather.replace();
                     Toastify({
                         text: response.message,
@@ -178,3 +184,50 @@ $(document).ready(function () {
      });
     
 });
+
+function initSummernoteEditor() {
+    $('.editor_class_multiple').each(function() {
+        if (!$(this).hasClass('note-editor') && !$(this).siblings('.note-editor').length) {
+            $(this).summernote({
+                height: 150,
+                minHeight: null,
+                maxHeight: null,
+                focus: false,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video', 'hr']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                prettifyHtml: false,
+                codeviewFilter: true,
+                codeviewIframeFilter: true,
+                styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+                callbacks: {
+                    onPaste: function(e) {
+                        var clipboardData = e.originalEvent.clipboardData || window.clipboardData;
+                        var pastedData = clipboardData.getData('Text/html');
+                        if (pastedData) {
+                            e.preventDefault();
+                            var tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = pastedData;
+                            var elementsWithStyle = tempDiv.querySelectorAll('[style]');
+                            elementsWithStyle.forEach(function(el) {
+                                el.removeAttribute('style');
+                            });
+                            var elementsWithClass = tempDiv.querySelectorAll('[class]');
+                            elementsWithClass.forEach(function(el) {
+                                el.removeAttribute('class');
+                            });
+                            document.execCommand('insertHTML', false, tempDiv.innerHTML);
+                        }
+                    }
+                }
+            });
+        }
+    });
+}

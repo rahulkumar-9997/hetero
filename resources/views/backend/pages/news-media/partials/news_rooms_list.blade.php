@@ -33,10 +33,10 @@
                         title="Edit">
                             <i data-feather="edit" class="feather-edit"></i>
                         </a>
-                        <form action="{{ route('manage-news-media-category.destroy', $newsRoom->id) }}" method="POST" class="d-inline">
+                        <form action="{{ route('news-room.destroy', $newsRoom->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $newsRoom->title }}" title="Delete">
+                            <button type="submit" class="btn btn-sm btn-danger newsroom_show_confirm" data-name="{{ $newsRoom->title }}" title="Delete">
                                 <i data-feather="trash-2" class="feather-trash-2"></i>
                             </button>
                         </form>

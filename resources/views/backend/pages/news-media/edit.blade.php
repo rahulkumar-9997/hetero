@@ -25,13 +25,13 @@
             @if(request()->has('action') && request('action') == 'newsroom')
                 <form action="{{ route('news-room.update', $newsRoom->id) }}" method="POST" enctype="multipart/form-data" id="create-news-media-form">
                     @csrf
-                    @method('PUT')
+                    @method('post')
                     <div class="newsroom-form">
                         <div class="row">
                             <div class="col-sm-4 col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Select news and media category</label>
-                                    <select class="select" name="news_media_categories" id="news_media_categories" disabled>
+                                    <select class="select" name="news_media_categories_display" id="news_media_categories" disabled>
                                         <option value="">-- Select news and media category --</option>
                                         @foreach($newsMediaCategories as $newsMediaCategory)
                                             <option 
@@ -42,6 +42,7 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <input type="hidden" name="news_media_categories" value="{{ $newsRoom->new_and_media_category_id }}">
 
                                 </div>
                             </div>
@@ -108,7 +109,7 @@
                                     @enderror
                                     @if($newsRoom->image)
                                         <div style="width: 100px; height: 70px; display: flex; justify-content: center; align-items: center; background: #f8f9fa;">
-                                            <img src="{{ asset('upload/news-room' . $newsRoom->image) }}" 
+                                            <img src="{{ asset('upload/news-room/' . $newsRoom->image) }}" 
                                                 style="max-width: 100%; max-height: 100%; object-fit: contain;"
                                                 >
                                         </div>
@@ -168,7 +169,7 @@
                             <div class="col-lg-12">
                                 <div class="d-flex align-items-center justify-content-end mb-4">
                                     <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </div>                        

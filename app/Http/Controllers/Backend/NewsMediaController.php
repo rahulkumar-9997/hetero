@@ -160,21 +160,7 @@ class NewsMediaController extends Controller
         ]);
     }
 
-    protected function processAndStoreImage($imageFile, $title, $destinationPath)
-    {
-       
-        $safeTitle = Str::slug($title);
-        $filename = $safeTitle . '-' . uniqid() . '.webp';
-        $path = $destinationPath . '/' . $filename;
-        $img = Image::make($imageFile)
-            ->encode('webp', 75) 
-            ->resize(1200, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })
-            ->save($path);
-        return $filename;
-    }
+   
 
     protected function storePdfFile($pdfFile, $title)
     {
@@ -203,7 +189,8 @@ class NewsMediaController extends Controller
 
     public function newRoomUpdate(Request $request, $id)
     {
-        $newsRoomRow = NewsRoom::findOrfail($id);
+        //dd($request->all());
+        $newsRoomRow = NewsRoom::findOrFail($id);        
         $validator = Validator::make($request->all(), [
             'news_media_categories' => 'required|exists:news_and_media_categories,id',
             'title' => [
@@ -215,49 +202,68 @@ class NewsMediaController extends Controller
             'years' => 'nullable|exists:years,id',
             'post_date' => 'required|date',
             'location' => 'nullable|string|max:255',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,webp|max:4048',
             'content' => 'required|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string|max:500',
             'is_active' => 'nullable|boolean',
         ]);
-
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)
                 ->withInput();
         }
         try {
+            $destinationPath = public_path('upload/news-room');
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true);
+            }
             $data = $validator->validated();
+            $updateData = [
+                'new_and_media_category_id' => $data['news_media_categories'],
+                'title' => $data['title'],
+                'year_id' => $data['years'],
+                'location' => $data['location'],
+                'content' => $data['content'],
+                'post_date' => $data['post_date'],
+                'meta_title' => $data['meta_title'],
+                'meta_description' => $data['meta_description'],
+                'status' => $request->has('is_active'),
+            ];
             if ($request->hasFile('image')) {
                 if ($newsRoomRow->image) {
                     $this->deleteImage($newsRoomRow->image, 'news-room');
-                }
-                $data['image'] = $this->processAndStoreImage(
+                }                
+                $updateData['image'] = $this->processAndStoreImage(
                     $request->file('image'), 
                     $data['title'], 
-                    public_path('upload/news-room')
+                    $destinationPath
                 );
             }
-           
-            $newsRoomRow->update([
-                'new_and_media_category_id' => $request->news_media_title,
-                'title' => $request->news_media_content,
-                'image' => $imageName,
-                'year_id' => $imageName,
-                'location' => $imageName,
-                'content' => $imageName,
-                'post_date' => $imageName,
-                'meta_title' => $imageName,
-                'meta_description' => $imageName,
-                'status' => $imageName,
-            ]);           
-        //    // return redirect()->route('manage-news-media.index'?newsMediaId=$data['news_media_categories'])
-        //         ->with('success', 'News Room updated successfully');
+            $newsRoomRow->update($updateData);            
+            return redirect()->route('manage-news-media.index', [
+                'newsMediaId' => $data['news_media_categories']
+            ])->with('success', 'News Room updated successfully');
                 
         } catch (\Exception $e) {
             return back()->withInput()
-                ->with('error', 'Error: ' . $e->getMessage());
+                ->with('error', 'Error updating News Room: ' . $e->getMessage());
         }
+    }
+
+     protected function processAndStoreImage($imageFile, $title, $destinationPath)
+    {
+       
+        $safeTitle = Str::slug($title);
+        $filename = $safeTitle . '-' . uniqid() . '.webp';
+        $path = $destinationPath . '/' . $filename;
+        $img = Image::make($imageFile)
+            ->encode('webp', 75) 
+            ->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })
+            ->save($path);
+        return $filename;
     }
 
     protected function deleteImage($filename, $folder)
@@ -265,7 +271,26 @@ class NewsMediaController extends Controller
         $path = public_path("upload/{$folder}/{$filename}");
         if (file_exists($path)) {
             unlink($path);
+            return true;
         }
+        return false;
+    }
+
+    public function newRoomDelete($id)
+    {
+        try {
+            $newsRoom = NewsRoom::findOrFail($id);
+            if ($newsRoom->image) {
+                $this->deleteImage($newsRoom->image, 'news-room');
+            }            
+            $newsRoom->delete();    
+            return redirect()->route('manage-news-media.index', [
+                'newsMediaId' => $newsRoom->new_and_media_category_id
+            ])->with('success', 'News Room deleted successfully');
+                
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error deleting News Room: ' . $e->getMessage());
+        }        
     }
 
 }

@@ -410,6 +410,7 @@ $(document).ready(function(){
 			
 		});
 	}
+
 	
 	// Summernote
 
