@@ -47,5 +47,25 @@
 
 @endsection
 @push('scripts')
-<script src="{{asset('backend/assets/js/pages/medicine-category.js')}}"></script>
+<script>
+    $(document).on('click', '.medicine_show_confirm', function (event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+
+        Swal.fire({
+            title: `Are you sure you want to delete this ${name}?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel",
+            dangerMode: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
 @endpush
