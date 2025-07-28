@@ -36,63 +36,12 @@
             </div>
         </div>
         <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table datatable1">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Heading</th>
-                            <th>Content</th>
-                            <th>Link</th>
-                            <th>Desktop Image</th>
-                            <th>Mobile Image</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if((isset($banners)) && $banners->count() > 0)
-                        @foreach($banners as $banner)
-                        <tr>
-                            <td>{!! $banner->banner_heading_name !!}</td>
-                            <td>{!! $banner->banner_content !!}</td>
-                            <td>{{ $banner->banner_link ?? '-' }}</td>
-                            <td>
-                                @if($banner->banner_desktop_img)
-                                <img src="{{ asset('upload/banner/' . $banner->banner_desktop_img) }}" width="100">
-                                @else
-                                -
-                                @endif
-                            </td>
-                            <td>
-                                @if($banner->banner_mobile_img)
-                                    <img src="{{ asset('upload/banner/' . $banner->banner_mobile_img) }}" width="100">
-                                @else
-                                -
-                                @endif
-                            </td>
-                            <td class="action-table-data">
-                                <div class="edit-delete-action">
-                                    <a class="btn btn-sm btn-primary me-2 p-2" href="{{ route('manage-banner.edit', $banner->id) }}">
-                                        <i data-feather="edit" class="feather-edit"></i>
-                                    </a>
-                                    <form action="{{ route('manage-banner.destroy', $banner->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="Delete Banner">
-                                            <i data-feather="trash-2" class="feather-trash-2"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @else
-                        <tr>
-                            <td colspan="6" class="text-center">No banners found.</td>
-                        </tr>
-                        @endif
-                    </tbody>
-                </table>
-
+            <div class="table-responsive">                
+                <div class="display-medicine-category">
+                    @if(isset($medicineCategory) && $medicineCategory->count() > 0)
+                        @include('backend.pages.medicine-category.partials.medicine-category', ['medicineCategory' => $medicineCategory])
+                    @endif
+                </div>
             </div>
         </div>
     </div>
@@ -101,5 +50,4 @@
 @endsection
 @push('scripts')
 <script src="{{asset('backend/assets/js/pages/medicine-category.js')}}"></script>
-
 @endpush

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    //initSummernoteEditor();
     $(document).on('click', 'a[data-medicine-category-add="true"]', function () {
         var title = $(this).data('title');
         var size = ($(this).data('size') == '') ? 'md' : $(this).data('size');
@@ -31,7 +30,7 @@ $(document).ready(function () {
             }
         });
     });
-    $(document).off('submit', '#awardsCategoryAddForm').on('submit', '#awardsCategoryAddForm', function (event) {
+    $(document).off('submit', '#medicineCategoryAddForm').on('submit', '#medicineCategoryAddForm', function (event) {
         event.preventDefault();
         var form = $(this);
         var submitButton = form.find('button[type="submit"]');
@@ -51,7 +50,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     form[0].reset();
                     $('#commanModel').modal('hide');
-                    $('.display-awards-category').html(response.awardCategory);
+                    $('.display-medicine-category').html(response.medicineCategoryData);
                     feather.replace();
                     Toastify({
                         text: response.message,
@@ -203,7 +202,7 @@ function initSummernoteEditor() {
                     ['insert', ['link', 'picture', 'video', 'hr']],
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ],
-                prettifyHtml: false,
+                prettifyHtml: true,
                 codeviewFilter: true,
                 codeviewIframeFilter: true,
                 styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
