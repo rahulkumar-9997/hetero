@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\AwardsController;
 use App\Http\Controllers\Backend\NewsMediaCategoryController;
 use App\Http\Controllers\Backend\NewsMediaController;
 use App\Http\Controllers\Backend\MedicineCategoryController;
+use App\Http\Controllers\Backend\MedicineController;
 use App\Http\Controllers\Backend\CacheController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\MenuController;
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('news-room/update/{id}', [NewsMediaController::class, 'newRoomUpdate'])->name('news-room.update');
     Route::delete('news-room/destroy/{id}', [NewsMediaController::class, 'newRoomDelete'])->name('news-room.destroy');
     Route::resource('medicine-category', MedicineCategoryController::class)->names('medicine-category');
+    Route::resource('manage-medicine', MedicineController::class)->names('manage-medicine');
 
     Route::get('/clear-cache', [CacheController::class, 'clearCache'])->name('clear-cache');
     Route::resource('pages', PageController::class);

@@ -11,6 +11,12 @@ class MedicineCategories extends Model
     protected $table = 'medicine_categories';
     protected $fillable = ['title', 'slug', 'image', 'content', 'status'];
 
+    public function medicineContents()
+    {
+        return $this->hasMany(MedicineContent::class, 'medicine_category_id');
+    }
+
+
     protected static function boot()
     {
         parent::boot();

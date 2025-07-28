@@ -84,7 +84,7 @@ $(document).ready(function () {
     });
     
     /**Edit group modal js */
-    $(document).on('click', 'a[data-award-category-edit="true"]', function () {
+    $(document).on('click', 'a[data-medicine-category-edit="true"]', function () {
         var title = $(this).data('title');
         var size = ($(this).data('size') == '') ? 'md' : $(this).data('size');
         var url = $(this).data('url');
@@ -101,6 +101,10 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
                 $('#commanModel .render-data').html(data.form);
+                $('#commanModel').on('shown.bs.modal', function() {
+                    initSummernoteEditor();
+                    $(this).off('shown.bs.modal');
+                });
                 $("#commanModel").modal('show');
             },
             error: function (data) {
@@ -109,7 +113,7 @@ $(document).ready(function () {
         });
     });
     /**Edit group modal js */
-    $(document).off('submit', '#awardsCategoryEditForm').on('submit', '#awardsCategoryEditForm', function (event) {
+    $(document).off('submit', '#medicineCategoryEditForm').on('submit', '#medicineCategoryEditForm', function (event) {
         event.preventDefault();
         var form = $(this);
         var submitButton = form.find('button[type="submit"]');
@@ -129,7 +133,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     form[0].reset();
                     $('#commanModel').modal('hide');
-                    $('.display-awards-category').html(response.awardCategory);
+                    $('.display-medicine-category').html(response.medicineCategoryData);
                     feather.replace();
                     Toastify({
                         text: response.message,

@@ -98,7 +98,7 @@
                               Medicine Category
                            </a>
                         </li>
-                        <li><a href="{{ route('pages.create') }}">Create Page</a></li>
+                        <li><a href="{{ route('manage-medicine.index') }}">Medicine</a></li>
                      </ul>
                   </li>
                   

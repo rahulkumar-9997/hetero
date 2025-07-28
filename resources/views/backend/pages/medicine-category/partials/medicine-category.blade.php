@@ -11,27 +11,38 @@
         @if((isset($medicineCategory)) && $medicineCategory->count() > 0)
         @foreach($medicineCategory as $medicine_category)
         <tr>
-            <td>{!! $medicine_category->title !!}</td>
+            <td>{{ $medicine_category->title }}</td>
             <td>
                 @if($medicine_category->image)
-                <img src="{{ asset('upload/banner/' . $banner->banner_desktop_img) }}" width="100">
+                <img src="{{ asset('upload/medicine-category/' . $medicine_category->image) }}" width="100">
                 @else
                 -
                 @endif
             </td>
             <td>
-
+                @if ($medicine_category->status ==1)
+                    <span class="badge bg-success">Active</span>
+                @else
+                    <span class="badge bg-info">In-Active</span>
+                @endif
             </td>
             
             <td class="action-table-data">
                 <div class="edit-delete-action">
-                    <a class="btn btn-sm btn-primary me-2 p-2" href="{{ route('manage-banner.edit', $medicine_category->id) }}">
+                    <a class="btn btn-sm btn-primary me-2 p-2"
+                    href="javascript:;" 
+                    data-title="Edit awards category" 
+                    data-size="lg"
+                    data-medcatid="{{ $medicine_category->id }}"
+                    data-medicine-category-edit="true" 
+                    data-url="{{ route('medicine-category.edit', $medicine_category->id) }}"
+                    title="Edit">
                         <i data-feather="edit" class="feather-edit"></i>
                     </a>
-                    <form action="{{ route('manage-banner.destroy', $medicine_category->id) }}" method="POST" class="d-inline">
+                    <form action="{{ route('medicine-category.destroy', $medicine_category->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="Delete Banner">
+                        <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $medicine_category->title }}" title="Delete">
                             <i data-feather="trash-2" class="feather-trash-2"></i>
                         </button>
                     </form>
