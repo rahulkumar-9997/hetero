@@ -78,4 +78,90 @@ class MedicineController extends Controller
         }
     }
 
+    public function edit($id)
+    {     
+        $MedicineCategories = MedicineCategories::orderBy('id', 'desc')->get();   
+        $medicine_row = MedicineContent::findOrFail($id);
+        return view('backend.pages.medicine-content.edit', compact('medicine_row', 'MedicineCategories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'medicine_category' => 'required|exists:medicine_categories,id',
+            'medicine_name' => 'required|string|max:255',
+            'medicine_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'medicine_short_content' => 'nullable|string',
+            'content' => 'nullable|string',
+            'status' => 'boolean',
+            'remove_image' => 'nullable|boolean',
+            'current_image' => 'nullable|string'
+        ]);
+        DB::beginTransaction();
+        try {
+            $medicine = MedicineContent::findOrFail($id);
+            $imageName = $medicine->image;
+            if ($request->has('remove_image') && $request->remove_image) {
+                if ($imageName && file_exists(public_path('upload/medicine/' . $imageName))) {
+                    unlink(public_path('upload/medicine/' . $imageName));
+                }
+                $x = null;
+            }
+            if ($request->hasFile('medicine_image')) {
+                $destinationPath = public_path('upload/medicine');
+                if (!File::exists($destinationPath)) {
+                    File::makeDirectory($destinationPath, 0755, true);
+                }
+                if ($imageName && file_exists(public_path('upload/medicine/' . $imageName))) {
+                    unlink(public_path('upload/medicine/' . $imageName));
+                }
+                $safeTitle = Str::slug($request->medicine_name);
+                $imageFile = $request->file('medicine_image');
+                $uniqueTimestamp = round(microtime(true) * 1000);
+                $imageName = $safeTitle . '-' . $uniqueTimestamp . '.webp';                
+                $image = Image::make($imageFile);
+                $image->encode('webp', 75);
+                $image->save($destinationPath . '/' . $imageName);
+            }
+
+            $medicine->update([
+                'medicine_category_id' => $validatedData['medicine_category'],
+                'title' => $validatedData['medicine_name'],
+                'image' => $imageName,
+                'short_content' => $validatedData['medicine_short_content'] ?? null,
+                'content' => $validatedData['content'] ?? null,
+                'status' => $validatedData['status'] ?? 0,
+            ]);
+            DB::commit();
+            return redirect()->route('manage-medicine.index')
+                ->with('success', 'Medicine updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error updating medicine: ' . $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        DB::beginTransaction();        
+        try {
+            $medicine = MedicineContent::findOrFail($id);
+            if ($medicine->image && file_exists(public_path('upload/medicine/' . $medicine->image))) {
+                unlink(public_path('upload/medicine/' . $medicine->image));
+            }
+            $medicine->delete();            
+            DB::commit();  
+            return redirect()->route('manage-medicine.index')
+                ->with('success', 'Medicine deleted successfully');     
+                    
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('manage-medicine.index')
+                ->with('success', 'Error deleting medicine: ' . $e->getMessage());     
+        }
+    }
+
+
 }
