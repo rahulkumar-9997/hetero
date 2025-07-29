@@ -2,11 +2,13 @@ $(document).ready(function () {
     $(document).on('click', 'a[data-medicine-category-add="true"]', function () {
         var title = $(this).data('title');
         var size = ($(this).data('size') == '') ? 'md' : $(this).data('size');
+        var action = ($(this).data('action') == '') ? '' : $(this).data('action');
         var url = $(this).data('url');
         var data = {
             _token: $('meta[name="csrf-token"]').attr('content'),
             size: size,
-            url: url
+            url: url,
+            action:action
         };
         $("#commanModel .modal-title").html(title);
         $("#commanModel .modal-dialog").addClass('modal-' + size);
@@ -48,10 +50,22 @@ $(document).ready(function () {
                 submitButton.prop('disabled', false);
                 submitButton.html('Save changes');
                 if (response.status === 'success') {
+                    if(response.action=='select')
+                    {
+                        var select = $('#medicine_category');
+                        select.append($('<option>', {
+                            value: response.category.id,
+                            text: response.category.title,
+                            selected: true
+                        }));
+                    }
+                    else
+                    {                   
+                        $('.display-medicine-category').html(response.medicineCategoryData);
+                        feather.replace();
+                    }
                     form[0].reset();
-                    $('#commanModel').modal('hide');
-                    $('.display-medicine-category').html(response.medicineCategoryData);
-                    feather.replace();
+                    $('#commanModel').modal('hide');                   
                     Toastify({
                         text: response.message,
                         duration: 10000,

@@ -52,7 +52,6 @@
         var form = $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
-
         Swal.fire({
             title: `Are you sure you want to delete this ${name}?`,
             text: "If you delete this, it will be gone forever.",

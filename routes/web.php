@@ -75,6 +75,10 @@ Route::get('/', [FrontHomeController::class, 'home'])->name('home');
 Route::get('novosti', [FrontHomeController::class, 'newsList'])->name('novosti');
 Route::get('novosti/{slug}', [FrontHomeController::class, 'newsDetails'])->name('novosti.detail');
 
+Route::get('lekarstvennye-preparaty', [FrontHomeController::class, 'medicineList'])->name('lekarstvennye-preparaty');
+Route::get('lekarstvennye-preparaty/{slug}', [FrontHomeController::class, 'medicineDetails'])->name('lekarstvennye-preparaty.detail');
+Route::get('medicine-cate-ajax', [FrontHomeController::class, 'medicineCategoryAjax'])->name('medicine-cate-ajax');
+
 Route::get('/page/{slug}', [FrontendPageController::class, 'show'])->name('page.show');
 
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');

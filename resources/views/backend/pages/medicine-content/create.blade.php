@@ -38,7 +38,24 @@
                 <div class="row">
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label">Select Medicine Category *</label>
+                            <div class="add-newplus">
+                                <label class="form-label">
+                                    Select Medicine Category
+                                    <span class="text-danger ms-1">*</span>
+                                </label>
+                                <a href="javascript:void(0);"
+                                data-title="Add new Medicine Category"
+                                data-medicine-category-add="true"
+                                data-url="{{ route('medicine-category.create') }}"
+                                data-size="lg"
+                                data-action="select"
+                                >
+                                <i data-feather="plus-circle" class="plus-down-add"></i>
+                                <span>
+                                    Add New</span>
+                                </a>
+                            </div>
+                           
                             <select class="select" name="medicine_category" id="medicine_category">
                                 <option value="">-- Select Medicine category --</option>
                                 @foreach($MedicineCategories as $MedicineCategory)
@@ -48,6 +65,7 @@
                                 </option>
                                 @endforeach
                             </select>
+                            
                             @error('medicine_category')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -75,9 +93,7 @@
                     <div class="col-sm-8 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="medicine_short_content">Medicine Short Content</label>
-                            <textarea type="text" class="form-control" name="medicine_short_content" id="medicine_short_content">
-                            {{ old('medicine_short_content') }}
-                            </textarea>
+                            <textarea type="text" class="form-control" name="medicine_short_content" id="medicine_short_content">{{ old('medicine_short_content') }}</textarea>
                             @error('medicine_short_content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -95,9 +111,7 @@
                     <div class="col-sm-12 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="medicine_content">Medicine Content</label>
-                            <textarea id="summernote" name="content" class="medicine_content">
-                            {{ old('content') }}
-                            </textarea>
+                            <textarea id="summernote" name="content" class="medicine_content">{{ old('content') }}</textarea>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -119,5 +133,5 @@
 
 @endsection
 @push('scripts')
-
+<script src="{{asset('backend/assets/js/pages/medicine-category.js')}}"></script>
 @endpush

@@ -16,7 +16,9 @@
             </div>
         </div>
         <div class="page-btn">            
-            <a href="javascript:;" data-title="Add new Medicine Category" data-medicine-category-add="true"
+            <a href="javascript:;"
+            data-title="Add new Medicine Category"
+            data-medicine-category-add="true"
             data-url="{{ route('medicine-category.create') }}"
             data-size="lg"
             class="btn btn-primary">

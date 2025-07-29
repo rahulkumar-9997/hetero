@@ -40,7 +40,8 @@
                     <ul class="navbar-nav">
                         @if($headerMenu && $headerMenu->items->count())
                             @foreach($headerMenu->items as $item)
-                                <li class="nav-item {{ $item->children->count() ? 'dropdown' : '' }}">
+                                @if($item->children->count())
+                                <li class="nav-item {{ $item->children->count() ? 'dropdown' : '' }}">                                    
                                     <a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }}" href="javascript:;"
                                         id="navbarDropdown-{{ $item->id }}" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">{{ $item->title }}</a>
@@ -60,33 +61,37 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="nav-tab-container">
-                                                        @if($item->children->count())
-                                                            <ul>
-                                                                @foreach($item->children as $child)
-                                                                    <li>
-                                                                        <a href="{{ $child->url }}">{{ $child->title }}</a>
-                                                                        <div class="nav-box">
-                                                                            @if (!empty($child->image) && file_exists(public_path('upload/menu-item/' . $child->image)))
-                                                                                <img src="{{ asset('upload/menu-item/' . $child->image) }}"
-                                                                                width="100%" alt="{{ $child->title }}">
-                                                                                    
-                                                                            @else
-                                                                                <img src="{{asset('fronted/assets/images/nav-company.jpg')}}"
-                                                                                width="100%" alt="{{ $child->title }}">
-                                                                            @endif                     <p>
-                                                                                {{$child->short_content }}
-                                                                            </p>
-                                                                        </div>
-                                                                    </li>
-                                                                @endforeach                                                               
-                                                            </ul>
-                                                        @endif
+                                                        <ul>
+                                                            @foreach($item->children as $child)
+                                                                <li>
+                                                                    <a href="{{ $child->url }}">{{ $child->title }}</a>
+                                                                    <div class="nav-box">
+                                                                        @if (!empty($child->image) && file_exists(public_path('upload/menu-item/' . $child->image)))
+                                                                            <img src="{{ asset('upload/menu-item/' . $child->image) }}"
+                                                                            width="100%" alt="{{ $child->title }}">
+                                                                                
+                                                                        @else
+                                                                            <img src="{{asset('fronted/assets/images/nav-company.jpg')}}"
+                                                                            width="100%" alt="{{ $child->title }}">
+                                                                        @endif                     <p>
+                                                                            {{$child->short_content }}
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach                                                               
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
+                                @else
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="{{ $item->url ?? '#' }}">{{ $item->title }}</a>
+                                    </li>
+                                @endif
+
                             @endforeach
                         @endif
                         <!--<li class="nav-item dropdown">

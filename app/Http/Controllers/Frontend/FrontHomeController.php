@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Banner;
 use App\Models\NewsRoom;
 use App\Models\Year;
+use App\Models\MedicineContent;
+use App\Models\MedicineCategories;
 class FrontHomeController extends Controller
 {
     public function home(){
@@ -41,5 +43,66 @@ class FrontHomeController extends Controller
         ->firstOrFail();
         //return response()->json($newsRoom);
         return view('frontend.pages.news.news-details', compact('newsRoom'));
+    }
+
+    public function medicineList()
+    {   
+        $medicineCategories = MedicineCategories::orderBy('id', 'desc')
+            ->where('status', 1)
+            ->get();            
+        //return response()->json($medicineContents);
+        return view('frontend.pages.medicine.medicine-list', compact('medicineCategories'));
+    }
+
+    public function medicineCategoryAjax(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:medicine_categories,id'
+        ]);
+        $medicineContents = MedicineContent::where('status', 1)
+            ->where('medicine_category_id', $request->id)
+            ->with(['MedicineCategory' => function($query) {
+                $query->where('status', 1);
+            }])
+            ->orderBy('title')
+            ->get()
+            ->filter(function($content) {
+                return $content->MedicineCategory !== null;
+        });
+
+        try {
+            if($medicineContents->isEmpty())
+            {
+                $html = '<div class="row"><div class="col-lg-10"><div class="text-info">No medicines found for this category.</div></div></div>';
+            } 
+            else
+            {
+                $html = view('frontend.pages.medicine.partials.ajax-medicine-list', [
+                'medicineContents' => $medicineContents
+                ])->render();
+            }
+            
+            return response()->json([
+                'success' => true,
+                'html' => $html
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('View Rendering Error: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Error loading content'
+            ], 500);
+        }
+    }
+
+    public function medicineDetails($slug)
+    {   
+        $medicineContent = MedicineContent::where('status', 1)
+            ->where('slug', $slug)
+            ->with(['MedicineCategory'])
+        ->firstOrFail();
+        //return response()->json($medicineContent);
+        return view('frontend.pages.medicine.medicine-details', compact('medicineContent'));
     }
 }

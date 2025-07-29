@@ -2264,13 +2264,15 @@ button {
 }
 
 .expertise-box {
-	background-color: #E5E5E5;
 	border-radius: 10px;
 	overflow: hidden;
-	position: relative;
 	height: 600px;
 	margin-bottom: 30px;
-	transition: 0.8s
+	transition: 0.8s;
+	box-shadow: #63636326 0 2px 8px;
+    position: relative;
+    background-color: #f9f9fb;
+    /* padding-inline: 8px; */
 }
 
 .expertise-box .sub-ttl {
@@ -7800,6 +7802,7 @@ button {
     float: right;
     margin-left: 15px;
     margin-bottom: 35px;
+	margin-top: 30px;
 }
 .img-before{
 	margin-left: 30px;
@@ -7822,5 +7825,57 @@ button {
 	border-radius: 100px 100px 100px 0;
     width: 100%;
 }
+/*rhul css*/
+.medicine-cate-pills .nav-item .active{
+	color: #fff;
+    background-color: #ed343c;
+    border-radius: 0px;
+    box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 17%);
+}
+.medicine-cate-pills .nav-link {
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    /* line-height: 23px; */
+    color: #ed343c;
+    cursor: pointer;
+    padding: 7px 14px;
+    border-radius: 0px;
+    border: 1px solid #ed343c;
+    background: #fff;
 
+}
+
+.medicine-cate-pills .nav-item {
+    padding: 5px 1px 0 5px;
+}
+.medicine-list .exp-pic{
+	background-color: #ffffff;
+    position: relative;
+}
+.medicine-list .exp-pic:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 100%;
+}
+.medicine-list .exp-pic:before {
+    padding-bottom: 53%;
+    margin-top: 1px;
+}
+.medicine-list .exp-pic img {
+    width: 100%;
+    /* height: 200px; */
+    height: 100%;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+
+
+/*rhul css*/
 /*# sourceMappingURL=style.css.map */

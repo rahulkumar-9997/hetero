@@ -21,10 +21,18 @@ class MedicineCategoryController extends Controller
 
     public function create(Request $request){
         $url = $request->input('url'); 
+        $action = $request->input('action');
+        if($action=='select'){
+            $input = '<input type="hidden" name="action" class="form-control" id="action" value="'.$action.'">';
+        }
+        else{
+            $input=null;
+        } 
         $form ='
         <div class="modal-body">
             <form method="POST" action="'.route('medicine-category.store').'" accept-charset="UTF-8" enctype="multipart/form-data" id="medicineCategoryAddForm">
                 '.csrf_field().'
+                '.$input.'
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
@@ -66,7 +74,7 @@ class MedicineCategoryController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'medicine_category_name' => 'required|string|max:255',
+            'medicine_category_name' => 'required|string|max:255|unique:medicine_categories,title',
             'medicine_content' => 'nullable|string',
             'medicine_category_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
@@ -93,12 +101,34 @@ class MedicineCategoryController extends Controller
                 'status' => $request->has('status') ? 1 : 0,
             ]);
             DB::commit();
-            $medicineCategory = MedicineCategories::orderBy('id', 'desc')->get();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Medicine category created successfully!',
-                'medicineCategoryData' => view('backend.pages.medicine-category.partials.medicine-category', compact('medicineCategory'))->render(),
-            ]);
+           
+            if($request->has('action') && $request->input('action') == 'select') {
+                return response()->json([
+                    'status' => 'success',
+                    'action' =>'select',
+                    'message' => 'Medicine category created successfully!',
+                    'category' => [
+                        'id' => $category->id,
+                        'title' => $category->title
+                    ],
+                ]);
+            }
+            else{
+                $medicineCategory = MedicineCategories::orderBy('id', 'desc')->get();
+                $response = [
+                    'status' => 'success',
+                    'action' =>'unselect',
+                    'message' => 'Medicine category created successfully!',
+                    'category' => [
+                        'id' => $category->id,
+                        'title' => $category->title
+                    ],
+                    'medicineCategoryData' => view('backend.pages.medicine-category.partials.medicine-category', compact('medicineCategory'))->render()
+                ];
+
+                return response()->json($response);
+            }
+            
 
         } catch (\Exception $e) {
             DB::rollBack();
