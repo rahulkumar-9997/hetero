@@ -40482,8 +40482,8 @@ textarea {
   resize: block;
 }
 textarea{
-    overflow-y: hidden;  /* hide vertical scroll */
-    resize: block;        /* prevent manual drag if you want */
+    overflow-y: hidden; 
+    resize: block; 
 }
 .localization-info .setting-info {
   margin-bottom: 20px;
