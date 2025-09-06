@@ -108,7 +108,7 @@
       <a href="who-we-are.html" class="readmore mt-4">Read More</a>
    </div>
 </section>
-<!--
+
 <section id="vast-product" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
@@ -207,8 +207,8 @@
       </div>
    </div>
 </section>
--->
-<!--
+
+
 <section id="home-people" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
@@ -235,7 +235,7 @@
       </div>
    </div>
 </section>
--->
+
 @if(isset($data['newsroom']) && $data['newsroom']->count() > 0)
    <section id="home-responsibility" class="common-t-pad common-b-pad">
       <div class="common-container">

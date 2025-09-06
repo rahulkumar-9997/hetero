@@ -40479,9 +40479,12 @@ input:checked + .slider:before {
 }
 
 textarea {
-  resize: none;
+  resize: block;
 }
-
+textarea{
+    overflow-y: hidden;  /* hide vertical scroll */
+    resize: block;        /* prevent manual drag if you want */
+}
 .localization-info .setting-info {
   margin-bottom: 20px;
 }
@@ -45961,5 +45964,9 @@ span.flatpickr-weekday {
 .note-editable {
     min-height: 300px !important;
 }
-
+/*ckeditor display*/
+.cke_notifications_area{
+  display: none;
+}
+/*ckeditor display*/
 /*# sourceMappingURL=style.css.map */
