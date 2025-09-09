@@ -17,11 +17,17 @@
                      {{ $banner->banner_heading_name }}
                   </h3>
                   @endif
-                  @if($banner->banner_content)
-                  <p>
-                     {!! $banner->banner_content !!}
-                  </p>
-                  @endif
+                  <div class="banner-medicine-container" data-view="6-3">
+                     <div class="banner-item">
+                        <h4>Мы вдохновляем людей</h4>
+                     </div>
+                     <div class="banner-item">
+                        <h4>Мы вдохновляем людей</h4>
+                     </div>
+                     <div class="banner-item">
+                        <h4>Мы вдохновляем людей Мы вдохновляем людей</h4>
+                     </div>
+                  </div>
                   @if($banner->banner_link)
                   <a href="expertise-overview.html" class="readmore">Read More</a>
                   @endif

@@ -639,7 +639,7 @@ p {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	width: 470px;
+	width: 570px;
 	height: 100%;
 	opacity: 0;
 	visibility: hidden
@@ -7874,7 +7874,26 @@ button {
     top: 0;
     width: 100%;
 }
-
+.banner-medicine-container{
+	display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+	padding: 25px 0;
+}
+[data-view="6-3"] .banner-item {
+    flex:0 0 31.66667%;
+}
+.banner-item{
+	/* background: #ffff; */
+   	padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #ffff;
+}
+.banner-item h4{
+	font-size: 18px;
+    margin-bottom: 0px;
+	color: #ffff;
+}
 
 
 /*rhul css*/

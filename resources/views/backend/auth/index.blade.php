@@ -96,7 +96,7 @@
                             </form>
                         </div>
                         <div class="my-4 d-flex justify-content-center align-items-center copyright-text">
-                            <p>Copyright &copy; {{ date('Y') }} Mac Capital</p>
+                            <p>Copyright &copy; {{ date('Y') }} Hetero</p>
                         </div>
                     </div>
                 </div>
