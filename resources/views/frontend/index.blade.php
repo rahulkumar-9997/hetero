@@ -75,7 +75,7 @@
                         <div class="vast-product-box">
                            <div class="product-box-pic">
                               <a href="#">
-                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Access.jpg')}}" width="100%">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Generics.jpg')}}" width="100%">
                               </a>
                            </div>
                            <a href="">
