@@ -419,7 +419,7 @@ p {
 }
 
 #header {
-	position: fixed;
+	position: relative;
 	width: 100%;
 	top: 0px;
 	left: 0px;
@@ -525,7 +525,8 @@ p {
 
 #header.fixed {
 	background-color: #ED343C;
-	transition: 0.5s
+	transition: 0.5s;
+	position: fixed;
 }
 
 #header.fixed svg {
@@ -796,7 +797,7 @@ p {
 }
 
 #vast-product {
-	background-color: #FFF5ED
+	background-color: #fbeaeb
 }
 
 #vast-product .vast-product-left {
@@ -806,16 +807,16 @@ p {
 #vast-product [class^="swiper-button-"] {
 	background-image: none;
 	outline: none !important;
-	top: 80%
+	top: 50%
 }
 
 #vast-product .swiper-button-next {
 	right: inherit;
-	left: -360px
+	right: 0px
 }
 
 #vast-product .swiper-button-prev {
-	left: -430px
+	left: 0px
 }
 
 #vast-product .vast-product-box .product-box-pic {
@@ -885,6 +886,9 @@ p {
 
 #home-responsibility {
 	position: relative
+}
+#home-responsibility.featured-section-home:before{
+	background-color: #ffffff;
 }
 
 #home-responsibility:before {
@@ -7894,7 +7898,153 @@ button {
     margin-bottom: 0px;
 	color: #ffff;
 }
+.about-us-body {
+    border-top: 1px solid #F0F0FF;
+    border-bottom: 1px solid #F0F0FF;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+.about-body-item {
+    width: calc(50% - 25px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+.about-counter {
+    width: calc(40% - 10px);
+}
+.about-counter h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #a72434;
+}
+.about-counter-content {
+    width: calc(60% - 10px);
+}
+.about-us-footer {
+    display: flex;
+    align-items: center;
+}
+.about-us-footer-btn {
+    margin-right: 50px;
+    line-height: normal;
+}
+.btn-default{
+	position: relative;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.2em;
+	text-transform: capitalize;
+	background: #a72434;
+	color: #fff;
+	border-radius: 100px;
+	padding: 19px 30px 19px 30px;
+	border: none;
+	transition: all 0.5s ease-in-out;
+	overflow: hidden;
+	z-index: 1;
+}
+.btn-default:hover {
+    background-color: #a4131a;
+	color: #fff;
+}
+.HeteroWhite{
+	color: #fff;
+}
+#home-counter p{
+	color: #fff;
+}
+.counter-section {
+	background-image: linear-gradient(rgb(237 52 60 / 46%), rgb(237 52 60 / 62%)), url(../hetero-img/bg.jpg);
+    /* background: url(../hetero-img/bg.jpg), 
+                linear-gradient(180deg, #a72434 60%, #FFFFFF 40%); */
+    background-position: center center;
+    background-size: auto;
+    padding: 100px 0 100px;
+}
+#why-hetero{
+	padding: 40px 0 40px 0;
+}
+.page-services .service-item {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 100%;
+    height: calc(100% - 30px);
+    margin-bottom: 30px;
+    padding: 15px;
+	box-shadow: 0px 4px 30px 16px rgba(7, 2, 41, 0.04);
+}
+.service-item .icon-box {
+    background-image: linear-gradient(to right, #ed343c 0%, #ed343cb0 50%, #ed343c 100%);
+    background-size: 200% auto;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: all 0.4s ease-in-out;
+}
+.service-item .icon-box img {
+    max-width: 35px;
+}
+.page-services .service-item .service-item-content {
+    margin-bottom: 20px;
+}
+.service-item-content h3 {
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #9F0C25;
+    margin-bottom: 10px;
+	font-weight: 700;
+}
 
-
+.readmore-btn {
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #ED343C;
+    padding-right: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.readmore-btn:hover{
+	color: #ED343C;
+}
+.image-file:before {
+    padding-bottom: 69%;
+    margin-top: 1px;
+}
+.image-file:before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 100%;
+}
+.image-file img {
+    width: 100%;
+    /* height: 200px; */
+    height: 100%;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.border-radius {
+    border-radius: 10px;
+}
+#why-hetero .icon-box .why-img {
+    filter: brightness(0) invert(1);
+}
 /*rhul css*/
 /*# sourceMappingURL=style.css.map */

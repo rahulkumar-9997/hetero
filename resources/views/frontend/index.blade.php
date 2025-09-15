@@ -17,6 +17,11 @@
                      {{ $banner->banner_heading_name }}
                   </h3>
                   @endif
+                  @if($banner->banner_content)
+                  <p>
+                     {!! $banner->banner_content !!}
+                  </p>
+                  @endif
                   <div class="banner-medicine-container" data-view="6-3">
                      <div class="banner-item">
                         <h4>Мы вдохновляем людей</h4>
@@ -40,9 +45,117 @@
    </div>
 </section>
 @endif
-<section id="shaping-a-healthier" class="common-t-pad common-b-pad">
+<section id="vast-product" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
+         <div class="col-md-12 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
+            <div class="vast-product-left text-center">
+               <h2 class="home-title2 pruple">Области фокуса</h2>
+               <p class="MontserratMedium">Разнообразные решения в сфере здравоохранения, основанные на инновациях и опыте.</p>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="vast-product-right wow fadeInUp" data-wow-offset="200" data-wow-duration="3s" data-wow-delay="0.1s">
+               <div class="swiper-container swiper-vast">
+                  <div class="swiper-wrapper">
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/APIs.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>APIs</h2>
+                              <p>Высококачественные активные фармацевтические ингредиенты, поддерживающие мировые потребности здравоохранения.</p>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Access.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>Глобальные дженерики</h2>
+                              <p>Доступные и надёжные дженерические лекарства в различных терапевтических областях.</p>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Biosimilars.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>Биосимиляры</h2>
+                              <p>Инновационные альтернативы для современных биологических терапий.</p>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Custom-Pharmaceutical.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>Индивидуальные фармацевтические решения</h2>
+                              <p>Разработка и производство на заказ для партнёров по всему миру.</p>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Access.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>Глобальный доступ</h2>
+                              <p>Обеспечение доступных решений в сфере здравоохранения для пациентов по всему миру.</p>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="swiper-slide">
+                        <div class="vast-product-box">
+                           <div class="product-box-pic">
+                              <a href="#">
+                                 <img src="{{asset('fronted/assets/hetero-img/focus-area/Key-Therapies.jpg')}}" width="100%">
+                              </a>
+                           </div>
+                           <a href="">
+                              <h2>Ключевые направления терапии</h2>
+                              <p>Сфокусированная экспертиза в области ВИЧ, онкологии, сердечно-сосудистых и других важных заболеваний.</p>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- If we need pagination -->
+               <div class="swiper-pagination vast-pagination"></div>
+               <!-- Add Arrows -->
+               <div class="swiper-button-next vast-button-next">
+                  <img src="{{asset('fronted/assets/images/slide-next2.png')}}" width="100%">
+               </div>
+               <div class="swiper-button-prev vast-button-prev">
+                  <img src="{{asset('fronted/assets/images/slide-prev2.png')}}" width="100%">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section id="shaping-a-healthier" class="common-t-pad common-b-pad">
+   <div class="common-container">
+      <div class="row align-items-center">
          <div class="col-md-6">
             <div class="shaping-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                data-wow-delay="0.1s">
@@ -56,6 +169,31 @@
                   Основная производственная площадка ГК "HETERO" - ООО "МАКИЗ-ФАРМА" с 2000 года обладает технологической платформой, отвечающей мировым стандартам в области производства лекарственных средств, и находится в Москве.
                </p>
             </div>
+            <div class="about-us-body wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
+               data-wow-delay="0.1s">
+               <div class="about-body-item">
+                  <div class="about-counter">
+                     <h2><span class="counter">20</span>+</h2>
+                  </div>
+                  <div class="about-counter-content">
+                     <p>Годы в России</p>
+                  </div>
+               </div>
+               <div class="about-body-item">
+                  <div class="about-counter">
+                     <h2><span class="counter">40</span>+</h2>
+                  </div>
+                  <div class="about-counter-content">
+                     <p>Лекарства</p>
+                  </div>
+               </div>
+            </div>
+            <div class="about-us-footer wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
+               data-wow-delay="0.1s">
+               <div class="about-us-footer-btn">
+                  <a href="#" class="btn-default">Читать далее</a>
+               </div>
+            </div>
          </div>
          <div class="col-md-6">
             <div class="right-pic">
@@ -63,40 +201,44 @@
             </div>
          </div>
       </div>
-      <div class="info-section common-t-pad">
+   </div>
+</section>
+<section id="home-counter" class="counter-section common-t-pad common-b-pad">
+   <div class="common-container">
+      <div class="info-section">
          <div class="row">
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">20</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">20</span>+</h2>
                   <p>Лет в России</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">40</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">40</span>+</h2>
                   <p>Лекарственных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroRed"><span class="counter">30</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">30</span>+</h2>
                   <p>Антиретровирусных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.3s">
-                  <h2 class="HeteroRed"><span class="counter">25</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">25</span>+</h2>
                   <p>Производственных площадок</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.4s">
-                  <h2 class="HeteroRed"><span class="counter">50</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">50</span>+</h2>
                   <p>
                      Партнеров
                   </p>
@@ -105,177 +247,215 @@
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.5s">
-                  <h2 class="HeteroRed"><span class="counter">100</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">100</span>+</h2>
                   <p>Сотрудников</p>
                </div>
             </div>
          </div>
       </div>
-      <a href="who-we-are.html" class="readmore mt-4">Read More</a>
    </div>
 </section>
-
-<section id="vast-product" class="common-t-pad common-b-pad">
+<section id="home-responsibility" class="common-t-pad common-b-pad featured-section-home">
    <div class="common-container">
       <div class="row">
-         <div class="col-md-4 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
-            <div class="vast-product-left">
-               <h2 class="home-title2 pruple">Focus areas</h2>
-               <p class="MontserratMedium">Vast product portfolio<br> backed by robust R&D</p>
-               <a href="focus-areas-overview.html" class="readmore mt-3">Read More</a>
+         <div class="col-md-4">
+            <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
+               <h2 class="home-title2 pruple mb-3">РЛекарства</h2>
+               <p class="MontserratMedium">Поставка надежных и высококачественных лекарств по основным терапевтическим направлениям — от ВИЧ/СПИДа и онкологии до сердечно-сосудистого здоровья и общих заболеваний.</p>
+               
+
             </div>
          </div>
          <div class="col-md-8">
-            <div class="vast-product-right wow fadeInUp" data-wow-offset="200" data-wow-duration="3s"
-               data-wow-delay="0.1s">
-               <div class="swiper-container swiper-vast">
+            <div class="home-responsibility-right wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.3s">
+               <div class="swiper-container swiper-Responsibility">
                   <div class="swiper-wrapper">
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="APIs.html">
-                                 <img src="{{asset('fronted/assets/images/product7.jpg')}}" width="100%">
+                              <a href="javascript:;">
+                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Antiretroviral-Drugs.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <h2>APIs</h2>
-                           <p>The path to serving patients better</p>
+                           <a href="#">
+                              <h2>Антиретровирусные препараты</h2>
+                              <p>Доступное и эффективное лечение ВИЧ/СПИДа</p>
+                           </a>
                         </div>
                      </div>
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="global-generics.html">
-                                 <img src="{{asset('fronted/assets/images/product1.jpg')}}" width="100%">
+                              <a href="javascript:;">
+                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Antitumor-Medicines.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <h2>Global Generics</h2>
-                           <p>World-class and differentiated portfolio in chronic therapy areas</p>
+                           <a href="#">
+                              <h2>Противоопухолевые препараты</h2>
+                              <p>Современные методы терапии рака</p>
+                           </a>
                         </div>
                      </div>
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="biosimilars.html">
-                                 <img src="{{asset('fronted/assets/images/product2.jpg')}}" width="100%">
+                              <a href="javascript:;">
+                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Cardiovascular-Drugs.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <h2>Biosimilars</h2>
-                           <p>Achieving a sustainable health equity</p>
+                           <a href="#">
+                              <h2>Кардиологические препараты</h2>
+                              <p>Решения для здоровья сердца и контроля холестерина</p>
+                           </a>
                         </div>
                      </div>
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="CPS.html">
-                                 <img src="{{asset('fronted/assets/images/product3.jpg')}}"
-                                    width="100%">
+                              <a href="javascript:;">
+                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/General-Therapeutics.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <h2>Custom Pharmaceutical Services(CPS)</h2>
-                           <p>Fully integrated services across the value chain</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="global-access.html">
-                                 <img src="{{asset('fronted/assets/images/product4.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Global Access</h2>
-                           <p>Committed to transforming Standards of care</p>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="key-therapies.html">
-                                 <img src="{{asset('fronted/assets/images/product5.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <h2>Key Therapies</h2>
-                           <p>Researching areas of unmet medical need</p>
+                           <a href="#">
+                              <h2>Общая терапия</h2>
+                              <p>Широкий ассортимент надежных препаратов</p>
+                           </a>
                         </div>
                      </div>
                   </div>
                </div>
-              
-               <div class="swiper-pagination vast-pagination"></div>
-             
-               <div class="swiper-button-next vast-button-next">
-                  <img src="{{asset('fronted/assets/images/slide-next2.png')}}" width="100%">
-               </div>
-               <div class="swiper-button-prev vast-button-prev">
+               <div class="swiper-pagination Responsibility-pagination"></div>
+               <div class="swiper-button-prev Responsibility-button-prev">
                   <img src="{{asset('fronted/assets/images/slide-prev2.png')}}" width="100%">
                </div>
+               <div class="swiper-button-next Responsibility-button-next">
+                  <img src="{{asset('fronted/assets/images/slide-next2.png')}}" width="100%">
+               </div>
             </div>
          </div>
       </div>
    </div>
 </section>
-
-
-<section id="home-people" class="common-t-pad common-b-pad">
+<section id="why-hetero">
+   <div class="common-container">
+      <div class="page-services">
+         <div class="row cus-row justify-content-center">
+            <div class="col-md-8 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
+               <div class="vast-product-left text-center">
+                  <h2 class="home-title2 pruple">Почему HETERO</h2>
+                  <p class="MontserratMedium">Надежное имя в мировой здравоохранении, HETERO сочетает инновации, охват и надежность, чтобы доставлять доступные лекарства и современные методы терапии миллионам людей по всему миру.</p>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-3 col-md-3">
+               <div class="service-item wow fadeInUp">
+                  <div class="icon-box">
+                     <img class="why-img" src="{{asset('fronted/assets/hetero-img/why-hetero/global-presence.svg')}}" alt="">
+                  </div>
+                  <div class="service-item-content">
+                     <h3>Глобальное присутствие</h3>
+                     <p>деятельность более чем в 126+ странах.</p>
+                  </div>
+                  <!-- <div class="service-btn">
+                     <a href="#" class="readmore-btn">Узнать больше</a>
+                  </div> -->
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+               <div class="service-item wow fadeInUp">
+                  <div class="icon-box">
+                     <img class="why-img" src="{{asset('fronted/assets/hetero-img/why-hetero/strong-R&D.svg')}}" alt="">
+                  </div>
+                  <div class="service-item-content">
+                     <h3>SСильные НИОКР </h3>
+                     <p>постоянные инновации в фармацевтике и биосимилярах.</p>
+                  </div>
+                  
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+               <div class="service-item wow fadeInUp">
+                  <div class="icon-box">
+                     <img class="why-img" src="{{asset('fronted/assets/hetero-img/why-hetero/affordable-medicines.svg')}}" alt="">
+                  </div>
+                  <div class="service-item-content">
+                     <h3>Доступные лекарства</h3>
+                     <p> приверженность обеспечению здравоохранения во всем мире.</p>
+                  </div>
+                  
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+               <div class="service-item wow fadeInUp">
+                  <div class="icon-box">
+                     <img class="why-img" src="{{asset('fronted/assets/hetero-img/why-hetero/trusted-partner.svg')}}" alt="">
+                  </div>
+                  <div class="service-item-content">
+                     <h3>Надежный партнер</h3>
+                     <p>сотрудничество с ведущими поставщиками здравоохранения</p>
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+@if(isset($data['newsroom']) && $data['newsroom']->count() > 0)
+<section id="home-responsibility" class="common-t-pad common-b-pad">
    <div class="common-container">
       <div class="row">
-         <div class="col-md-8 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
-            <div class="home-people-pic">
-               <img src="{{asset('fronted/assets/images/home-people1.jpg')}}" width="100%">
+         <div class="col-md-4">
+            <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
+               data-wow-delay="0.1s">
+               <h2 class="home-title2 pruple mb-3">Новости</h2>
+               <p class="MontserratMedium">
+                  Последние новости<br>
+                  и события в ГК "HETERO"
+               </p>
+               <a href="{{ route('novosti')}}" class="readmore mt-3">Все новости</a>
             </div>
          </div>
-         <div class="col-md-4 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="home-people-right">
-               <h2 class="home-title2 HeteroRed mb-3">People</h2>
-               <p class="MontserratMedium">Hetero is an equal opportunity employer. Our people reinforce our
-                  mission.
-               </p>
-               <div class="home-people-pic-mobile">
-                  <img src="{{asset('fronted/assets/images/home-people1.jpg')}}" width="100%">
-               </div>
-               <p class="MontserratMedium HeteroRed">Strive to make a difference, be a part of an enterprising
-                  team.
-               </p>
-               <a href="life-at-hetero.html" target="_blank" class="readmore mt-3">Read More</a>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
+         <div class="col-md-8">
+            <div class="row">
 
-@if(isset($data['newsroom']) && $data['newsroom']->count() > 0)
-   <section id="home-responsibility" class="common-t-pad common-b-pad">
-      <div class="common-container">
-         <div class="row">
-            <div class="col-md-4">
-               <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
-                  data-wow-delay="0.1s">
-                  <h2 class="home-title2 pruple mb-3">Новости</h2>
-                  <p class="MontserratMedium">
-                     Последние новости<br>
-                     и события в ГК "HETERO"
-                  </p>
-                  <a href="{{ route('novosti')}}" class="readmore mt-3">Все новости</a>
-               </div>
-            </div>
-            <div class="col-md-8">               
-               <div class="row">
-                 
-                  @foreach($data['newsroom'] as $newsRoom)
-                     <div class="col-md-4 vast-product-box">
-                        <div class="box-date">{{ \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') }}</div>
-                        <div class="box-title">
+               @foreach($data['newsroom'] as $newsRoom)
+               <div class="col-md-4 vast-product-box">
+                  <div class="new-up-item">
+                     <div class="new-img">
+                        <div class="position-relative image-file">
                            <a href="{{ route('novosti.detail', $newsRoom->slug) }}">
-                              {{ $newsRoom->title }}
+                              @if($newsRoom->image)
+                                 <img class="border-radius" 
+                                       src="{{ asset('upload/news-room/' . $newsRoom->image) }}" 
+                                       width="100%" 
+                                       alt="{{ $newsRoom->title }}">
+                              @else
+                                 <img class="border-radius" 
+                                       src="{{ asset('fronted/assets/hetero-img/product1.jpg') }}" 
+                                       width="100%" 
+                                       alt="{{ $newsRoom->title }}">
+                              @endif
+
                            </a>
                         </div>
                      </div>
-                     
-                  @endforeach
+                     <div class="box-date">{{ \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') }}</div>
+                     <div class="box-title">
+                        <a href="{{ route('novosti.detail', $newsRoom->slug) }}">
+                           {{ $newsRoom->title }}
+                        </a>
+                     </div>
+                  </div>
                </div>
+
+               @endforeach
             </div>
          </div>
       </div>
-   </section>
+   </div>
+</section>
 @endif
 <!--<section id="partnership">
    <div class="common-container">
@@ -317,7 +497,7 @@
          }
       }),
       swiper = new Swiper(".swiper-vast", {
-         slidesPerView: 3,
+         slidesPerView: 4,
          spaceBetween: 30,
          navigation: {
             nextEl: ".vast-button-next",

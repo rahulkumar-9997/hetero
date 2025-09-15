@@ -17,7 +17,7 @@ class FrontHomeController extends Controller
         ->orderBy('id', 'desc')
         ->take(5)
         ->get();
-        $data['newsroom'] = NewsRoom::select('title', 'slug', 'post_date')
+        $data['newsroom'] = NewsRoom::select('title', 'slug', 'post_date', 'image')
         ->orderBy('id', 'asc')
         ->take(3)
         ->get();
