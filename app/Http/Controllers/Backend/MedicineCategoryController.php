@@ -54,8 +54,8 @@ class MedicineCategoryController extends Controller
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="medicine_content" class="form-label">Content</label>
-                            <textarea name="medicine_content" class="editor_class_multiple"></textarea>
+                            <label for="medicine_content" class="form-label ">Content</label>
+                            <textarea name="medicine_content" class="ckeditor4"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
@@ -179,7 +179,7 @@ class MedicineCategoryController extends Controller
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="medicine_content" class="form-label">Content</label>
-                            <textarea name="medicine_content" class="editor_class_multiple">'.$medicine_category_row->content.'</textarea>
+                            <textarea name="medicine_content" class="ckeditor4">'.$medicine_category_row->content.'</textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">

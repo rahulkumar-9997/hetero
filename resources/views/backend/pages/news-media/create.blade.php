@@ -1,8 +1,7 @@
 @extends('backend.layouts.master')
 @section('title','New and media')
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/summernote/summernote-bs4.min.css')}}">
-
+<!-- <link rel="stylesheet" href="{{asset('backend/assets/plugins/summernote/summernote-bs4.min.css')}}"> -->
 @endpush
 @section('main-content')
 <div class="content">
@@ -75,8 +74,7 @@
                                         Content
                                         <span class="text-danger">*</span> 
                                     </label>
-                                    <textarea id="content" name="content" hidden>{{ old('content') }}</textarea>
-                                    <div id="summernote">{!! old('content') !!}</div>
+                                    <textarea id="content" class="form-control ckeditor4" name="content">{{ old('content') }}</textarea>                                    
                                     @error('content')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -204,8 +202,8 @@
                                         Content 
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea id="content" name="content" hidden>{{ old('content', $page->content ?? '') }}</textarea>
-                                    <div id="summernote">{!! old('content') !!}</div>
+                                    <textarea id="content" name="content" class="form-control ckeditor4">{{ old('content', $page->content ?? '') }}</textarea>
+                                   
                                     @error('content')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -318,18 +316,12 @@
             window.location.href = url.toString();
         }
     }
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 300,
-            
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    $('#content').val(contents);
-                }
-            }
-        });
-        $('form').on('submit', function() {
-            $('#content').val($('#summernote').summernote('code'));
+</script>
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
+<script>
+    document.querySelectorAll('.ckeditor4').forEach(function(el) {
+        CKEDITOR.replace(el, {
+            removePlugins: 'exportpdf'
         });
     });
 </script>

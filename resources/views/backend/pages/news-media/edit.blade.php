@@ -137,8 +137,7 @@
                                         Content 
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <textarea id="content" name="content" hidden>{{ old('content', $newsRoom->content ?? '') }}</textarea>
-                                    <div id="summernote">{!! old('content', $newsRoom->content ?? '') !!}</div>
+                                    <textarea id="content" name="content" class="form-control ckeditor4">{{ old('content', $newsRoom->content ?? '') }}</textarea>                                    
                                     @error('content')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -184,21 +183,11 @@
 
 @endsection
 @push('scripts')
-
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
 <script>
-    
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 300,
-            
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    $('#content').val(contents);
-                }
-            }
-        });
-        $('form').on('submit', function() {
-            $('#content').val($('#summernote').summernote('code'));
+    document.querySelectorAll('.ckeditor4').forEach(function(el) {
+        CKEDITOR.replace(el, {
+            removePlugins: 'exportpdf'
         });
     });
 </script>

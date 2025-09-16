@@ -39,15 +39,23 @@
             <form action="{{ route('manage-banner.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="banner_heading_name">
                                 Banner Heading Name
                             </label>
-                            <textarea type="text" class="form-control" id="banner_heading_name" name="banner_heading_name"></textarea>
+                            <input type="text" class="form-control" id="banner_heading_name" name="banner_heading_name">
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="banner_content">
+                                Banner Content
+                            </label>
+                            <textarea type="text" class="form-control" id="banner_content" name="banner_content"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="banner_link">Banner Link</label>
                             <input type="text" class="form-control" name="banner_link" id="banner_link">
@@ -81,6 +89,12 @@
                                             Medicine Title
                                         </label>
                                         <input type="text" name="medicine_title[]" class="form-control" placeholder="Enter medicine title">
+                                    </td>
+                                    <td style="width: 50%">
+                                        <label class="form-label" for="title">
+                                            Medicine Link
+                                        </label>
+                                        <input type="text" name="medicine_link[]" class="form-control" placeholder="Enter medicine link">
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger btn-sm remove_medicine_row mt-4" style="display: none;">Remove</button>

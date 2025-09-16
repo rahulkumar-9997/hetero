@@ -17,4 +17,8 @@ class Banner extends Model
         'banner_desktop_img',
         'banner_mobile_img'
     ];
+    public function medicines()
+    {
+        return $this->hasMany(BannerMedicine::class, 'banner_id');
+    }
 }

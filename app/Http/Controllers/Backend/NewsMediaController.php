@@ -31,9 +31,7 @@ class NewsMediaController extends Controller
         {
             $featuredStories = FeaturedStory::with('newsMediaCategory')->orderBy('id', 'desc')->get();
             return view('backend.pages.news-media.index', compact('newsMediaCategories', 'featuredStories'));
-        }        
-        
-        
+        }
     }
 
     public function create(){

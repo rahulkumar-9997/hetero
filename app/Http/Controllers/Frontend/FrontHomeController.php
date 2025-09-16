@@ -13,14 +13,23 @@ use App\Models\MedicineCategories;
 class FrontHomeController extends Controller
 {
     public function home(){
-        $data['banners'] = Banner::select('id', 'banner_heading_name', 'banner_content', 'banner_link', 'banner_desktop_img', 'banner_mobile_img')
+       $data['banners'] = Banner::with(['medicines' => function($q) {
+            $q->select('id', 'banner_id', 'title', 'link');
+        }])
+        ->select('id', 'banner_heading_name', 'banner_content', 'banner_link', 'banner_desktop_img', 'banner_mobile_img')
         ->orderBy('id', 'desc')
         ->take(5)
         ->get();
+
         $data['newsroom'] = NewsRoom::select('title', 'slug', 'post_date', 'image')
         ->orderBy('id', 'asc')
         ->take(3)
         ->get();
+        $data['medicineCategories'] = MedicineCategories::select('title', 'slug', 'image', 'content')
+        ->orderBy('id', 'asc')
+        ->take(9)
+        ->get();
+        //return response()->json($data['banners']);
         return view('frontend.index', compact('data'));
     }
 
@@ -105,4 +114,26 @@ class FrontHomeController extends Controller
         //return response()->json($medicineContent);
         return view('frontend.pages.medicine.medicine-details', compact('medicineContent'));
     }
+
+    public function medicineCateWiseList($slug)
+    {
+        try {
+            $medicineCategory = MedicineCategories::where('slug', $slug)->firstOrFail();
+            $medicineContent = MedicineContent::where('status', 1)
+                ->where('medicine_category_id', $medicineCategory->id)
+                ->get();
+            if ($medicineContent->isEmpty()) {
+                return view('frontend.pages.medicine.medicine-list-cate-wise', [
+                    'medicineContent' => $medicineContent,
+                    'medicineCategory' => $medicineCategory,
+                    'message' => 'No medicines found in this category.'
+                ]);
+            }
+            return view('frontend.pages.medicine.medicine-list-cate-wise', compact('medicineContent', 'medicineCategory'));
+        } catch (\Exception $e) {
+            Log::error('Error fetching medicine category list: ' . $e->getMessage());
+            return abort(404, 'Category not found');
+        }
+    }
+
 }

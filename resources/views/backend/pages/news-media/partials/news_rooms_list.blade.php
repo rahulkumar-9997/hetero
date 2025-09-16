@@ -15,15 +15,11 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <div class="content-text" style="max-width: 300px; overflow-x: auto; height: 100px;">
-                        {{ $newsRoom->title }}
-                    </div>
+                    {!! Str::limit($newsRoom->title, 50) !!}
                 </td>
                 <td>{{ $newsRoom->newsMediaCategory->title }}</td>
                 <td>
-                    <div class="overflow-auto" style="max-width: 250px; max-height: 100px; overflow: auto; white-space: nowrap;">
-                        {!! $newsRoom->content !!}
-                    </div>                    
+                    {!! Str::limit($newsRoom->content, 50) !!}
                 </td>
                 <td>{{ \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') }}</td>              
                 <td class="action-table-data">

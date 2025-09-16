@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('/', [FrontHomeController::class, 'home'])->name('home');
 Route::get('novosti', [FrontHomeController::class, 'newsList'])->name('novosti');
 Route::get('novosti/{slug}', [FrontHomeController::class, 'newsDetails'])->name('novosti.detail');
-
+Route::get('medicine/{slug}', [FrontHomeController::class, 'medicineCateWiseList'])->name('medicine');
 Route::get('lekarstvennye-preparaty', [FrontHomeController::class, 'medicineList'])->name('lekarstvennye-preparaty');
 Route::get('lekarstvennye-preparaty/{slug}', [FrontHomeController::class, 'medicineDetails'])->name('lekarstvennye-preparaty.detail');
 Route::get('medicine-cate-ajax', [FrontHomeController::class, 'medicineCategoryAjax'])->name('medicine-cate-ajax');

@@ -15,15 +15,11 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <div class="content-text" style="max-width: 300px; overflow-x: auto; height: 100px;">
-                        {{ $featuredStory->title }}
-                    </div>
+                    {!! Str::limit($featuredStory->title, 50) !!}
                 </td>
                 <td>{{ $featuredStory->sub_title }}</td>
                 <td>
-                    <div class="overflow-auto" style="max-width: 250px; max-height: 100px; overflow: auto; white-space: nowrap;">
-                        {!! $featuredStory->content !!}
-                    </div>                    
+                    {!! Str::limit($featuredStory->content, 50) !!}
                 </td>
                 <td>
                     @if($featuredStory->status == '1')

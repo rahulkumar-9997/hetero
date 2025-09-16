@@ -15,9 +15,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <div class="content-text" style="max-width: 300px; overflow-x: auto; height: 100px;">
-                        {{ $medicineContent->title }}
-                    </div>
+                    {!! Str::limit($medicineContent->title, 50) !!}
                 </td>
                 <td>
                     @if($medicineContent->medicineCategory)
@@ -27,9 +25,7 @@
                     @endif
                 </td>
                 <td>
-                    <div class="overflow-auto" style="max-width: 250px; max-height: 100px; overflow: auto;">
-                        {{ $medicineContent->short_content }}
-                    </div>                    
+                     {!! Str::limit($medicineContent->short_content, 50) !!}
                 </td>
                 <td>
                     @if($medicineContent->status)

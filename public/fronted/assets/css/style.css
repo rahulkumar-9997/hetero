@@ -1096,7 +1096,7 @@ p {
 }
 
 #breadcrum.no-banner {
-	margin-top: 100px
+	margin-top: 0px
 }
 
 #breadcrum .breadcrumb-item.active {
@@ -1280,7 +1280,8 @@ p {
 #inner-patch-banner h3 {
 	font-size: 22px;
 	color: #fff;
-	font-weight: 700
+	font-weight: 700;
+	margin-bottom: 0px;
 }
 
 #inner-patch-banner h2 {
@@ -1290,11 +1291,11 @@ p {
 }
 
 #inner-patch-banner.common-b-pad {
-	padding-bottom: 30px
+	padding-bottom: 20px
 }
 
 #inner-patch-banner.common-t-pad {
-	padding-top: 30px
+	padding-top: 20px
 }
 
 .pad-r {
@@ -2270,7 +2271,6 @@ button {
 .expertise-box {
 	border-radius: 10px;
 	overflow: hidden;
-	height: 600px;
 	margin-bottom: 30px;
 	transition: 0.8s;
 	box-shadow: #63636326 0 2px 8px;
@@ -2291,7 +2291,7 @@ button {
 	font-weight: 700;
 	color: #9F0C25;
 	font-size: 18px;
-	padding-right: 130px
+	padding-right: 5px
 }
 
 .expertise-box .exp-desc {
@@ -2334,11 +2334,11 @@ button {
 	transform: scale(1.1)
 }
 
-.expertise-box .readmore {
+/* .expertise-box .readmore {
 	position: absolute;
 	bottom: 30px;
 	left: 30px
-}
+} */
 
 .expertise-box .readmore:hover {
 	background-color: #fff !important;
@@ -7835,6 +7835,7 @@ button {
     background-color: #ed343c;
     border-radius: 0px;
     box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 17%);
+	border-radius: 5px;
 }
 .medicine-cate-pills .nav-link {
     border-radius: 5px;
@@ -7873,7 +7874,7 @@ button {
     height: 100%;
     left: 0;
     -o-object-fit: cover;
-    object-fit: contain;
+    object-fit: cover;
     position: absolute;
     top: 0;
     width: 100%;

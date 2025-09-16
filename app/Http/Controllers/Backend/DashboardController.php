@@ -6,13 +6,16 @@ use App\Models\Page;
 use App\Models\Menu;
 use App\Models\MenuItems;
 use App\Models\VisitorTracking;
+use App\Models\Banner;
+use App\Models\Awards;
+use App\Models\MedicineContent;
 class DashboardController extends Controller
 {
     public function index(){
         $data = [
-            'totalPages' => Page::count(),
-            'totalMenus' => Menu::count(),
-            'totalMenuItems' => MenuItems::count(),
+            'totalBanner' => Banner::count(),
+            'totalAwards' => Awards::count(),
+            'totalMedicice' => MedicineContent::count(),
             'visitorTracking' => VisitorTracking::count(),
         ];
         return view('backend.pages.dashboard.index',  compact('data'));

@@ -106,7 +106,7 @@
                     <div class="col-sm-12 col-12">
                         <div class="mb-3">
                             <label class="form-label" for="medicine_content">Medicine Content</label>
-                            <textarea id="summernote" name="content" class="medicine_content">{{ old('content', $medicine_row->content) }}</textarea>
+                            <textarea id="content" name="content" class="ckeditor4">{{ old('content', $medicine_row->content) }}</textarea>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -128,5 +128,12 @@
 
 @endsection
 @push('scripts')
-
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
+<script>
+    document.querySelectorAll('.ckeditor4').forEach(function(el) {
+        CKEDITOR.replace(el, {
+            removePlugins: 'exportpdf'
+        });
+    });
+</script>
 @endpush

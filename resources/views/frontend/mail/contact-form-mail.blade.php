@@ -39,7 +39,7 @@
 				<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
                     <tr>
                         <td style="padding: 0em 2.5em; text-align: center; background-color: #fffbfb;">
-                            <img src="{{asset('fronted/mac-image/logo/mac-capital-logo.png')}}" style="width: 45%; padding-top: 10px; padding-bottom: 10px;">
+                            <img src="{{asset('fronted/assets/hetero-img/about-us.jpg')}}" style="width: 45%; padding-top: 10px; padding-bottom: 10px;">
                         </td>
                     </tr>
                     <tr>

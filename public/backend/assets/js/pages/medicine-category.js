@@ -8,22 +8,30 @@ $(document).ready(function () {
             _token: $('meta[name="csrf-token"]').attr('content'),
             size: size,
             url: url,
-            action:action
+            action: action
         };
         $("#commanModel .modal-title").html(title);
         $("#commanModel .modal-dialog").addClass('modal-' + size);
-        
+
         $.ajax({
             url: url,
             type: 'get',
             data: data,
             success: function (data) {
                 $('#commanModel .render-data').html(data.form);
-               // $('.editor_class_multiple').summernote('destroy');
+                // $('.editor_class_multiple').summernote('destroy');
                 $("#commanModel").modal('show');
-                $('#commanModel').on('shown.bs.modal', function() {
-                    initSummernoteEditor();
-                    // Remove the event handler to prevent multiple bindings
+                $('#commanModel').on('shown.bs.modal', function () {
+                    document.querySelectorAll('.ckeditor4').forEach(function (el) {
+                        if (CKEDITOR.instances[el.id]) {
+                            CKEDITOR.instances[el.id].destroy(true);
+                        }
+                        CKEDITOR.replace(el, {
+                            removePlugins: 'exportpdf'
+                        });
+                    });
+
+                    // unbind so it doesn’t trigger multiple times
                     $(this).off('shown.bs.modal');
                 });
             },
@@ -46,12 +54,11 @@ $(document).ready(function () {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
+            success: function (response) {
                 submitButton.prop('disabled', false);
                 submitButton.html('Save changes');
                 if (response.status === 'success') {
-                    if(response.action=='select')
-                    {
+                    if (response.action == 'select') {
                         var select = $('#medicine_category');
                         select.append($('<option>', {
                             value: response.category.id,
@@ -59,13 +66,12 @@ $(document).ready(function () {
                             selected: true
                         }));
                     }
-                    else
-                    {                   
+                    else {
                         $('.display-medicine-category').html(response.medicineCategoryData);
                         feather.replace();
                     }
                     form[0].reset();
-                    $('#commanModel').modal('hide');                   
+                    $('#commanModel').modal('hide');
                     Toastify({
                         text: response.message,
                         duration: 10000,
@@ -78,25 +84,25 @@ $(document).ready(function () {
                     }).showToast();
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 submitButton.prop('disabled', false);
                 submitButton.html('Save changes');
                 var errors = xhr.responseJSON.errors;
                 if (errors) {
-                    $.each(errors, function(key, value) {
+                    $.each(errors, function (key, value) {
                         var errorElement = $('#' + key + '_error');
                         if (errorElement.length) {
                             errorElement.text(value[0]);
                         }
                         var inputField = $('#' + key);
                         inputField.addClass('is-invalid');
-                        inputField.after('<div class="invalid-feedback">' + value[0] + '</div>'); 
+                        inputField.after('<div class="invalid-feedback">' + value[0] + '</div>');
                     });
                 }
             }
         });
     });
-    
+
     /**Edit group modal js */
     $(document).on('click', 'a[data-medicine-category-edit="true"]', function () {
         var title = $(this).data('title');
@@ -108,15 +114,22 @@ $(document).ready(function () {
         };
         $("#commanModel .modal-title").html(title);
         $("#commanModel .modal-dialog").addClass('modal-' + size);
-        
+
         $.ajax({
             url: url,
             type: 'get',
             data: data,
             success: function (data) {
                 $('#commanModel .render-data').html(data.form);
-                $('#commanModel').on('shown.bs.modal', function() {
-                    initSummernoteEditor();
+                $('#commanModel').on('shown.bs.modal', function () {
+                    document.querySelectorAll('.ckeditor4').forEach(function (el) {
+                        if (CKEDITOR.instances[el.id]) {
+                            CKEDITOR.instances[el.id].destroy(true);
+                        }
+                        CKEDITOR.replace(el, {
+                            removePlugins: 'exportpdf'
+                        });
+                    });
                     $(this).off('shown.bs.modal');
                 });
                 $("#commanModel").modal('show');
@@ -141,7 +154,7 @@ $(document).ready(function () {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
+            success: function (response) {
                 submitButton.prop('disabled', false);
                 submitButton.html('Save changes');
                 if (response.status === 'success') {
@@ -161,19 +174,19 @@ $(document).ready(function () {
                     }).showToast();
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 submitButton.prop('disabled', false);
                 submitButton.html('Save changes');
                 var errors = xhr.responseJSON.errors;
                 if (errors) {
-                    $.each(errors, function(key, value) {
+                    $.each(errors, function (key, value) {
                         var errorElement = $('#' + key + '_error');
                         if (errorElement.length) {
                             errorElement.text(value[0]);
                         }
                         var inputField = $('#' + key);
                         inputField.addClass('is-invalid');
-                        inputField.after('<div class="invalid-feedback">' + value[0] + '</div>'); 
+                        inputField.after('<div class="invalid-feedback">' + value[0] + '</div>');
                     });
                 }
             }
@@ -186,24 +199,24 @@ $(document).ready(function () {
         event.preventDefault();
 
         Swal.fire({
-           title: `Are you sure you want to delete this ${name}?`,
-           text: "If you delete this, it will be gone forever.",
-           icon: "warning",
-           showCancelButton: true,
-           confirmButtonText: "Yes, delete it!",
-           cancelButtonText: "Cancel",
-           dangerMode: true,
+            title: `Are you sure you want to delete this ${name}?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "Cancel",
+            dangerMode: true,
         }).then((result) => {
-           if (result.isConfirmed) {
-              form.submit();
-           }
+            if (result.isConfirmed) {
+                form.submit();
+            }
         });
-     });
-    
+    });
+
 });
 
 function initSummernoteEditor() {
-    $('.editor_class_multiple').each(function() {
+    $('.editor_class_multiple').each(function () {
         if (!$(this).hasClass('note-editor') && !$(this).siblings('.note-editor').length) {
             $(this).summernote({
                 height: 150,
@@ -225,7 +238,7 @@ function initSummernoteEditor() {
                 codeviewIframeFilter: true,
                 styleTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
                 callbacks: {
-                    onPaste: function(e) {
+                    onPaste: function (e) {
                         var clipboardData = e.originalEvent.clipboardData || window.clipboardData;
                         var pastedData = clipboardData.getData('Text/html');
                         if (pastedData) {
@@ -233,11 +246,11 @@ function initSummernoteEditor() {
                             var tempDiv = document.createElement('div');
                             tempDiv.innerHTML = pastedData;
                             var elementsWithStyle = tempDiv.querySelectorAll('[style]');
-                            elementsWithStyle.forEach(function(el) {
+                            elementsWithStyle.forEach(function (el) {
                                 el.removeAttribute('style');
                             });
                             var elementsWithClass = tempDiv.querySelectorAll('[class]');
-                            elementsWithClass.forEach(function(el) {
+                            elementsWithClass.forEach(function (el) {
                                 el.removeAttribute('class');
                             });
                             document.execCommand('insertHTML', false, tempDiv.innerHTML);

@@ -22,19 +22,19 @@
                      {!! $banner->banner_content !!}
                   </p>
                   @endif
+                  @if($banner->medicines->count() > 0)
                   <div class="banner-medicine-container" data-view="6-3">
+                     @foreach($banner->medicines as $medicine)
                      <div class="banner-item">
-                        <h4>Мы вдохновляем людей</h4>
+                        <a href="{{ $medicine->link }}">
+                           <h4>{{ $medicine->title }}</h4>
+                        </a>
                      </div>
-                     <div class="banner-item">
-                        <h4>Мы вдохновляем людей</h4>
-                     </div>
-                     <div class="banner-item">
-                        <h4>Мы вдохновляем людей Мы вдохновляем людей</h4>
-                     </div>
+                     @endforeach
                   </div>
+                  @endif
                   @if($banner->banner_link)
-                  <a href="expertise-overview.html" class="readmore">Read More</a>
+                  <a href="{{ $banner->banner_link }}" class="readmore">Read More</a>
                   @endif
                </div>
             </div>
@@ -255,6 +255,7 @@
       </div>
    </div>
 </section>
+@if(isset($data['medicineCategories']) && $data['medicineCategories']->count() > 0)
 <section id="home-responsibility" class="common-t-pad common-b-pad featured-section-home">
    <div class="common-container">
       <div class="row">
@@ -270,58 +271,25 @@
             <div class="home-responsibility-right wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.3s">
                <div class="swiper-container swiper-Responsibility">
                   <div class="swiper-wrapper">
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Antiretroviral-Drugs.jpg')}}" width="100%">
+                     @foreach ($data['medicineCategories'] as $medicineCategory)
+                        <div class="swiper-slide">
+                           <div class="vast-product-box">
+                              <div class="product-box-pic">
+                                 <a href="{{ route('medicine', ['slug' => $medicineCategory->slug]) }}">
+                                    @if($medicineCategory->image)
+                                          <img src="{{ asset('upload/medicine-category/' . $medicineCategory->image) }}" width="100%">
+                                    @else
+                                          <img src="{{ asset('fronted/assets/hetero-img/featured-medicine/Antiretroviral-Drugs.jpg') }}" width="100%">
+                                    @endif
+                                 </a>
+                              </div>
+                              <a href="{{ route('medicine', ['slug' => $medicineCategory->slug]) }}">
+                                 <h2>{{ $medicineCategory->title }}</h2>
+                                 <p>{!! Str::limit(strip_tags($medicineCategory->content), 150) !!}</p>
                               </a>
                            </div>
-                           <a href="#">
-                              <h2>Антиретровирусные препараты</h2>
-                              <p>Доступное и эффективное лечение ВИЧ/СПИДа</p>
-                           </a>
                         </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Antitumor-Medicines.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <a href="#">
-                              <h2>Противоопухолевые препараты</h2>
-                              <p>Современные методы терапии рака</p>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/Cardiovascular-Drugs.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <a href="#">
-                              <h2>Кардиологические препараты</h2>
-                              <p>Решения для здоровья сердца и контроля холестерина</p>
-                           </a>
-                        </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <div class="vast-product-box">
-                           <div class="product-box-pic">
-                              <a href="javascript:;">
-                                 <img src="{{asset('fronted/assets/hetero-img/featured-medicine/General-Therapeutics.jpg')}}" width="100%">
-                              </a>
-                           </div>
-                           <a href="#">
-                              <h2>Общая терапия</h2>
-                              <p>Широкий ассортимент надежных препаратов</p>
-                           </a>
-                        </div>
-                     </div>
+                     @endforeach
                   </div>
                </div>
                <div class="swiper-pagination Responsibility-pagination"></div>
@@ -336,6 +304,7 @@
       </div>
    </div>
 </section>
+@endif
 <section id="why-hetero">
    <div class="common-container">
       <div class="page-services">

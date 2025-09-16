@@ -1,6 +1,6 @@
 <div class="row">
     @foreach($medicineContents as $index => $content)
-    <div class="col-md-6 wow fadeInUp" data-wow-offset="100" data-wow-duration="1s" data-wow-delay="{{ 0.2 + ($index * 0.1) }}s">
+    <div class="col-md-4 mb-3 wow fadeInUp" data-wow-offset="100" data-wow-duration="1s" data-wow-delay="{{ 0.2 + ($index * 0.1) }}s">
         <div class="expertise-box medicine-list exp-bg{{ ($index % 4) + 1 }}">
             <div class="exp-pic">
                 <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}">
@@ -19,13 +19,16 @@
                     @elseif($index % 4 == 2) pruple2
                     @else blue
                     @endif MulishBold">
-                    {{ $content->short_content }}
+                    {!! Str::limit(strip_tags($content->short_content), 150) !!}
                 </h5>
+                <div class="mt-3">
+                    <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
+                        class="readmore exp-read{{ ($index % 4) + 1 }}">
+                        Read More
+                    </a>
+                </div>
             </div>
-            <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
-                class="readmore exp-read{{ ($index % 4) + 1 }}">
-                Read More
-            </a>
+           
         </div>
     </div>
     @endforeach
