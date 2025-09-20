@@ -25,13 +25,13 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
         <h3> {{ $page->title }}</h3>
     </div>
 </section>
-<section id="main-content" class="common-t-pad common-b-pad">
+<section id="main-content" class="common-t-pad common-b-pad page-display">
     <div class="common-container">
         @php            
             $hasPageImage = !empty($page->main_image);
             $contentClass = $hasPageImage ? 'col-lg-6' : 'col-lg-12';
         @endphp
-        <div class="row align-items-center" id="pageRow">
+        <div class="row" id="pageRow">
             <div class="{{ $contentClass }} mb-4" id="pageContent">
                 @if($page->short_content)
                     <h2 class="home-title MulishExtrabold fs24">
@@ -83,11 +83,13 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
                                     @endif
                                 </div>
                             </a>
-                            <h2 class="h5 mt-2">{{ $sidebarPage->title }}</h2>
-                            @if($sidebarPage->short_content)
-                                <p class="fs14 MulishRegular px-3">                                    
+                            <a href="{{ route('page.show', $sidebarPage->slug) }}">
+                                <h2 class="h5 mt-2">{{ $sidebarPage->title }}</h2>
+                                @if($sidebarPage->short_content)
+                                    <p class="fs14 MulishRegular px-3">                                    
                                     {!! (Str::limit(strip_tags($sidebarPage->short_content), 200)) !!}</p>
-                            @endif
+                                @endif
+                            </a>
                         </div>
                     </div>
                 @endforeach                
