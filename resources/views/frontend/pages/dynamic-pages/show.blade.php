@@ -45,7 +45,7 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
                 </div>
             </div>
             @if($hasPageImage)
-                <div class="col-lg-6 mb-4" id="pageImageCol">
+                <div class="col-lg-6 mb-2 mt-5" id="pageImageCol">
                     <div class="news-image-container-page" id="stickyImageContainer">
                         <div class="img-before">
                             <img src="{{ asset('upload/page/'.$page->main_image) }}" 

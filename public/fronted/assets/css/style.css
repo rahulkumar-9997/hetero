@@ -4605,7 +4605,16 @@ button {
 	background: url(../images/sound-on_vztd3h.svg) center center;
 	background-size: 100%
 }
+#pageImageCol {
+    position: relative;
+}
 
+#stickyImageContainer {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px; 
+    align-self: flex-start;
+}
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 	.row {
 		margin: 0px
@@ -8124,6 +8133,26 @@ button {
 }
 .farmsub_list {
     columns: 3;
+}
+@media only screen and (max-width: 767px) {
+	#banner .bannerTextBox p {
+		font-size: 17px;
+		line-height: 22px;
+	}
+	#vast-product .vast-product-box p {
+		font-size: 17px;
+		line-height: 27px;
+	}
+	.vast-product-box a{
+		text-align: center;
+	}
+	.about-us-footer {
+		justify-content: center;
+	}
+	.about-us-footer-btn{
+		margin-right: 0px;
+	}
+	
 }
 /*rhul css*/
 /*# sourceMappingURL=style.css.map */
