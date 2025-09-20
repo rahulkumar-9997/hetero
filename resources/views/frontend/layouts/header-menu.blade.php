@@ -42,9 +42,18 @@
                             @foreach($headerMenu->items as $item)
                                 @if($item->children->count())
                                 <li class="nav-item {{ $item->children->count() ? 'dropdown' : '' }}">                                    
-                                    <a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }}" href="javascript:;"
+                                    <!--<a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }}" href="{{ $item->url }}"
                                         id="navbarDropdown-{{ $item->id }}" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">{{ $item->title }}</a>
+                                        aria-expanded="false">{{ $item->title }}</a>-->
+                                    <a class="nav-link {{ $item->children->count() ? 'dropdown-toggle' : '' }} js-link" 
+                                        href="{{ $item->url }}" 
+                                        id="navbarDropdown-{{ $item->id }}" 
+                                        role="button" 
+                                        data-toggle="{{ $item->children->count() ? 'dropdown' : '' }}" 
+                                        aria-haspopup="true" 
+                                        aria-expanded="false">
+                                        {{ $item->title }}
+                                    </a>
                                     <div class="dropdown-menu" aria-labelledby="nnavbarDropdown-{{ $item->id }}">
                                         <div class="container">
                                             <a class="dropdown-item back-drop"

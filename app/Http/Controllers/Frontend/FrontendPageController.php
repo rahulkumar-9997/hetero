@@ -11,6 +11,7 @@ class FrontendPageController extends Controller
     {
         $page = Page::where('slug', $slug)->where('is_active', true)->firstOrFail();
         $sidebarData = $page->sidebarMenuFrontend();
+        //return response()->json($sidebarData);
         return view('frontend.pages.dynamic-pages.show', [
             'page' => $page,
             'sidebarPages' => $sidebarData['pages'],

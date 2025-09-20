@@ -2,7 +2,7 @@
 @section('title','Create Pages')
 @push('styles')
 <!-- <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}"> -->
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/summernote/summernote-bs4.min.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('backend/assets/plugins/summernote/summernote-bs4.min.css')}}"> -->
 
 @endpush
 @section('main-content')
@@ -25,35 +25,39 @@
 
         </div>
         <div class="accordion-body border-top">
-            <form action="{{ route('pages.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('pages.store') }}" method="POST" enctype="multipart/form-data" id="createPageForm">
                 @csrf
                 <div class="row">
-                    <div class="col-sm-4 col-12">
+                    <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label class="form-label">Page Title<span class="text-danger ms-1">*</span></label>
                             <input type="text" class="form-control" name="title" value="{{ old('title', $page->title ?? '') }}">
                         </div>
                     </div>
-                    <div class="col-sm-4 col-12">
+                    <div class="col-sm-6 col-12">
                         <div class="mb-3">
                             <label class="form-label">Route Name</label>
                             <input type="text" class="form-control" name="route_name" value="{{ old('route_name', $page->route_name ?? '') }}">
                         </div>
                     </div>
-                    <div class="col-sm-4 col-12">
+                    <div class="col-sm-6">
                         <div class="mb-3">
                             <label class="form-label">Main Image</label>
                             <input type="file" class="form-control" name="main_image">
                         </div>
                     </div>
-                </div>
-
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label class="form-label" for="page_short_content">Page Short Content</label>
+                            <textarea type="text" class="form-control" name="page_short_content" id="page_short_content"></textarea>
+                        </div>
+                    </div>
+                </div>                
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="summer-description-box mb-3">
-                            <label class="form-label">Page Content</label>
-                            <textarea id="content" name="content" hidden>{{ old('content', $page->content ?? '') }}</textarea>
-                            <div id="summernote">{!! old('content', $page->content ?? '') !!}</div>
+                            <label class="form-label">Page Content *</label>
+                            <textarea id="content" name="content" class="ckeditor4">{{ old('content', $page->content ?? '') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -102,7 +106,7 @@
                                     name="show_in_sidebar"
                                     id="show_in_sidebar"
                                     value="1"
-                                   {{ old('show_in_sidebar', $page->show_in_sidebar ?? true) ? 'checked' : '' }}>
+                                    {{ old('show_in_sidebar', $page->show_in_sidebar ?? true) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="is_active">Include in Sidebar</label>
                             </div>
                         </div>
@@ -131,8 +135,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
     </div>
     <!-- /product list -->
@@ -140,19 +142,14 @@
 
 @endsection
 @push('scripts')
+
+<script src="{{ asset('backend/assets/js/pages/pages.js') }}"></script>
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
 <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 300,
-            
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    $('#content').val(contents);
-                }
-            }
-        });
-        $('form').on('submit', function() {
-            $('#content').val($('#summernote').summernote('code'));
+    document.querySelectorAll('.ckeditor4').forEach(function(el) {
+        CKEDITOR.replace(el, {
+            removePlugins: 'exportpdf',
+            extraAllowedContent: '*(*);*{*}'
         });
     });
 </script>

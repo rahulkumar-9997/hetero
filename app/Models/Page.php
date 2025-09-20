@@ -10,7 +10,7 @@ class Page extends Model
 {
     protected $table = 'pages';
     protected $fillable = [
-        'title', 'main_image', 'slug', 'content', 'route_name', 'parent_id', 'order', 
+        'title', 'main_image', 'slug', 'short_content', 'content', 'route_name', 'parent_id', 'order', 
         'is_active', 'meta_title', 'meta_description', 'template', 'show_in_sidebar'
     ];
 
@@ -76,12 +76,12 @@ class Page extends Model
     */
     public function sidebarMenuFrontend()
     {
-        $result = [
+        /*This comment work in mac capital  */
+        /*$result = [
             'pages' => collect(),
-            'title' => $this->title
+            'title' => $this->title,
+            'main_image' => $this->main_image
         ];
-
-        // If the page has children, show them
         if ($this->children()->exists()) {
             $result['pages'] = $this->children()
                 ->where('is_active', true)
@@ -89,7 +89,6 @@ class Page extends Model
                 ->orderBy('order')
                 ->get();
         }
-        // If the page has a parent, show that parent's children
         elseif ($this->parent) {
             $result['pages'] = $this->parent->children()
                 ->where('is_active', true)
@@ -98,7 +97,23 @@ class Page extends Model
                 ->get();
             $result['title'] = $this->parent->title;
         }
-
+        return $result;
+        */
+        $result = [
+            'pages' => collect(),
+            'title' => null,
+            'main_image' => null
+        ];
+        $children = $this->children()
+            ->where('is_active', true)
+            ->where('show_in_sidebar', true)
+            ->orderBy('order')
+            ->get();
+        if ($children->isNotEmpty()) {
+            $result['pages'] = $children;
+            $result['title'] = $this->title;
+            $result['main_image'] = $this->main_image;
+        }
         return $result;
     }
 

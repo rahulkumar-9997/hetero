@@ -45,18 +45,17 @@
     <div class="footer-end">
         <div class="common-container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-6 blank-cell"></div>
-                <div class="col-md-3">
+                <!-- <div class="col-lg-2 col-md-2 col-6 blank-cell"></div> -->
+                <div class="col-md-5">
                     <div class="copyright blue fs12 MulishBold">
                         Copyright © 2017-{{ date('Y') }} Hetero. All rights reserved
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="bottom-links">
-                        <a href="sitemap.html">Site Map</a>
-                        <a href="disclaimer.html">Disclaimer</a>
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <a href="pdf/hetero-social-media-guidelines.pdf" target="_blank">Social Media Guidelines</a>
+                        <a href="#">Disclaimer</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#" target="_blank">Terms & Conditions</a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-12">
