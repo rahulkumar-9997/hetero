@@ -410,15 +410,15 @@
                         </li>-->
                         <div class="top-header">
                             <ul>
-                                <li><a href="#">Контакты</a></li>
+                                <li><a href="{{ route('kontakty') }}">Контакты</a></li>
                                 <li><a href="tel:+74959810088" class="icon-phone">+7 (495) 981 00 88</a></li>
                                 <!-- <li><a href="contact-us.html">Contact us</a></li> -->
                             </ul>
                         </div>
                         <li class="nav-item show-nav">
-                            <a class="nav-link Covid-19" href="#">Контакты</a>
+                            <a class="nav-link" href="{{ route('kontakty') }}">Контакты</a>
                         </li>
-                        <li class="nav-item show-nav">
+                        <li class="nav-item show-nav phone-icon-mo">
                             <a class="icon-phone" href="tel:+74959810088"
                             >+7 (495) 981 00 88</a>
                         </li>

@@ -78,7 +78,9 @@ Route::get('medicine/{slug}', [FrontHomeController::class, 'medicineCateWiseList
 Route::get('lekarstvennye-preparaty', [FrontHomeController::class, 'medicineList'])->name('lekarstvennye-preparaty');
 Route::get('lekarstvennye-preparaty/{slug}', [FrontHomeController::class, 'medicineDetails'])->name('lekarstvennye-preparaty.detail');
 Route::get('medicine-cate-ajax', [FrontHomeController::class, 'medicineCategoryAjax'])->name('medicine-cate-ajax');
-
+Route::get('kontakty', [FrontHomeController::class, 'contactUsPage'])->name('kontakty');
+Route::post('contact/submit', [FrontHomeController::class, 'contactFormSubmit'])->name('contact.submit');
+Route::get('/captcha-refresh', [FrontHomeController::class, 'refreshCaptcha'])->name('captcha.refresh');
 Route::get('/page/{slug}', [FrontendPageController::class, 'show'])->name('page.show');
 
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');

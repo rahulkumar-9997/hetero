@@ -18,7 +18,7 @@
     </div>
 </section>
 @if(isset($medicineCategories) && $medicineCategories->count() > 0)
-    <section id="expertise-overview medicine-categories-section" class="common-b-pad common-t-pad">
+    <section id="expertise-overview medicine-categories-section" class="common-b-pad common-t-pad medicine-cate-list">
         <div class="common-container">
             <div class="row justify-content-md-center">
                 <div class="col-12 col-md-12 col-lg-12">

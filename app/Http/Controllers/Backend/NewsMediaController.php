@@ -18,7 +18,37 @@ use App\Models\FeaturedStory;
 
 class NewsMediaController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+        $newsMediaCategories = NewsAndMediaCategory::orderBy('id', 'desc')->get();
+        if ($newsMediaCategories->isEmpty()) {
+            return view('backend.pages.news-media.index', compact('newsMediaCategories'));
+        }
+        $selectedCategoryId = $request->get('newsMediaId', $newsMediaCategories->first()->id);
+        if (!$request->has('newsMediaId')) {
+            return redirect()->route('manage-news-media.index', [
+                'newsMediaId' => $selectedCategoryId
+            ]);
+        }
+        $featuredStories = FeaturedStory::with('newsMediaCategory')
+            ->where('new_and_media_category_id', $selectedCategoryId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $newsRooms = NewsRoom::with('newsMediaCategory')
+            ->where('new_and_media_category_id', $selectedCategoryId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('backend.pages.news-media.index', compact(
+            'newsMediaCategories',
+            'featuredStories',
+            'newsRooms'
+        ));
+    }
+
+
+    public function indexOld(Request $request){
         $newsMediaCategories = NewsAndMediaCategory::orderBy('id', 'desc')->get();
         if($request->has('newsMediaId')){
             $newsRooms = NewsRoom::with('newsMediaCategory')

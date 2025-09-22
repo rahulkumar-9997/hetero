@@ -80,3 +80,16 @@
         </div>
     </div>
 </section>
+<div class="position-fixed w-100" style="z-index: 11; bottom: 50px; left: 0; right: 0;">
+    <div id="liveToast" class="toast mx-auto" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+        <div class="d-flex">
+            <div class="toast-body text-white">
+                Hello, world! This is a toast message.
+            </div>
+            <button type="button" class="close ml-auto mr-2 my-auto" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+

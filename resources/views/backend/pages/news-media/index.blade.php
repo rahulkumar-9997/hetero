@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 @section('title','News and Media')
 @push('styles')
-
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/dataTables.bootstrap5.min.css')}}">
@@ -31,11 +30,16 @@
                 <select class="form-select w-auto" id="news-media-category-filter" onchange="redirectToCategory(this)">
                     <option value="">New & Media Category</option>
                     @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
+                        @php
+                            $firstCategoryId = $newsMediaCategories->first()->id;
+                            $selectedCategory = request('newsMediaId', $firstCategoryId);
+                        @endphp
                         @foreach($newsMediaCategories as $category)
-                            <option  data-id="{{ $category->id }}"
-                            value="{{ $category->id }}"
-                            {{ request('newsMediaId') == $category->id ? 'selected' : '' }}
-                            >{{ $category->title }}</option>
+                            <option data-id="{{ $category->id }}" 
+                                    value="{{ $category->id }}"
+                                    {{ $selectedCategory == $category->id ? 'selected' : '' }}>
+                                {{ $category->title }}
+                            </option>
                         @endforeach
                     @endif
                 </select>
@@ -56,7 +60,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 @push('scripts')
 <script src="{{asset('backend/assets/js/pages/newAndMediaCategory.js')}}"></script>
@@ -90,8 +93,6 @@
                 }
             });
         });
-
-        
     });
 </script>
 @endpush

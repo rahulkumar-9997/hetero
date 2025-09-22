@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\EnquiryMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -135,5 +136,57 @@ class FrontHomeController extends Controller
             return abort(404, 'Category not found');
         }
     }
+    
+    public function contactUsPage()
+    {
+        return view('frontend.pages.contact-us.index');
+    }
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img('flat')]);
+    }
+
+    public function contactFormSubmit(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'message' => 'nullable|string|max:1000',
+            'captcha' => 'required|captcha',
+        ], [
+            'captcha.required' => 'Введите код с картинки',
+            'captcha.captcha'  => 'Неверный код с картинки',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $validated = $validator->validated();
+
+        $data = [
+            'name'    => $validated['name'],
+            'email'   => $validated['email'] ?? null,
+            'phone'   => $validated['phone'] ?? null,
+            'message' => $validated['message'] ?? null,
+        ];
+
+        try {
+            //Mail::to('info@askfoundation.com')->send(new EnquiryMail($data));
+            Mail::to('rahulkumarmauray464@gmail.com')->send(new EnquiryMail($data));
+        } catch (\Exception $e) {
+            Log::error('Failed to send enquiry email: ' . $e->getMessage());
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Your enquiry form submitted successfully. Our team will contact you soon.',
+        ]);
+    }
+
 
 }

@@ -205,7 +205,7 @@
 </section>
 <section id="home-counter" class="counter-section common-t-pad common-b-pad">
    <div class="common-container">
-      <div class="info-section">
+      <div class="info-section home-counter-area">
          <div class="row">
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
@@ -260,11 +260,9 @@
    <div class="common-container">
       <div class="row">
          <div class="col-md-4">
-            <div class="home-responsibility-left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
+            <div class="home-responsibility-left responsebility_left wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
                <h2 class="home-title2 pruple mb-3">РЛекарства</h2>
                <p class="MontserratMedium">Поставка надежных и высококачественных лекарств по основным терапевтическим направлениям — от ВИЧ/СПИДа и онкологии до сердечно-сосудистого здоровья и общих заболеваний.</p>
-               
-
             </div>
          </div>
          <div class="col-md-8">
@@ -307,7 +305,7 @@
 @endif
 <section id="why-hetero">
    <div class="common-container">
-      <div class="page-services">
+      <div class="page-services page-services-section">
          <div class="row cus-row justify-content-center">
             <div class="col-md-8 wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
                <div class="vast-product-left text-center">
@@ -318,7 +316,7 @@
          </div>
          <div class="row">
             <div class="col-lg-3 col-md-3">
-               <div class="service-item wow fadeInUp">
+               <div class="service-item  wow fadeInUp">
                   <div class="icon-box">
                      <img class="why-img" src="{{asset('fronted/assets/hetero-img/why-hetero/global-presence.svg')}}" alt="">
                   </div>
@@ -372,7 +370,7 @@
    </div>
 </section>
 @if(isset($data['newsroom']) && $data['newsroom']->count() > 0)
-<section id="home-responsibility" class="common-t-pad common-b-pad">
+<section id="home-responsibility" class="common-t-pad common-b-pad home-newsroom-section">
    <div class="common-container">
       <div class="row">
          <div class="col-md-4">

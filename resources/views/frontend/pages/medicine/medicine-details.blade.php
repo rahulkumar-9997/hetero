@@ -32,7 +32,7 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
         <h3>{{  $medicineContent->title }}</h3>
     </div>
 </section>
-<section>
+<section class="back-section">
     <div class="common-container wow fadeInUp" data-wow-offset="200" data-wow-duration="1s" data-wow-delay="0.1s">
         <div class="row common-t-pad">
             <div class="col-lg-12">
