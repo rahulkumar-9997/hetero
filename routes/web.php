@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Frontend\FrontHomeController;
 use App\Http\Controllers\Frontend\SiteMapController;
 use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Backend\CkeditorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('menu/{menu}/item/{item}', [MenuController::class, 'updateItem'])->name('menu.item.update');
     Route::delete('menu/{menu}/item/{item}', [MenuController::class, 'destroyItem'])->name('menu.item.destroy');
     Route::post('menus/{menu}/items/order', [MenuController::class, 'orderItems'])->name('menus.items.order');
+    Route::post('/ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 });
 
 Route::get('/', [FrontHomeController::class, 'home'])->name('home');

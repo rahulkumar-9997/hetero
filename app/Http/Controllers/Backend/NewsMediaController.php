@@ -319,6 +319,7 @@ class NewsMediaController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', 'Error deleting News Room: ' . $e->getMessage());
         }        
-    }
+    }  
+
 
 }

@@ -187,7 +187,53 @@
 <script>
     document.querySelectorAll('.ckeditor4').forEach(function(el) {
         CKEDITOR.replace(el, {
-            removePlugins: 'exportpdf'
+            removePlugins: 'exportpdf',
+            extraPlugins: 'uploadimage',
+            
+            // File browser configuration for the Upload tab
+            filebrowserUploadUrl: "{{ route('ckeditor.upload') }}",
+            filebrowserImageUploadUrl: "{{ route('ckeditor.upload') }}",
+            filebrowserUploadMethod: 'form',
+            
+            // For drag & drop
+            imageUploadUrl: "{{ route('ckeditor.upload') }}",
+            
+            fileTools_requestHeaders: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            }
+        });
+
+        // Handle the file upload and auto-fill the URL field
+        CKEDITOR.on('dialogDefinition', function(ev) {
+            var dialogName = ev.data.name;
+            var dialogDefinition = ev.data.definition;
+            
+            if (dialogName == 'image') {
+                var infoTab = dialogDefinition.getContents('info');
+                var urlField = infoTab.get('txtUrl');
+                
+                // Modify how the URL field gets its value
+                urlField.setup = function(data) {
+                    if (data.src) {
+                        this.setValue(data.src);
+                    }
+                };
+                
+                // Handle upload completion
+                var uploadTab = dialogDefinition.getContents('Upload');
+                if (uploadTab) {
+                    uploadTab.onUpload = function(url) {
+                        // This function is called when upload is successful
+                        infoTab.get('txtUrl').setValue(url);
+                        
+                        // Update preview
+                        var preview = dialogDefinition.getContent('info', 'txtPreview');
+                        if (preview) {
+                            preview.getElement().setAttribute('src', url);
+                        }
+                    };
+                }
+            }
         });
     });
 </script>

@@ -1781,13 +1781,17 @@ button {
 }
 
 #footer .footer-end .bottom-links {
-	text-align: center
+	text-align: right
 }
 
 #footer .footer-end .bottom-links a {
 	color: #ED343C;
 	font-size: 12px;
-	padding-right: 8px
+	padding-right: 8px;
+	font-weight: 700;
+}
+#footer .footer-links .h2 a {
+    color: #ED343C;
 }
 
 #footer .mobile-footer {

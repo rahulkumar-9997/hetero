@@ -321,7 +321,9 @@
 <script>
     document.querySelectorAll('.ckeditor4').forEach(function(el) {
         CKEDITOR.replace(el, {
-            removePlugins: 'exportpdf'
+            removePlugins: 'exportpdf',
+            filebrowserUploadUrl: "{{ route('ckeditor.upload') }}",
+            filebrowserUploadMethod: 'form'
         });
     });
 </script>

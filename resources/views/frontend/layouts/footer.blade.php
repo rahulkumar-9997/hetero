@@ -11,7 +11,14 @@
                     @foreach($footerMenu->items as $item)
                         <div class="col-lg-2 col-md-2 col-6">
                             <div class="footer-links">
-                                <h2>{{ $item->title }}</h2>
+                                <h2 class="h2">
+                                    @php
+                                        $itemUrl = $item->url ? $item->url : 'javascript:void(0)';
+                                    @endphp
+                                    <a href="{{ $itemUrl }}">
+                                        {{ $item->title }}
+                                    </a>
+                                </h2>
                                 @if($item->children->count())
                                     <ul>
                                         @foreach($item->children as $child)
@@ -51,14 +58,14 @@
                         Copyright © 2017-{{ date('Y') }} Hetero. All rights reserved
                     </div>
                 </div>
-                <div class="col-md-5">
+                <!-- <div class="col-md-5">
                     <div class="bottom-links">
                         <a href="#">Disclaimer</a>
                         <a href="#">Privacy Policy</a>
                         <a href="#" target="_blank">Terms & Conditions</a>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-12">
+                </div> -->
+                <!-- <div class="col-lg-2 col-md-2 col-12">
                     <a href="https://www.facebook.com/heteroworld/"
                         target="_blank">
                         <img src="{{asset('fronted/assets/images/facebook.png')}}">
@@ -75,7 +82,12 @@
                     <a href="https://www.instagram.com/hetero_pharma/" target="_blank">
                         <img src="{{asset('fronted/assets/images/instagram.png')}}">
                     </a>
-                </div>
+                </div> -->
+                <div class="col-md-7">
+					<div class="bottom-links">
+						<a href="https://hetero.com/" target="_blank">hetero.com</a>
+					</div>
+				</div>
             </div>
         </div>
     </div>
