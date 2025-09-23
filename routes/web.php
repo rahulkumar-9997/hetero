@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('menu/{menu}/item/{item}', [MenuController::class, 'destroyItem'])->name('menu.item.destroy');
     Route::post('menus/{menu}/items/order', [MenuController::class, 'orderItems'])->name('menus.items.order');
     Route::post('/ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
+    Route::get('/ckeditor/images', [CkeditorController::class, 'imageList'])->name('ckeditor.imagelist');
 });
 
 Route::get('/', [FrontHomeController::class, 'home'])->name('home');

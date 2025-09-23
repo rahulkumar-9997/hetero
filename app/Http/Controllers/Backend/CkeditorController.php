@@ -70,4 +70,39 @@ class CkeditorController extends Controller
             ]);
         }
     }
+
+    public function imageList(Request $request)
+{
+    $imagePath = public_path('upload/ckeditor');
+    $images = [];
+    
+    // Check if directory exists
+    if (!File::exists($imagePath)) {
+        return response()->json(['error' => 'Directory not found'], 404);
+    }
+    
+    // Get all files from the directory
+    $files = File::files($imagePath);
+    
+    foreach ($files as $file) {
+        $extension = strtolower($file->getExtension());
+        
+        // Check if it's an image file
+        if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
+            $images[] = [
+                'url' => asset('upload/ckeditor/' . $file->getFilename()),
+                'name' => $file->getFilename(),
+                'size' => $file->getSize(),
+                'time' => $file->getMTime()
+            ];
+        }
+    }
+    
+    // Sort by latest first
+    usort($images, function($a, $b) {
+        return $b['time'] - $a['time'];
+    });
+    
+    return response()->json($images);
+}
 }

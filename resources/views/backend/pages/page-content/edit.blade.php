@@ -149,11 +149,10 @@
 <script src="{{ asset('backend/assets/js/pages/pages.js') }}"></script>
 <script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
 <script>
-    document.querySelectorAll('.ckeditor4').forEach(function(el) {
-        CKEDITOR.replace(el, {
-            removePlugins: 'exportpdf',
-            extraAllowedContent: '*(*);*{*}'
-        });
-    });
+    window.CKEDITOR_ROUTES = {
+        upload: "{{ route('ckeditor.upload') }}",
+        imagelist: "{{ route('ckeditor.imagelist') }}"
+    };
 </script>
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor-r-create-config.js') }}"></script>
 @endpush

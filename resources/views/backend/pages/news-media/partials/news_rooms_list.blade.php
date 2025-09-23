@@ -14,19 +14,15 @@
             @foreach($newsRooms as $newsRoom)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>
-                    {!! Str::limit($newsRoom->title, 50) !!}
-                </td>
-                <td>{{ $newsRoom->newsMediaCategory->title }}</td>
-                <td>
-                    {!! Str::limit($newsRoom->content, 50) !!}
-                </td>
-                <td>{{ \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') }}</td>              
+                <td>{!! Str::limit(strip_tags($newsRoom->title, 50)) !!}</td>
+                <td>{{ $newsRoom->newsMediaCategory->title ?? '' }}</td>
+                <td>{!! Str::limit(strip_tags($newsRoom->content, 50)) !!}</td>
+                <td>{{ $newsRoom->post_date ? \Carbon\Carbon::parse($newsRoom->post_date)->format('d-m-Y') : null }}</td>
                 <td class="action-table-data">
                     <div class="edit-delete-action">
                         <a class="btn btn-sm btn-primary me-2 p-2"
-                        href="{{ route('manage-news-media.edit', $newsRoom->id) }}?action=newsroom"                         
-                        title="Edit">
+                           href="{{ route('manage-news-media.edit', $newsRoom->id) }}?action=newsroom"                         
+                           title="Edit">
                             <i data-feather="edit" class="feather-edit"></i>
                         </a>
                         <form action="{{ route('news-room.destroy', $newsRoom->id) }}" method="POST" class="d-inline">
@@ -42,7 +38,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4" class="text-center">No feature story found.</td>
+                <td colspan="6" class="text-center">No feature story found.</td>
             </tr>
         @endif
     </tbody>

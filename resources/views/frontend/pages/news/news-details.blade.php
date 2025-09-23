@@ -44,7 +44,7 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($newsRoom->content)
         <h2 class="home-title pruple2 fs24 wow fadeInUp">
             {{ $newsRoom->title }}
         </h2>
-        <div class="nws-details">
+        <div class="nws-details news-details-pages">
             <div class="row">
                 <div class="col-lg-12">
                     @if($newsRoom->image)
