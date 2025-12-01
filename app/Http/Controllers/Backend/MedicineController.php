@@ -31,7 +31,9 @@ class MedicineController extends Controller
     {
         $validatedData = $request->validate([
             'medicine_category' => 'required|exists:medicine_categories,id',
-            'medicine_name' => 'required|string|max:255',
+            'mhh' => 'required|string|max:255',
+            'th' => 'nullable|string|max:255',
+            'dosage_form' => 'nullable|string|max:255',
             'medicine_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'medicine_short_content' => 'nullable|string',
             'content' => 'nullable|string',
@@ -53,10 +55,19 @@ class MedicineController extends Controller
                 $image->encode('webp', 75);
                 $image->save($destinationPath . '/' . $imageName);
             }
+            $baseSlug = Str::slug($validatedData['mhh']);
+            $slug = $baseSlug;
+            $counter = 1;
+            while (MedicineContent::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $counter;
+                $counter++;
+            }
             $medicine = MedicineContent::create([
                 'medicine_category_id' => $validatedData['medicine_category'],
-                'title' => $validatedData['medicine_name'],
-                'slug' => Str::slug($validatedData['medicine_name']),
+                'title' => $validatedData['mhh'],
+                'trade_name' => $validatedData['th'],
+                'dosage_form' => $validatedData['dosage_form'],
+                'slug' => $slug,
                 'image' => $imageName,
                 'short_content' => $validatedData['medicine_short_content'] ?? null,
                 'content' => $validatedData['content'] ?? null,
@@ -89,7 +100,9 @@ class MedicineController extends Controller
     {
         $validatedData = $request->validate([
             'medicine_category' => 'required|exists:medicine_categories,id',
-            'medicine_name' => 'required|string|max:255',
+            'mhh' => 'required|string|max:255',
+            'th' => 'nullable|string|max:255',
+            'dosage_form' => 'nullable|string|max:255',
             'medicine_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'medicine_short_content' => 'nullable|string',
             'content' => 'nullable|string',
@@ -126,7 +139,9 @@ class MedicineController extends Controller
 
             $medicine->update([
                 'medicine_category_id' => $validatedData['medicine_category'],
-                'title' => $validatedData['medicine_name'],
+                'title' => $validatedData['mhh'],
+                'trade_name' => $validatedData['th'] ?? null,
+                'dosage_form' => $validatedData['dosage_form'] ?? null,
                 'image' => $imageName,
                 'short_content' => $validatedData['medicine_short_content'] ?? null,
                 'content' => $validatedData['content'] ?? null,

@@ -39,63 +39,89 @@
                 <div class="row">
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label">Select Medicine Category *</label>
+                            <div class="add-newplus">
+                                <label class="form-label">
+                                    Select Medicine Category
+                                    <span class="text-danger ms-1">*</span>
+                                </label>
+                                
+                            </div>
                             <select class="select" name="medicine_category" id="medicine_category">
                                 <option value="">-- Select Medicine category --</option>
                                 @foreach($MedicineCategories as $MedicineCategory)
-                                <option value="{{ $MedicineCategory->id }}"
-                                    {{ old('medicine_category', $medicine_row->medicine_category_id) == $MedicineCategory->id ? 'selected' : '' }}>
-                                    {{ $MedicineCategory->title }}
-                                </option>
+                                    <option value="{{ $MedicineCategory->id }}"
+                                        {{ old('medicine_category', $medicine_row->medicine_category_id) == $MedicineCategory->id ? 'selected' : '' }}>
+                                        {{ $MedicineCategory->title }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('medicine_category')
-                            <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="medicine_name">Medicine Name *</label>
-                            <input type="text" class="form-control" name="medicine_name" id="medicine_name"
-                                value="{{ old('medicine_name', $medicine_row->title) }}">
-                            @error('medicine_name')
-                            <div class="text-danger">{{ $message }}</div>
+                            <label class="form-label" for="mhh">МНН (International Non-proprietary Name) *</label>
+                            <input type="text" class="form-control" name="mhh" id="mhh"
+                                value="{{ old('mhh', $medicine_row->title) }}">
+                            @error('mhh')
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
+                            <label class="form-label" for="th">ТН (Trade Name / Brand Name)</label>
+                            <input type="text" class="form-control" name="th" id="th"
+                                value="{{ old('th', $medicine_row->trade_name) }}">
+                            @error('th')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="dosage_form">Форма выпуска (Dosage Form / Form of Release)</label>
+                            <input type="text" class="form-control" name="dosage_form" id="dosage_form"
+                                value="{{ old('dosage_form', $medicine_row->dosage_form) }}">
+                            @error('dosage_form')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-2">
                             <label class="form-label" for="medicine_image">Medicine Image</label>
                             <input type="file" class="form-control" name="medicine_image" id="medicine_image">
                             @error('medicine_image')
-                            <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                             @if($medicine_row->image)
-                            <div class="mt-2">
-                                <img src="{{ asset('upload/medicine/' . $medicine_row->image) }}" width="100" class="img-thumbnail">
-                                <div class="form-check mt-2">
-                                    <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image" value="1">
-                                    <label class="form-check-label text-danger" for="remove_image">
-                                        Remove current image
-                                    </label>
+                                <div class="mt-2">
+                                    <img src="{{ asset('upload/medicine/' . $medicine_row->image) }}" width="100" class="img-thumbnail">
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" type="checkbox" name="remove_image" id="remove_image" value="1">
+                                        <label class="form-check-label text-danger" for="remove_image">
+                                            Remove current image
+                                        </label>
+                                    </div>
+                                    <input type="hidden" name="current_image" value="{{ $medicine_row->image }}">
                                 </div>
-                                <input type="hidden" name="current_image" value="{{ $medicine_row->image }}">
-                            </div>
                             @endif
                         </div>
                     </div>
-                    <div class="col-sm-8 col-12">
-                        <div class="mb-3">
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-2">
                             <label class="form-label" for="medicine_short_content">Medicine Short Content</label>
-                            <textarea type="text" class="form-control" name="medicine_short_content" id="medicine_short_content">{{ old('medicine_short_content', $medicine_row->short_content) }}</textarea>
+                            <textarea class="form-control" name="medicine_short_content" id="medicine_short_content">{{ old('medicine_short_content', $medicine_row->short_content) }}</textarea>
                             @error('medicine_short_content')
-                            <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-sm-4 col-12">
-                        <div class="mb-3 mt-4">
+                        <div class="mb-1 mt-2">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" id="status" name="status" value="1"
                                     {{ old('status', $medicine_row->status) ? 'checked' : '' }}>
@@ -105,10 +131,10 @@
                     </div>
                     <div class="col-sm-12 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="medicine_content">Medicine Content</label>
+                            <label class="form-label" for="content">Medicine Content</label>
                             <textarea id="content" name="content" class="ckeditor4">{{ old('content', $medicine_row->content) }}</textarea>
                             @error('content')
-                            <div class="text-danger">{{ $message }}</div>
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>

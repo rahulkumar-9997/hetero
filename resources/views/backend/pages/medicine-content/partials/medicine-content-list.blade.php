@@ -2,12 +2,24 @@
     <thead class="thead-light">
         <tr>
             <th>Sr. No.</th>
-            <th>Title</th>
+            <th>
+                MHH 
+                <BR><span class="text-muted">(INN: International Non-proprietary Name)</span>
+            </th>
+            <th>
+                ТН 
+                <BR><span class="text-muted">(Trade Name / Brand Name)</span>
+            </th>
+            <th>
+                Форма выпуска 
+                <BR><span class="text-muted">(Dosage Form / Form of Release)</span>
+            </th>
             <th>Category</th>
             <th>Short Content</th>
             <th>Status</th>
             <th>Actions</th>
         </tr>
+
     </thead>
     <tbody>
         @if(isset($medicineContents) && $medicineContents->count() > 0)
@@ -16,6 +28,12 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     {!! Str::limit($medicineContent->title, 50) !!}
+                </td>
+                <td>
+                    {!! Str::limit($medicineContent->trade_name, 50) !!}
+                </td>
+                <td>
+                    {!! Str::limit($medicineContent->dosage_form, 50) !!}
                 </td>
                 <td>
                     @if($medicineContent->medicineCategory)

@@ -10,7 +10,7 @@ class MedicineContent extends Model
 {
     use HasFactory;
     protected $table = 'medicine_content';
-    protected $fillable = ['medicine_category_id', 'title', 'slug', 'image', 'short_content', 'content', 'status'];
+    protected $fillable = ['medicine_category_id', 'title', 'trade_name', 'dosage_form', 'slug', 'image', 'short_content', 'content', 'status'];
 
     public function MedicineCategory()
     {

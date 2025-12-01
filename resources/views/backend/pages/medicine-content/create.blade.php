@@ -73,10 +73,30 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="medicine_name">Medicine Name *</label>
-                            <input type="text" class="form-control" name="medicine_name" id="medicine_name"
-                                value="{{ old('medicine_name') }}">
-                            @error('medicine_name')
+                            <label class="form-label" for="mhh">МНН (International Non-proprietary Name) *</label>
+                            <input type="text" class="form-control" name="mhh" id="mhh"
+                                value="{{ old('mhh') }}">
+                            @error('mhh')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="th">ТН (Trade Name (or Brand Name)) </label>
+                            <input type="text" class="form-control" name="th" id="th"
+                                value="{{ old('th') }}">
+                            @error('th')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-3">
+                            <label class="form-label" for="dosage_form">Форма выпуска (Dosage Form / Form of Release) </label>
+                            <input type="text" class="form-control" name="dosage_form" id="dosage_form"
+                                value="{{ old('dosage_form') }}">
+                            @error('dosage_form')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -90,8 +110,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-sm-8 col-12">
-                        <div class="mb-3">
+                    <div class="col-sm-4 col-12">
+                        <div class="mb-2">
                             <label class="form-label" for="medicine_short_content">Medicine Short Content</label>
                             <textarea type="text" class="form-control" name="medicine_short_content" id="medicine_short_content">{{ old('medicine_short_content') }}</textarea>
                             @error('medicine_short_content')
@@ -100,7 +120,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4 col-12">
-                        <div class="mb-3 mt-4">
+                        <div class="mb-1 mt-1">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" id="status" name="status" value="1"
                                     {{ old('status', true) ? 'checked' : '' }}>
