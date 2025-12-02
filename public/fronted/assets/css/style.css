@@ -388,10 +388,11 @@ p {
 	text-transform: capitalize;
 	font-weight: 600;
 	font-size: 14px;
-	padding: 8px 16px;
+	padding: 12px 25px;
 	line-height: 18px;
 	color: #ED343C;
-	letter-spacing: 1px
+	letter-spacing: 1px;
+	border-radius: 5px;
 }
 
 .readmore:hover {
@@ -2290,7 +2291,19 @@ button {
     /* padding-inline: 8px; */
 }
 
+.expertise-box .sub-ttlh2 {
+	color: #000;
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 600
+}
 .expertise-box .sub-ttl {
+	color: #000;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 600
+}
+.expertise-box .sub-ttl4 {
 	color: #000;
 	font-size: 16px;
 	line-height: 24px;
@@ -2306,7 +2319,8 @@ button {
 }
 
 .expertise-box .exp-desc {
-	padding: 20px
+	padding: 15px 10px;
+	text-align: center;
 }
 
 .exp-read1 {
@@ -2418,6 +2432,8 @@ button {
 }
 
 .expertise-box:hover .sub-ttl,
+.expertise-box:hover .sub-ttlh2,
+.expertise-box:hover .sub-ttl4,
 .expertise-box:hover .exp-info {
 	color: #fff
 }

@@ -12,15 +12,23 @@
                 </a>
             </div>
             <div class="exp-desc">
+                @if($content->trade_name)
+                    <h2 class="sub-ttlh2">{{ $content->trade_name }}</h2>
+                @endif
                 <h3 class="sub-ttl">{{ $content->title }}</h3>
-                <h5 class="exp-info 
+                @if($content->dosage_form)
+                    <h4 class="sub-ttl4">
+                        {!! Str::limit(strip_tags($content->dosage_form), 35) !!}
+                    </h4>
+                @endif
+                <!-- <h5 class="exp-info 
                     @if($index % 4 == 0) pruple
                     @elseif($index % 4 == 1) sky-blue
                     @elseif($index % 4 == 2) pruple2
                     @else blue
                     @endif MulishBold">
                     {!! Str::limit(strip_tags($content->short_content), 150) !!}
-                </h5>
+                </h5> -->
                 <div class="mt-3">
                     <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
                         class="readmore exp-read{{ ($index % 4) + 1 }}">
