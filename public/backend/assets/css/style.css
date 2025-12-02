@@ -40482,7 +40482,7 @@ textarea {
   resize: block;
 }
 textarea{
-    overflow-y: hidden; 
+    overflow-y: auto; 
     resize: block; 
 }
 .localization-info .setting-info {

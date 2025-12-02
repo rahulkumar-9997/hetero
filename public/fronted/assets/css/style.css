@@ -2794,6 +2794,17 @@ button {
 	min-height: 70px
 }
 
+.legacy-box h2 {
+	font-size: 20px;
+	line-height: 24px;
+	color:#ED343C;
+	font-weight: 600;
+	margin-bottom: 0
+}
+.news-img.medicine-img{
+	margin-top: 5px;
+}
+
 .legacy-box h3 {
 	font-size: 16px;
 	line-height: 24px;
@@ -7862,7 +7873,7 @@ button {
 	text-align: justify;
 }
 .nws-details img{
-	max-width: 500px;
+	max-width: 380px;
     width: 100%;
     height: auto;
     display: block;
@@ -7947,8 +7958,8 @@ button {
     /* height: 200px; */
     height: 100%;
     left: 0;
-    -o-object-fit: cover;
-    object-fit: cover;
+    -o-object-fit: contain;
+    object-fit: contain;
     position: absolute;
     top: 0;
     width: 100%;

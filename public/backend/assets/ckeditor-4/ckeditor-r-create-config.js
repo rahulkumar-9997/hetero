@@ -1,8 +1,9 @@
 document.querySelectorAll('.ckeditor4').forEach(function(el) {
     CKEDITOR.replace(el, {
         removePlugins: 'exportpdf',
+        allowedContent: true,
         extraAllowedContent: '*(*);*{*}',
-        extraPlugins: 'uploadimage',
+        extraPlugins: 'uploadimage, sourcearea',
         filebrowserUploadUrl: window.CKEDITOR_ROUTES.upload,
         filebrowserImageUploadUrl: window.CKEDITOR_ROUTES.upload,
         filebrowserUploadMethod: 'form',

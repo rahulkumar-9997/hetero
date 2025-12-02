@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/fontawesome/css/fontawesome.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/fontawesome/css/all.min.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/toastr/toastify.min.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/plugins/toastr/toastify.min.css')}}?v=1.9">
+<link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}?v=1.9">
 @stack('styles')
  
