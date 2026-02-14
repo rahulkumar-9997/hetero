@@ -8401,5 +8401,9 @@ button {
 		line-height: 22px;
 	}
 }
+.about-counter h2::after,
+.home-counter-area h2::after{
+    content: "+";
+}
 /*rhul css*/
 /*# sourceMappingURL=style.css.map */

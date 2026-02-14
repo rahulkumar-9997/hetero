@@ -173,7 +173,7 @@
                data-wow-delay="0.1s">
                <div class="about-body-item">
                   <div class="about-counter">
-                     <h2><span class="counter">20</span>+</h2>
+                     <h2><span class="counter">20</span></h2>
                   </div>
                   <div class="about-counter-content">
                      <p>Годы в России</p>
@@ -181,7 +181,7 @@
                </div>
                <div class="about-body-item">
                   <div class="about-counter">
-                     <h2><span class="counter">40</span>+</h2>
+                     <h2><span class="counter">40</span></h2>
                   </div>
                   <div class="about-counter-content">
                      <p>Лекарства</p>
@@ -210,35 +210,35 @@
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroWhite"><span class="counter">20</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">20</span></h2>
                   <p>Лет в России</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroWhite"><span class="counter">40</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">40</span></h2>
                   <p>Лекарственных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.1s">
-                  <h2 class="HeteroWhite"><span class="counter">30</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">30</span></h2>
                   <p>Антиретровирусных препаратов</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.3s">
-                  <h2 class="HeteroWhite"><span class="counter">25</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">25</span></h2>
                   <p>Производственных площадок</p>
                </div>
             </div>
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.4s">
-                  <h2 class="HeteroWhite"><span class="counter">50</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">50</span></h2>
                   <p>
                      Партнеров
                   </p>
@@ -247,7 +247,7 @@
             <div class="col-md-2 col-xs-6">
                <div class="info-box wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                   data-wow-delay="0.5s">
-                  <h2 class="HeteroWhite"><span class="counter">100</span>+</h2>
+                  <h2 class="HeteroWhite"><span class="counter">100</span></h2>
                   <p>Сотрудников</p>
                </div>
             </div>
