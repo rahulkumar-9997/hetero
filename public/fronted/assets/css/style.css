@@ -2054,14 +2054,18 @@ button {
 	overflow: hidden;
 	border-radius: 10px;
 	background-color: #E5E5E5;
-	margin-bottom: 35px
+	margin-bottom: 10px
+}
+.api-box h5{
+	padding: 15px 0px 0px 0px;
+	color: #1E2833;
 }
 
 .api-box h2 {
 	font-size: 18px;
-	line-height: 28px;
-	color: #1E2833;
-	padding: 18px 10px;
+	line-height: 28px;	
+	color: #9F0C25;
+	padding: 10px 10px;
 	font-weight: 600
 }
 

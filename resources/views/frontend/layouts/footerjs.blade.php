@@ -3,9 +3,9 @@
 <script src="{{asset('fronted/assets/js/main.js')}}"></script>
 <script src="{{asset('fronted/assets/js/wow.min.js')}}"></script>
 <script src="{{asset('fronted/assets/js/swiper.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('fronted/assets/js/waypoints.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('fronted/assets/js/countUp.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('fronted/assets/js/pages/common.js')}}?v=1.2"></script>
+<script type="text/javascript" src="{{asset('fronted/assets/js/waypoints.min.js')}}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
+<script type="text/javascript" src="{{asset('fronted/assets/js/countUp.min.js')}}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
+<script type="text/javascript" src="{{asset('fronted/assets/js/pages/common.js')}}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
 <script>
     var upArrowPath = "{{asset('fronted/assets/images/up-arrow-down.png') }}";
 </script>

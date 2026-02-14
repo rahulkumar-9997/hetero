@@ -34,7 +34,13 @@
                             <input type="text" class="form-control" name="title" value="{{ old('title', $page->title ?? '') }}">
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-3 col-12">
+                        <div class="mb-3">
+                            <label class="form-label">Page Label Name</label>
+                            <input type="text" class="form-control" name="page_label_name" value="{{ old('page_label_name', $page->page_label_name ?? '') }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-12">
                         <div class="mb-3">
                             <label class="form-label">Route Name</label>
                             <input type="text" class="form-control" name="route_name" value="{{ old('route_name', $page->route_name ?? '') }}">

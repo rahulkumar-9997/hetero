@@ -57,8 +57,9 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($newsRoom->content)
                             </div>
                         </div>
                     </div>
-                    @endif                
-                    {!! $newsRoom->content !!}              
+                    @endif
+                    {!! str_replace('href="/', 'href="'.url('/').'/', $newsRoom->content) !!}                
+                    <!-- {!! $newsRoom->content !!}               -->
                     
                 </div>
             </div>

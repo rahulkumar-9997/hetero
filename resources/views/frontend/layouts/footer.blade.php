@@ -40,7 +40,7 @@
                 <div class="col-lg-2 col-md-2 col-6 blank-cell"></div>
                 <div class="col-md-10">
                     <div class="Caution">
-                        <p class="MontserratBold fs14 mb-2">Caution Notice</p>
+                        <p class="MontserratBold fs14 mb-2">Важно!</p>
                         <p class="fs12">Обратите внимание, что Hetero не занимается какой-либо формой онлайн-распространения или розничной торговли лекарствами. Hetero и ее дочерние компании поставляют продукцию по всему миру только через свои эксклюзивные дистрибьюторские сети.
                         </p>
                     </div>

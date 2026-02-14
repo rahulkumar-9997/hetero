@@ -26,7 +26,7 @@
                   <div class="banner-medicine-container" data-view="6-3">
                      @foreach($banner->medicines as $medicine)
                      <div class="banner-item">
-                        <a href="{{ $medicine->link }}">
+                        <a href="{{ $medicine->link ? $medicine->link : '#' }}">
                            <h4>{{ $medicine->title }}</h4>
                         </a>
                      </div>

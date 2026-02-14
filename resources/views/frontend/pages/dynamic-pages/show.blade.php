@@ -82,14 +82,21 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
                                             class="img-fluid rounded" alt="Default">
                                     @endif
                                 </div>
+                                <div class="card-footr">
+                                    @if($sidebarPage->page_label_name)
+                                        <h5>{{ $sidebarPage->page_label_name }}</h5>
+                                    @endif
+                                    <h2 class="h5">{{ $sidebarPage->title }}</h2>
+                                    @if($sidebarPage->short_content)
+                                        <p class="fs14 MulishRegular px-3">                                    
+                                        {!! (Str::limit(strip_tags($sidebarPage->short_content), 200)) !!}</p>
+                                    @endif
+                                </div>
                             </a>
-                            <a href="{{ route('page.show', $sidebarPage->slug) }}">
-                                <h2 class="h5 mt-2">{{ $sidebarPage->title }}</h2>
-                                @if($sidebarPage->short_content)
-                                    <p class="fs14 MulishRegular px-3">                                    
-                                    {!! (Str::limit(strip_tags($sidebarPage->short_content), 200)) !!}</p>
-                                @endif
+                            <a href="{{ route('page.show', $sidebarPage->slug) }}" class="readmore">
+                                Read more
                             </a>
+                            
                         </div>
                     </div>
                 @endforeach                

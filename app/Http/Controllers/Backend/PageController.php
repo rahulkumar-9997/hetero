@@ -43,6 +43,7 @@ class PageController extends Controller
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
                 'route_name' => 'nullable|string|max:255|unique:pages,route_name',
+                'page_label_name' =>'nullable|string|max:255',
                 'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'page_short_content' => 'nullable|string',
                 'content' => 'required|string',
@@ -55,6 +56,7 @@ class PageController extends Controller
             ]);
             $data = [
                 'title' => $validated['title'],
+                'page_label_name' => $validated['page_label_name'],
                 'route_name' => $validated['route_name'] ?? null,
                 'short_content' => $validated['page_short_content'] ?? null,
                 'content' => $validated['content'] ?? null,
@@ -144,6 +146,7 @@ class PageController extends Controller
         try {
             $validated = $request->validate([
                 'title' => 'required|string|max:255',
+                'page_label_name' =>'nullable|string|max:255',
                 'route_name' => 'nullable|string|max:255|unique:pages,route_name,' . $page->id,
                 'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'page_short_content' => 'nullable|string',
@@ -157,6 +160,7 @@ class PageController extends Controller
             ]);
             $data = [
                 'title' => $validated['title'],
+                'page_label_name' => $validated['page_label_name'],
                 'route_name' => $validated['route_name'] ?? null,
                 'short_content' => $validated['page_short_content'] ?? null,
                 'content' => $validated['content'] ?? null,

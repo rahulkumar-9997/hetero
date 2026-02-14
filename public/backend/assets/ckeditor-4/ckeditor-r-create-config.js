@@ -8,6 +8,7 @@ document.querySelectorAll('.ckeditor4').forEach(function(el) {
         filebrowserImageUploadUrl: window.CKEDITOR_ROUTES.upload,
         filebrowserUploadMethod: 'form',
         imageUploadUrl: window.CKEDITOR_ROUTES.upload,
+        baseHref: "{{ url('/') }}/"
     });
 });
 
