@@ -18,7 +18,7 @@
                 <h3 class="sub-ttl">{{ $content->title }}</h3>
                 @if($content->dosage_form)
                     <h4 class="sub-ttl4">
-                        {!! Str::limit(strip_tags($content->dosage_form), 35) !!}
+                        {!! strip_tags($content->dosage_form) !!}
                     </h4>
                 @endif
                 <!-- <h5 class="exp-info 

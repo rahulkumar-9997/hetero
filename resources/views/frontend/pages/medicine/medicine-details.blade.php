@@ -57,12 +57,12 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
         @endif -->
         <div class="nws-details">
             <div class="row">               
-                <div class="col-md-7 order-2 order-md-1">
+                <div class="fs22 col-md-7 order-2 order-md-1">
                     <div class="medicine-container">                        
                         @if($medicineContent->short_content)
-                            <h4 class="home-title pruple2 fs24 wow fadeInUp">
+                            <h5 class="wow fadeInUp">
                                 {{ $medicineContent->short_content }}
-                            </h4>
+                            </h5>
                         @endif
                         <div class="medicine-title-other">
                             <div class="legacy-box border-left-blue mt-4">
