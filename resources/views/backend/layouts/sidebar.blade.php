@@ -20,68 +20,68 @@
                   <li class="active">
                      <a href="{{ route('dashboard') }}">
                         <i class="ti ti-layout-grid fs-16 me-2"></i>
-                        <span>Dashboard</span>
+                        <span>Панель управления</span>
                      </a>
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-layout-grid-add fs-16 me-2"></i>
-                        <span>Manage Menus</span>
+                        <span>Управление меню</span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
-                        <li><a href="{{ route('menus.index') }}">All Menus</a></li>
-                        <li><a href="{{ route('menus.create') }}">Create Menu</a></li>
+                        <li><a href="{{ route('menus.index') }}">Все меню</a></li>
+                        <li><a href="{{ route('menus.create') }}">Создать меню</a></li>
                      </ul>
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-brand-apple-arcade fs-16 me-2"></i>
-                        <span>Manage Pages</span>
+                        <span>Управление страницами</span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
-                        <li><a href="{{ route('pages.index') }}">All Pages</a></li>
-                        <li><a href="{{ route('pages.create') }}">Create Page</a></li>
+                        <li><a href="{{ route('pages.index') }}">Все страницы</a></li>
+                        <li><a href="{{ route('pages.create') }}">Создать страницу</a></li>
                      </ul>
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-file fs-16 me-2"></i>
-                        <span>Manage Banner</span>
+                        <span>Управление баннерами </span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
-                        <li><a href="{{ route('manage-banner.index') }}">Banner</a></li>
+                        <li><a href="{{ route('manage-banner.index') }}">Баннер</a></li>
                      </ul>
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-award-filled fs-16 me-2"></i>
-                        <span>Manage Milestones & Awards</span>
+                        <span>Управление этапами и наградами</span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
-                        <li><a href="{{ route('manage-year.index') }}">Year</a></li>
-                        <li><a href="{{ route('manage-award-category.index') }}">Category</a></li>
-                        <li><a href="{{ route('manage-awards.index') }}">Add Milestones & Awards</a></li>
+                        <li><a href="{{ route('manage-year.index') }}">Год</a></li>
+                        <li><a href="{{ route('manage-award-category.index') }}">Категория</a></li>
+                        <li><a href="{{ route('manage-awards.index') }}">Добавить достижения и награды</a></li>
                      </ul>
                   </li>
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-news fs-16 me-2"></i>
-                        <span>Manage News & Media</span>
+                        <span>Управление новостями и медиа </span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
                         <li>
                         <a href="{{ route('manage-news-media-category.index') }}">
-                           Add News and Media Category
+                           Добавить категорию новостей и медиа
                         </a>
                         </li>
                         <li>
                            <a href="{{ route('manage-news-media.index') }}">
-                              Add News and Media
+                               Добавить новости и медиа
                            </a>
                         </li>
                      </ul>
@@ -89,16 +89,16 @@
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-medicine-syrup fs-16 me-2"></i>
-                        <span>Manage Medicines</span>
+                        <span> Управление лекарствами</span>
                         <span class="menu-arrow"></span>
                      </a>
                      <ul>
                         <li>
                            <a href="{{ route('medicine-category.index') }}">
-                              Medicine Category
+                             Категория лекарств
                            </a>
                         </li>
-                        <li><a href="{{ route('manage-medicine.index') }}">Medicine</a></li>
+                        <li><a href="{{ route('manage-medicine.index') }}">Лекарство</a></li>
                      </ul>
                   </li>
                   

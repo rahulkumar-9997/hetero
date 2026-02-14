@@ -19,7 +19,7 @@
                         <i class="ti ti-file-text fs-24"></i>
                     </span>
                     <div class="ms-2">
-                        <p class="text-white mb-1">Total Banner</p>
+                        <p class="text-white mb-1">Всего баннеров</p>
                         <div class="d-inline-flex align-items-center flex-wrap gap-2">
                             <h4 class="text-white">{{ $data['totalBanner'] }}</h4>
 
@@ -35,7 +35,7 @@
                         <i class="ti ti-repeat fs-24"></i>
                     </span>
                     <div class="ms-2">
-                        <p class="text-white mb-1">Total Awards</p>
+                        <p class="text-white mb-1">Всего наград</p>
                         <div class="d-inline-flex align-items-center flex-wrap gap-2">
                             <h4 class="text-white">{{ $data['totalAwards'] }}</h4>
 
@@ -52,7 +52,7 @@
                         <i class="ti ti-brand-pocket fs-24"></i>
                     </span>
                     <div class="ms-2">
-                        <p class="text-white mb-1">Total Medicine</p>
+                        <p class="text-white mb-1">Всего лекарств</p>
                         <div class="d-inline-flex align-items-center flex-wrap gap-2">
                             <h4 class="text-white">{{ $data['totalMedicice'] }}</h4>
 

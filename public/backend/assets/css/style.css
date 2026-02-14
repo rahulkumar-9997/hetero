@@ -16516,7 +16516,7 @@ div#global-loader .whirly-loader:not(:required) {
   border-radius: 5px;
 }
 .sidebar .sidebar-menu > ul > li.submenu-open ul li a span, .settings-sidebar .sidebar-menu > ul > li.submenu-open ul li a span {
-  white-space: nowrap;
+  white-space: break-spaces;
   font-size: 14px;
   color: #e4e9f4;
 }
