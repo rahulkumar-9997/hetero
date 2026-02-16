@@ -176,7 +176,6 @@ class FrontHomeController extends Controller
         ];
 
         try {
-            //Mail::to('info@askfoundation.com')->send(new EnquiryMail($data));
             Mail::to('rahulkumarmauray464@gmail.com')->send(new EnquiryMail($data));
         } catch (\Exception $e) {
             Log::error('Failed to send enquiry email: ' . $e->getMessage());
