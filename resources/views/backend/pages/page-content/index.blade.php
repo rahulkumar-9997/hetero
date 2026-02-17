@@ -11,13 +11,13 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Page List</h4>
-                <h6>Manage Pages</h6>
+                <h4 class="fw-bold"> Список страниц</h4>
+                <h6>Управление страницами</h6>
             </div>
         </div>
 
         <div class="page-btn">
-            <a href="{{ route('pages.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Add Pages</a>
+            <a href="{{ route('pages.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Добавить страницу</a>
         </div>
 
     </div>
@@ -76,13 +76,13 @@
                 <table class="table datatable">
                     <thead class="thead-light">
                         <tr>
-                            <th>Title</th>
+                            <th>Заголовок</th>
                             <!-- <th>Slug</th> -->
-                            <th>Route</th>
-                            <th>Parent</th>
-                            <th>Order</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>Маршрут</th>
+                            <th>Родитель</th>
+                            <th>Порядок</th>
+                            <th>Статус</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
                         @foreach($pages as $page)

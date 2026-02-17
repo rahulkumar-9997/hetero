@@ -1,12 +1,12 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th>Sr. No.</th>
-            <th>Title</th>
-            <th style="width: 30%;">Details</th>
-            <th>File</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th style="width: 30%;">Детали</th>
+            <th>Файл</th>
+            <th>Файл</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -31,10 +31,10 @@
                                     title="{{ $newsMediaCategory->title }}">
                             </div>
                         @else
-                            <span class="text-muted">Image missing</span>
+                            <span class="text-muted">Изображение отсутствует</span>
                         @endif
                     @else
-                        <span class="text-muted">No image</span>
+                        <span class="text-muted">Нет изображения</span>
                     @endif
                 </td>
                 <td>
@@ -48,7 +48,7 @@
                     <div class="edit-delete-action">
                         <a class="btn btn-sm btn-primary me-2 p-2"
                         href="javascript:;" 
-                        data-title="Edit News & Media Category" 
+                        data-title="Редактировать категорию «Новости и медиа»" 
                         data-size="md"
                         data-id="{{ $newsMediaCategory->id }}"
                         data-url="{{ route('manage-news-media-category.edit', $newsMediaCategory->id) }}"
@@ -69,7 +69,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4" class="text-center">No categories found.</td>
+                <td colspan="4" class="text-center">Категории не найдены.</td>
             </tr>
         @endif
     </tbody>

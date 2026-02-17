@@ -27,13 +27,13 @@ class YearController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="year_name" class="form-label">Year Name *</label>
+                            <label for="year_name" class="form-label">Название года *</label>
                             <input type="text" name="year_name" class="form-control" id="year_name" placeholder="2025">
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>
@@ -90,13 +90,13 @@ class YearController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="year_name" class="form-label">Year Name *</label>
+                            <label for="year_name" class="form-label">Название года *</label>
                             <input type="text" name="year_name" class="form-control" id="year_name" placeholder="2025" value="'.$year_row->title.'">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">Status</label>
+                            <label class="form-label">Статус</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" id="edit_status" name="status" 
                                     value="1" '.($year_row->status == 1 ? 'checked' : '').'>
@@ -107,8 +107,8 @@ class YearController extends Controller
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Обновить</button>
                     </div>                    
                 </div>
             </form>

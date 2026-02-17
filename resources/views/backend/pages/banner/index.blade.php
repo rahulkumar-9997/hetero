@@ -11,13 +11,13 @@
         <div class="add-item d-flex">
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
-                <h6>Manage Banner</h6>
+                <h6>Управление баннерами</h6>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('manage-banner.create') }}" class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create New Banner
+                Создать новый баннер
             </a>
         </div>
     </div>
@@ -36,12 +36,12 @@
                 <table class="table datatable">
                     <thead class="thead-light">
                         <tr>
-                            <th>Heading</th>
-                            <th>Content</th>
-                            <th>Link</th>
-                            <th>Desktop Image</th>
-                            <th>Mobile Image</th>
-                            <th>Actions</th>
+                            <th>Заголовок</th>
+                            <th>Содержимое</th>
+                            <th>Ссылка</th>
+                            <th>Изображение для компьютера</th>
+                            <th>Изображение для мобильных устройств</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -10,20 +10,20 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold"></h4>
-                <h6>Manage Year</h6>
+                <h4 class="fw-bold">Список лет</h4>
+                <h6> Управление годами</h6>
             </div>
         </div>
         <div class="page-btn">
-            <a href="javascript:;" data-title="Add new Year" data-size="md" data-year-add="true" data-url="{{ route('manage-year.create') }}" class="btn btn-primary">
+            <a href="javascript:;" data-title="Добавить новый год" data-size="md" data-year-add="true" data-url="{{ route('manage-year.create') }}" class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create New Year
+                Создать новый год
             </a>
         </div>
     </div>
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-            <h5>Years List</h5>
+            <h5>Список лет</h5>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">

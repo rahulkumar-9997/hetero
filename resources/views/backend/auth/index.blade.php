@@ -35,7 +35,7 @@
                                 <div class="card">
                                     <div class="card-body p-5">
                                         <div class="login-userheading">
-                                            <h3>Sign In</h3>
+                                            <h3>Войти</h3>
                                         </div>
                                         @if($errors->any())
                                         <div class="alert alert-danger">
@@ -58,7 +58,7 @@
                                         </div>
                                         @endif
                                         <div class="mb-3">
-                                            <label class="form-label">Email OR User id <span class="text-danger"> *</span></label>
+                                            <label class="form-label">Электронная почта или идентификатор пользователя<span class="text-danger"> *</span></label>
                                             <div class="input-group">
                                                 <input type="text" value="" class="form-control border-end-0" name="email">
                                                 <span class="input-group-text border-start-0">
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Password <span class="text-danger"> *</span></label>
+                                            <label class="form-label">Пароль <span class="text-danger"> *</span></label>
                                             <div class="pass-group">
                                                 <input type="password" class="pass-input form-control" name="password">
                                                 <span class="ti toggle-password ti-eye-off text-gray-9"></span>
@@ -79,17 +79,18 @@
                                                     <div class="custom-control custom-checkbox">
                                                         <label class="checkboxs ps-4 mb-0 pb-0 line-height-1 fs-16 text-gray-6">
                                                             <input type="checkbox" class="form-control">
-                                                            <span class="checkmarks"></span>Remember me
+                                                            <span class="checkmarks"></span>
+                                                            Запомнить меня
                                                         </label>
                                                     </div>
                                                     <div class="text-end">
-                                                        <a class="text-orange fs-16 fw-medium" href="{{route('forget.password')}}">Forgot Password?</a>
+                                                        <a class="text-orange fs-16 fw-medium" href="{{route('forget.password')}}">Забыли пароль?</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-login">
-                                            <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                                            <button type="submit" class="btn btn-primary w-100">Войти</button>
                                         </div>
                                     </div>
                                 </div>

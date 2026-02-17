@@ -1,12 +1,12 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th>Sr. No.</th>
-            <th>Title</th>
-            <th>Sub-title</th>
-            <th>Content</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Подзаголовок</th>
+            <th>Категория</th>
+            <th>Статус</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -23,16 +23,16 @@
                 </td>
                 <td>
                     @if($featuredStory->status == '1')
-                        <span class="badge bg-success">Active</span>
+                        <span class="badge bg-success">Активный</span>
                     @else
-                        <span class="badge bg-danger">Inactive</span>
+                        <span class="badge bg-danger">Неактивный</span>
                     @endif
                 </td>
                 <td class="action-table-data">
                     <div class="edit-delete-action">
                         <a class="btn btn-sm btn-primary me-2 p-2"
                         href="javascript:;" 
-                        data-title="Edit News & Media Category" 
+                        data-title="Редактировать категорию «Новости и медиа»" 
                         data-size="md"
                         data-id="{{ $featuredStory->id }}"
                         data-url="{{ route('manage-news-media-category.edit', $featuredStory->id) }}"
@@ -53,7 +53,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4" class="text-center">No feature story found.</td>
+                <td colspan="6" class="text-center">Нет записей о главных историях.</td>
             </tr>
         @endif
     </tbody>

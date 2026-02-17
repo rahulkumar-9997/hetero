@@ -1,12 +1,12 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th>Sr. No.</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Content</th>
-            <th>Date</th>
-            <th>Actions</th>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Категория</th>
+            <th>Содержание</th>
+            <th>Дата</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>

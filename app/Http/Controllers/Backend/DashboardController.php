@@ -17,6 +17,7 @@ class DashboardController extends Controller
             'totalAwards' => Awards::count(),
             'totalMedicice' => MedicineContent::count(),
             'visitorTracking' => VisitorTracking::count(),
+            'pages' => Page::count(),
         ];
         return view('backend.pages.dashboard.index',  compact('data'));
     }

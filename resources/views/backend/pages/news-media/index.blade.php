@@ -11,24 +11,24 @@
         <div class="add-item d-flex">
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
-                <h6>News and Media</h6>
+                <h6>Новости и медиа</h6>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('manage-news-media.create') }}" class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create News and Media
+                Создать новости и медиа
             </a>
         </div>
     </div>
     <!--this is the card section--->
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-            <h5>News and Media</h5>
+            <h5>Новости и медиа</h5>
             <div class="filter-search d-flex align-items-center gap-2">
-                <h4>Filter</h4>
+                <h4>Фильтр</h4>
                 <select class="form-select w-auto" id="news-media-category-filter" onchange="redirectToCategory(this)">
-                    <option value="">New & Media Category</option>
+                    <option value="">Категория «Новости и медиа»</option>
                     @if(isset($newsMediaCategories) && $newsMediaCategories->count() > 0)
                         @php
                             $firstCategoryId = $newsMediaCategories->first()->id;

@@ -1,10 +1,10 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th width="10%">Sr. No.</th>
-            <th width="40%">Title</th>
-            <th width="20%">Status</th>
-            <th width="30%">Actions</th>
+            <th width="10%">№</th>
+            <th width="40%">Заголовок</th>
+            <th width="20%">Статус</th>
+            <th width="30%">Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
                     <div class="edit-delete-action">
                         <a class="btn btn-sm btn-primary me-2 p-2"
                         href="javascript:;" 
-                        data-title="Edit year" 
+                        data-title="Редактировать год" 
                         data-size="md"
                         data-yearid="{{ $year->id }}"
                         data-year-edit="true" 

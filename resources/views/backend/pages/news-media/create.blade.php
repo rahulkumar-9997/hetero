@@ -8,15 +8,15 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Create Pages</h4>
-                <h6>Manage Pages</h6>
+                <h4 class="fw-bold">Создать страницы</h4>
+                <h6>Управление страницами</h6>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-            <a href="{{ route('manage-news-media.index') }}" data-title="Go Back to Category" data-bs-toggle="tooltip" class="btn btn-sm btn-purple" data-bs-original-title="Go Back to Previous Page">
-                &lt;&lt; Go Back to Previous Page
+            <a href="{{ route('manage-news-media.index') }}" data-title="Вернуться на предыдущую страницу" data-bs-toggle="tooltip" class="btn btn-sm btn-purple" data-bs-original-title="Вернуться на предыдущую страницу">
+                &lt;&lt; Вернуться на предыдущую страницу
             </a>
 
         </div>
@@ -26,9 +26,9 @@
                 <div class="row">
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label">Select news and media category</label>
+                            <label class="form-label">Выбрать категорию новостей и медиа</label>
                             <select class="select" name="news_media_categories" id="news_media_categories" onchange="redirectToCategory(this)">
-                                <option value="">-- Select news and media category --</option>
+                                <option value="">-- Выбрать категорию новостей и медиа --</option>
                                 @foreach($newsMediaCategories as $newsMediaCategory)
                                     <option 
                                         data-slug="{{ $newsMediaCategory->slug }}" 
@@ -50,7 +50,7 @@
                             <div class="col-sm-6 col-12">
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Title<span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Название<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Subtitle</label>
+                                    <label class="form-label">Подзаголовок</label>
                                     <input type="text" class="form-control" name="subtitle" value="{{ old('subtitle') }}">
                                     @error('subtitle')
                                         <span class="text-danger">{{ $message }}</span>
@@ -71,7 +71,7 @@
                             <div class="col-lg-12">
                                 <div class="summer-description-box mb-3">
                                     <label class="form-label">
-                                        Content
+                                        Содержимое
                                         <span class="text-danger">*</span> 
                                     </label>
                                     <textarea id="content" class="form-control ckeditor4" name="content">{{ old('content') }}</textarea>                                    
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm-2 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Status</label><br>
+                                    <label class="form-label">Статус</label><br>
                                     <div class="form-check form-check-inline">
                                         <input
                                             class="form-check-input"
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-sm-5 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Meta Title</label>
+                                    <label class="form-label">Мета-заголовок</label>
                                     <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title') }}">
                                     @error('meta_title')
                                         <span class="text-danger">{{ $message }}</span>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="col-sm-5 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Meta Description</label>
+                                    <label class="form-label">Мета-описание</label>
                                     <textarea name="meta_description" id="meta_description" class="form-control">{{ old('meta_description') }}</textarea>
                                     @error('meta_description')
                                         <span class="text-danger">{{ $message }}</span> 
@@ -119,8 +119,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="d-flex align-items-center justify-content-end mb-4">
-                                    <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{ route('manage-news-media.index') }}" class="btn btn-secondary me-2">Отмена</a>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="row">
                             <div class="col-sm-4 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Title<span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Название<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
@@ -140,9 +140,9 @@
                             </div>
                             <div class="col-sm-4 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Select year </label>
+                                    <label class="form-label">Выбрать год </label>
                                     <select class="select" name="years">
-                                        <option>-- Select year --</option>
+                                        <option>-- Выбрать год --</option>
                                         @foreach($years as $year)
                                         <option value="{{ $year->id }}">
                                             {{ $year->title }}
@@ -156,7 +156,7 @@
                             </div>
                             <div class="col-sm-4 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Post Date<span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Дата публикации<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control flatpickr-input" name="post_date" value="{{ old('post_date') }}" placeholder="YYYY-MM-DD" id="flatpickr-date" readonly="readonly">
                                     @error('post_date')
                                         <span class="text-danger">{{ $message }}</span>
@@ -165,7 +165,7 @@
                             </div>
                             <div class="col-sm-5 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Location<span class="text-danger ms-1"></label>
+                                    <label class="form-label">Местоположение<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control" name="location" value="{{ old('location') }}">
                                     @error('location')
                                         <span class="text-danger">{{ $message }}</span>
@@ -174,7 +174,7 @@
                             </div>
                             <div class="col-sm-5 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Images<span class="text-danger ms-1"></label>
+                                    <label class="form-label">Изображения<span class="text-danger ms-1">*</span></label>
                                     <input type="file" class="form-control" name="image" value="{{ old('image') }}">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
@@ -183,7 +183,7 @@
                             </div>
                             <div class="col-sm-2 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Status</label><br>
+                                    <label class="form-label">Статус</label><br>
                                     <div class="form-check form-check-inline">
                                         <input
                                             class="form-check-input"
@@ -192,14 +192,14 @@
                                             id="is_active"
                                             value="1"
                                             {{ old('is_active', true) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="is_active">Active</label>
+                                        <label class="form-check-label" for="is_active">Активный</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="summer-description-box mb-3">
                                     <label class="form-label">
-                                        Content 
+                                        Содержимое 
                                         <span class="text-danger">*</span>
                                     </label>
                                     <textarea id="content" name="content" class="form-control ckeditor4">{{ old('content', $page->content ?? '') }}</textarea>
@@ -213,7 +213,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Meta Title</label>
+                                    <label class="form-label">Мета-заголовок</label>
                                     <input type="text" class="form-control" name="meta_title" value="{{ old('meta_title') }}">
                                     @error('meta_title')
                                         <span class="text-danger">{{ $message }}</span>
@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Meta Description</label>
+                                    <label class="form-label">Мета-описание</label>
                                     <textarea name="meta_description" id="meta_description" class="form-control">{{ old('meta_description') }}</textarea>
                                     @error('meta_description')
                                         <span class="text-danger">{{ $message }}</span>
@@ -233,8 +233,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="d-flex align-items-center justify-content-end mb-4">
-                                    <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Отмена</a>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
                                 </div>
                             </div>
                         </div>                        
@@ -245,7 +245,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Title<span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Заголовок<span class="text-danger ms-1">*</span></label>
                                     <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
@@ -254,7 +254,7 @@
                             </div>                            
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Image <span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Изображение <span class="text-danger ms-1">*</span></label>
                                     <input type="file" class="form-control" name="image" value="{{ old('image') }}">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
@@ -263,7 +263,7 @@
                             </div>
                             <div class="col-sm-6 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Download pdf File <span class="text-danger ms-1">*</span></label>
+                                    <label class="form-label">Скачать PDF файл <span class="text-danger ms-1">*</span></label>
                                     <input type="file" class="form-control" name="pdf_file" value="{{ old('pdf_file') }}">
                                     @error('pdf_file')
                                         <span class="text-danger">{{ $message }}</span>
@@ -272,7 +272,7 @@
                             </div>
                             <div class="col-sm-2 col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Status</label><br>
+                                    <label class="form-label">Статус</label><br>
                                     <div class="form-check form-check-inline">
                                         <input
                                             class="form-check-input"
@@ -281,7 +281,7 @@
                                             id="is_active"
                                             value="1"
                                             {{ old('is_active', true) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="is_active">Active</label>
+                                        <label class="form-check-label" for="is_active">Активный</label>
                                     </div>
                                 </div>
                             </div>
@@ -290,8 +290,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="d-flex align-items-center justify-content-end mb-4">
-                                    <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <a href="{{ route('pages.index') }}" class="btn btn-secondary me-2">Отмена</a>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
                                 </div>
                             </div>
                         </div>

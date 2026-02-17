@@ -1,13 +1,13 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th width="10%">Sr. No.</th>
-            <th width="15%">Category</th>
-            <th width="15%">Year</th>
-            <th width="30%">Content</th>
-            <th width="10%">Image</th>
-            <th width="10%">Status</th>
-            <th width="10%">Actions</th>
+            <th width="10%">№</th>
+            <th width="15%">Категория</th>
+            <th width="15%">Год</th>
+            <th width="30%">Год</th>
+            <th width="10%">Изображение</th>
+            <th width="10%">Статус</th>
+            <th width="10%">Действия</th>
         </tr>
     </thead>
     <tbody>

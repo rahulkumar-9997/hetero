@@ -6,6 +6,7 @@ use App\Http\Middleware\TrackVisitor;
 use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\ForgotPasswordController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Backend\AwardsCategoryController;
@@ -47,6 +48,8 @@ Route::prefix('admin')->group(function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/get-daily-visitors', [DashboardController::class, 'getDailyVisitors'])->name('get-daily-visitors');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+
     
     Route::resource('manage-banner', BannerController::class)->names('manage-banner');
     Route::resource('manage-year', YearController::class)->names('manage-year');

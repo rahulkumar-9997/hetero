@@ -55,23 +55,27 @@
                                         @csrf
                                         <input type="hidden" name="token" value="{{ $token }}">
                                         <div class="col-lg-12 mb-2">
-                                            <label class="form-label" for="email">Enter Registered Email'id</label>
+                                            <label class="form-label" for="email">
+                                                Введите зарегистрированный адрес электронной почты
+                                            </label>
                                             <input type="email" id="email" name="email" class="form-control bg-">
                                         </div>
                                         <div class="col-lg-12 mb-2">
-                                            <label class="form-label" for="password">Enter Password</label>
+                                            <label class="form-label" for="password">Введите пароль</label>
                                             <input type="password" id="password" name="password" class="form-control bg-">
                                         </div>
                                         <div class="col-lg-12 mb-2">
-                                            <label class="form-label" for="password_confirmation">Enter Confirm Password</label>
+                                            <label class="form-label" for="password_confirmation">
+                                                 Введите подтверждение пароля
+                                            </label>
                                             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control bg-">
                                         </div>
                                         <div class="col-lg-12 mb-2">
-                                            <a href="{{route('login')}}" class="float-end text-muted text-unline-dashed mb-3">Go to Login</a>
+                                            <a href="{{route('login')}}" class="float-end text-muted text-unline-dashed mb-3"> Перейти ко входу</a>
                                         </div>
 
                                         <div class="col-lg-12 mb-3 text-center d-grid">
-                                            <button class="btn btn-primary w-100" type="submit">Reset</button>
+                                            <button class="btn btn-primary w-100" type="submit">Сбросить</button>
                                         </div>
                                     </form>
                                 </div>

@@ -28,25 +28,26 @@ class NewsMediaCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_title" class="form-label">News & Media Title *</label>
+                            <label for="news_media_title" class="form-label"> Заголовок новостей и медиа *</label>
                             <input type="text" name="news_media_title" class="form-control" id="news_media_title">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_image" class="form-label">News & Media Image File</label>
+                            <label for="news_media_image" class="form-label">Файл изображения новостей и медиа
+</label>
                             <input type="file" name="news_media_image" class="form-control" id="news_media_image">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_content" class="form-label">News & Media Content *</label>
-                            <textarea class="form-control bg-light-subtle" id="news_media_content" rows="4" name="news_media_content" placeholder="News & Media Content"></textarea>
+                            <label for="news_media_content" class="form-label">Содержимое новостей и медиа *</label>
+                            <textarea class="form-control bg-light-subtle" id="news_media_content" rows="4" name="news_media_content" placeholder="Содержимое новостей и медиа"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>
@@ -129,26 +130,26 @@ class NewsMediaCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_title" class="form-label">News & Media Title *</label>
+                            <label for="news_media_title" class="form-label">Заголовок новостей и медиа *</label>
                             <input type="text" name="news_media_title" class="form-control" id="news_media_title" value="'.$newsMediaCategory->title.'">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_image" class="form-label">News & Media Image File</label>
+                            <label for="news_media_image" class="form-label">Файл изображения новостей и медиа</label>
                             <input type="file" name="news_media_image" class="form-control" id="news_media_image">
                         </div>
                         '.$image_file.'
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="news_media_content" class="form-label">News & Media Content *</label>
-                            <textarea class="form-control bg-light-subtle" id="news_media_content" rows="4" name="news_media_content" placeholder="News & Media Content">'.$newsMediaCategory->description.'</textarea>
+                            <label for="news_media_content" class="form-label">Содержимое новостей и медиа *</label>
+                            <textarea class="form-control bg-light-subtle" id="news_media_content" rows="4" name="news_media_content" placeholder="Содержимое новостей и медиа">'.$newsMediaCategory->description.'</textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>

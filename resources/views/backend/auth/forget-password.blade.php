@@ -35,7 +35,7 @@
                                 <div class="card">
                                     <div class="card-body p-5">
                                         <div class="login-userheading">
-                                            <h3>Forgot password?</h3>
+                                            <h3>Забыли пароль?</h3>
                                         </div>
                                         @if($errors->any())
                                         <div class="alert alert-danger">
@@ -58,7 +58,7 @@
                                         </div>
                                         @endif
                                         <div class="mb-3">
-                                            <label class="form-label">Enter your registered email id/user id <span class="text-danger"> *</span></label>
+                                            <label class="form-label">Введите ваш зарегистрированный адрес электронной почты / идентификатор пользователя<span class="text-danger"> *</span></label>
                                             <div class="input-group">
                                                 <input type="email" class="form-control border-end-0" name="email">
                                                 <span class="input-group-text border-start-0">
@@ -67,10 +67,10 @@
                                             </div>
                                         </div>
                                         <div class="form-login">
-                                            <button type="submit" class="btn btn-login">Submit</button>
+                                            <button type="submit" class="btn btn-login">Отправить</button>
                                         </div>
                                         <div class="signinform text-center">
-                                            <h4>Return to<a href="{{route('login')}}" class="hover-a"> login </a></h4>
+                                            <h4>Вернуться ко<a href="{{route('login')}}" class="hover-a"> входу </a></h4>
                                         </div>
 
                                     </div>

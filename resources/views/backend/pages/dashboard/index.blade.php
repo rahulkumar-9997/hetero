@@ -61,9 +61,25 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-3 col-sm-6 col-12 d-flex">
+            <div class="card bg-orange sale-widget flex-fill">
+                <div class="card-body d-flex align-items-center">
+                    <span class="sale-icon bg-white text-info">
+                        <i class="ti ti-brand-pocket fs-24"></i>
+                    </span>
+                    <div class="ms-2">
+                        <p class="text-white mb-1">Всего Страницы</p>
+                        <div class="d-inline-flex align-items-center flex-wrap gap-2">
+                            <h4 class="text-white">{{ $data['pages'] }}</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row sales-board">
-        <div class="col-md-12 col-lg-7 col-sm-12 col-12 d-flex">
+        <!-- <div class="col-md-12 col-lg-7 col-sm-12 col-12 d-flex">
             <div class="card flex-fill flex-fill">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">Daily Visitors</h5>
@@ -86,7 +102,7 @@
                     <div id="visitors_chart" class="chart-set"></div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="col-md-12 col-lg-5 col-sm-12 col-12 d-flex">
             <div class="card flex-fill">
                 <div class="card-header d-flex justify-content-between align-items-center">

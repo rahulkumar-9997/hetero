@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','Menu List')
+@section('title',' Список меню')
 @push('styles')
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
@@ -10,13 +10,13 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Menu List</h4>
-                <h6>Manage Menu</h6>
+                <h4 class="fw-bold"> Список меню</h4>
+                <h6>Управление меню</h6>
             </div>
         </div>
 
         <div class="page-btn">
-            <a href="{{ route('menus.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Create New Menu</a>
+            <a href="{{ route('menus.create') }}" class="btn btn-primary"><i class="ti ti-circle-plus me-1"></i>Создать новое меню</a>
         </div>
 
     </div>
@@ -75,10 +75,10 @@
                 <table class="table datatable">
                     <thead class="thead-light">
                         <tr>
-                            <th>Name</th>
-                            <th>Location</th>
-                            <th>Items</th>
-                            <th>Actions</th>
+                            <th>Название</th>
+                            <th>Местоположение</th>
+                            <th>Позиции</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,12 +90,12 @@
                                 <td class="action-table-data">
                                     <div class="edit-delete-action">
                                         <a class="me-2 btn btn-secondary p-2" href="{{ route('menus.items', $menu->id) }}">
-                                             Menu Item
+                                             Пункт меню
                                         </a>
                                         <a class="me-2 edit-icon p-2" href="{{ route('menus.edit', $menu) }}">
                                             <i data-feather="eye" class="action-eye"></i>
                                         </a>
-                                        <a class="me-2 p-2" href="{{ route('menus.edit', $menu) }}">
+                                        <a class="me-2 p-2 btn btn-sm btn-info" href="{{ route('menus.edit', $menu) }}">
                                             <i data-feather="edit" class="feather-edit"></i>
                                         </a>
                                         <form action="{{ route('menus.destroy', $menu) }}" method="POST" class="d-inline">

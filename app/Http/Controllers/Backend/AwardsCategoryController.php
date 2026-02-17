@@ -25,13 +25,13 @@ class AwardsCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="awards_category_name" class="form-label">Awards Category Name *</label>
+                            <label for="awards_category_name" class="form-label">Название категории наград *</label>
                             <input type="text" name="awards_category_name" class="form-control" id="awards_category_name">
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>
@@ -87,7 +87,7 @@ class AwardsCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="awards_category_name" class="form-label">Awards Category Name *</label>
+                            <label for="awards_category_name" class="form-label">Название категории наград *</label>
                             <input type="text" name="awards_category_name" class="form-control" id="awards_category_name" value="'.$award_category_row->title.'">
                         </div>
                     </div>
@@ -104,8 +104,8 @@ class AwardsCategoryController extends Controller
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Обновить</button>
                     </div>                    
                 </div>
             </form>

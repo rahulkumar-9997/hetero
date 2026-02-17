@@ -11,19 +11,19 @@
         <div class="add-item d-flex">
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
-                <h6>Award Category</h6>
+                <h6>Категория награды</h6>
             </div>
         </div>
         <div class="page-btn">
-            <a href="javascript:;" data-title="Add new Awards Category" data-size="md" data-awards-category-add="true" data-url="{{ route('manage-award-category.create') }}" class="btn btn-primary">
+            <a href="javascript:;" data-title="Создать новую категорию наград" data-size="md" data-awards-category-add="true" data-url="{{ route('manage-award-category.create') }}" class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create New Awards Category
+               Создать новую категорию наград
             </a>
         </div>
     </div>
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-            <h5>Award Category List</h5>
+            <h5>Список категорий наград</h5>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
