@@ -24,7 +24,7 @@
       <ul class="nav user-menu">
          <li class="nav-item pos-nav">
             <a href="{{ route('clear-cache') }}" class="btn btn-dark btn-md d-inline-flex align-items-center">
-               <i class="ti ti-device-laptop me-1"></i>Clear Cache
+               <i class="ti ti-device-laptop me-1"></i>Очистить кэш
             </a>
          </li>
          <li class="nav-item dropdown nav-item-box">
@@ -83,10 +83,10 @@
                      <p>{{auth()->user()->user_id ?? ''}}</p>
                   </div>
                </div>
-               <a class="dropdown-item" href="{{ route('profile') }}"><i class="ti ti-user-circle me-2"></i>MyProfile</a>
+               <a class="dropdown-item" href="{{ route('profile') }}"><i class="ti ti-user-circle me-2"></i>Мой профиль</a>
                
                <hr class="my-2">
-               <a class="dropdown-item logout pb-0" href="{{ route('logout')}}"><i class="ti ti-logout me-2"></i>Logout</a>
+               <a class="dropdown-item logout pb-0" href="{{ route('logout')}}"><i class="ti ti-logout me-2"></i>Выход</a>
             </div>
          </li>
       </ul>
@@ -97,9 +97,8 @@
          <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">My Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+            <a class="dropdown-item" href="{{ route('profile') }}">Мой профиль</a>
+            <a class="dropdown-item" href="{{route('logout')}}">Выход</a>
          </div>
       </div>
       <!-- /Mobile Menu -->

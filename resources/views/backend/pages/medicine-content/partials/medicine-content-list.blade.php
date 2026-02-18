@@ -1,23 +1,20 @@
 <table class="table">
     <thead class="thead-light">
         <tr>
-            <th>Sr. No.</th>
+            <th>№</th>
             <th>
-                MHH 
-                <BR><span class="text-muted">(INN: International Non-proprietary Name)</span>
+               МНН (Международное непатентованное наименование)
             </th>
             <th>
-                ТН 
-                <BR><span class="text-muted">(Trade Name / Brand Name)</span>
+                ТН (Торговое наименование / Название бренда)
             </th>
             <th>
-                Форма выпуска 
-                <BR><span class="text-muted">(Dosage Form / Form of Release)</span>
+                Форма выпуска
             </th>
-            <th>Category</th>
-            <th>Short Content</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>Категория</th>
+            <th>Краткое описание</th>
+            <th>Статус</th>
+            <th>Действия</th>
         </tr>
 
     </thead>
@@ -47,9 +44,9 @@
                 </td>
                 <td>
                     @if($medicineContent->status)
-                        <span class="badge bg-success">Active</span>
+                        <span class="badge bg-success">Активный</span>
                     @else
-                        <span class="badge bg-danger">Inactive</span>
+                        <span class="badge bg-danger">Неактивный</span>
                     @endif
                 </td>
                 <td class="action-table-data">
@@ -72,7 +69,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="6" class="text-center">No medicine content found.</td>
+                <td colspan="6" class="text-center">Контент лекарств не найден.</td>
             </tr>
         @endif
     </tbody>

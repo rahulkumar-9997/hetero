@@ -12,14 +12,14 @@
         <div class="add-item d-flex">
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
-                <h6>Medicine List</h6>
+                <h6>Список лекарств</h6>
             </div>
         </div>
         <div class="page-btn">            
             <a href="{{ route('manage-medicine.create') }}"
             class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create New Medicine
+                Создать новое лекарство
             </a>
         </div>
     </div>

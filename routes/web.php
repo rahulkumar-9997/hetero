@@ -49,7 +49,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/get-daily-visitors', [DashboardController::class, 'getDailyVisitors'])->name('get-daily-visitors');
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
-
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/delete-image', [ProfileController::class, 'deleteImage'])->name('profile.delete-image');
     
     Route::resource('manage-banner', BannerController::class)->names('manage-banner');
     Route::resource('manage-year', YearController::class)->names('manage-year');

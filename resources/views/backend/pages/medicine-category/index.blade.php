@@ -12,31 +12,22 @@
         <div class="add-item d-flex">
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
-                <h6>Medicine Category List</h6>
+                <h6>Список категорий лекарств</h6>
             </div>
         </div>
         <div class="page-btn">            
             <a href="javascript:;"
-            data-title="Add new Medicine Category"
+            data-title="Добавить новую категорию лекарств"
             data-medicine-category-add="true"
             data-url="{{ route('medicine-category.create') }}"
             data-size="lg"
             class="btn btn-primary">
                 <i class="ti ti-circle-plus me-1"></i>
-                Create New Medicine Category
+               Создать новую категорию лекарств
             </a>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
-            <div class="search-set">
-                <div class="search-input">
-                    <span class="btn-searchset">
-                        <i class="ti ti-search fs-14 feather-search"></i>
-                    </span>
-                </div>
-            </div>
-        </div>
+    <div class="card">        
         <div class="card-body p-0">
             <div class="table-responsive">                
                 <div class="display-medicine-category">

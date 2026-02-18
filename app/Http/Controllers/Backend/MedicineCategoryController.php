@@ -36,31 +36,31 @@ class MedicineCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="medicine_category_name" class="form-label">Medicine Category Name *</label>
+                            <label for="medicine_category_name" class="form-label"> Название категории лекарств *</label>
                             <input type="text" name="medicine_category_name" class="form-control" id="medicine_category_name">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="medicine_category_image" class="form-label">Medicine Category Image </label>
+                            <label for="medicine_category_image" class="form-label"> Изображение категории лекарств </label>
                             <input type="file" name="medicine_category_image" class="form-control" id="medicine_category_image">
                         </div>
                     </div>
                     <div class="mb-3 col-md-2 mt-4">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="status" name="status" value="1" checked>
-                            <label class="form-check-label" for="status">Status</label>
+                            <label class="form-check-label" for="status">Статус</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="medicine_content" class="form-label ">Content</label>
+                            <label for="medicine_content" class="form-label ">Содержимое</label>
                             <textarea name="medicine_content" class="ckeditor4"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>
@@ -159,13 +159,13 @@ class MedicineCategoryController extends Controller
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="medicine_category_name" class="form-label">Medicine Category Name *</label>
+                            <label for="medicine_category_name" class="form-label">Название категории лекарств *</label>
                             <input type="text" name="medicine_category_name" class="form-control" id="medicine_category_name" value="'.$medicine_category_row->title.'">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="medicine_category_image" class="form-label">Medicine Category Image </label>
+                            <label for="medicine_category_image" class="form-label">Изображение категории лекарств </label>
                             <input type="file" name="medicine_category_image" class="form-control" id="medicine_category_image">
                             '.$imageFile.'
                         </div>
@@ -173,18 +173,18 @@ class MedicineCategoryController extends Controller
                     <div class="mb-3 col-md-2 mt-4">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="status" name="status" value="1" '.($medicine_category_row->status == 1 ? 'checked' : '').'>
-                            <label class="form-check-label" for="status">Status</label>
+                            <label class="form-check-label" for="status">Статус</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label for="medicine_content" class="form-label">Content</label>
+                            <label for="medicine_content" class="form-label">Содержимое</label>
                             <textarea name="medicine_content" class="ckeditor4">'.$medicine_category_row->content.'</textarea>
                         </div>
                     </div>
                     <div class="modal-footer pb-0 pe-2">
-                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        <button type="button" class="btn btn-cancel waves-effect" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Отправить</button>
                     </div>                    
                 </div>
             </form>

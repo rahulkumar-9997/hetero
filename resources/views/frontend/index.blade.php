@@ -34,7 +34,7 @@
                   </div>
                   @endif
                   @if($banner->banner_link)
-                  <a href="{{ $banner->banner_link }}" class="readmore">Read More</a>
+                  <a href="{{ $banner->banner_link }}" class="readmore">Читать далее</a>
                   @endif
                </div>
             </div>

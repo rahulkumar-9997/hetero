@@ -1,10 +1,10 @@
 <table class="table datatable1">
     <thead class="thead-light">
         <tr>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>Название</th>
+            <th>Изображение</th>
+            <th>Статус</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -21,9 +21,9 @@
             </td>
             <td>
                 @if ($medicine_category->status ==1)
-                    <span class="badge bg-success">Active</span>
+                    <span class="badge bg-success">Активный</span>
                 @else
-                    <span class="badge bg-info">In-Active</span>
+                    <span class="badge bg-info">Неактивный</span>
                 @endif
             </td>
             
@@ -31,7 +31,7 @@
                 <div class="edit-delete-action">
                     <a class="btn btn-sm btn-primary me-2 p-2"
                     href="javascript:;" 
-                    data-title="Edit awards category" 
+                    data-title="Редактировать категорию «Награды»" 
                     data-size="lg"
                     data-medcatid="{{ $medicine_category->id }}"
                     data-medicine-category-edit="true" 
@@ -52,7 +52,7 @@
         @endforeach
         @else
         <tr>
-            <td colspan="6" class="text-center">No banners found.</td>
+            <td colspan="6" class="text-center">Категории лекарств не найдены.</td>
         </tr>
         @endif
     </tbody>

@@ -11,7 +11,7 @@
             <div class="page-title">
                 <h4 class="fw-bold"></h4>
                 <h6>
-                    Add new Medicine
+                    Добавить новое лекарство
                 </h6>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap row-gap-3">
             <a href="{{ route('manage-medicine.index') }}" data-title="Go Back to Previous Page" data-bs-toggle="tooltip" class="btn btn-sm btn-pink" data-bs-original-title="Go Back to Previous Page">
                 <i class="ti ti-arrow-left me-1"></i>
-                Go Back to Previous Page
+                Вернуться на предыдущую страницу
             </a>
         </div>
         <div class="card-body">
@@ -40,11 +40,11 @@
                         <div class="mb-3">
                             <div class="add-newplus">
                                 <label class="form-label">
-                                    Select Medicine Category
+                                    Выбрать категорию лекарства
                                     <span class="text-danger ms-1">*</span>
                                 </label>
                                 <a href="javascript:void(0);"
-                                data-title="Add new Medicine Category"
+                                data-title="Добавить новую категорию лекарства"
                                 data-medicine-category-add="true"
                                 data-url="{{ route('medicine-category.create') }}"
                                 data-size="lg"
@@ -52,12 +52,12 @@
                                 >
                                 <i data-feather="plus-circle" class="plus-down-add"></i>
                                 <span>
-                                    Add New</span>
+                                   Добавить новое</span>
                                 </a>
                             </div>
                            
                             <select class="select" name="medicine_category" id="medicine_category">
-                                <option value="">-- Select Medicine category --</option>
+                                <option value="">-- Выбрать категорию лекарства --</option>
                                 @foreach($MedicineCategories as $MedicineCategory)
                                 <option value="{{ $MedicineCategory->id }}"
                                     {{ old('medicine_category') == $MedicineCategory->id ? 'selected' : '' }}>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="mhh">МНН (International Non-proprietary Name) *</label>
+                            <label class="form-label" for="mhh">МНН (Международное непатентованное наименование) *</label>
                             <input type="text" class="form-control" name="mhh" id="mhh"
                                 value="{{ old('mhh') }}">
                             @error('mhh')
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="th">ТН (Trade Name (or Brand Name)) </label>
+                            <label class="form-label" for="th">ТН (Торговое наименование / Название бренда)</label>
                             <input type="text" class="form-control" name="th" id="th"
                                 value="{{ old('th') }}">
                             @error('th')
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="dosage_form">Форма выпуска (Dosage Form / Form of Release) </label>
+                            <label class="form-label" for="dosage_form"> Форма выпуска </label>
                             <input type="text" class="form-control" name="dosage_form" id="dosage_form"
                                 value="{{ old('dosage_form') }}">
                             @error('dosage_form')
@@ -103,7 +103,7 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="medicine_image">Medicine Image</label>
+                            <label class="form-label" for="medicine_image">Изображение лекарства</label>
                             <input type="file" class="form-control" name="medicine_image" id="medicine_image">
                             @error('medicine_image')
                             <div class="text-danger">{{ $message }}</div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="col-sm-4 col-12">
                         <div class="mb-2">
-                            <label class="form-label" for="medicine_short_content">Medicine Short Content</label>
+                            <label class="form-label" for="medicine_short_content">Краткое описание лекарства</label>
                             <textarea type="text" class="form-control" name="medicine_short_content" id="medicine_short_content">{{ old('medicine_short_content') }}</textarea>
                             @error('medicine_short_content')
                             <div class="text-danger">{{ $message }}</div>
@@ -124,13 +124,13 @@
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" id="status" name="status" value="1"
                                     {{ old('status', true) ? 'checked' : '' }}>
-                                <label class="form-check-label" for="status">Status</label>
+                                <label class="form-check-label" for="status">Статус</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-12">
                         <div class="mb-3">
-                            <label class="form-label" for="medicine_content">Medicine Content</label>
+                            <label class="form-label" for="medicine_content">Содержимое лекарства</label>
                             <textarea id="content" name="content" class="ckeditor4">{{ old('content') }}</textarea>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
@@ -141,8 +141,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center justify-content-end mb-4">
-                            <a href="{{ route('manage-banner.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{ route('manage-banner.index') }}" class="btn btn-secondary me-2">Отмена</a>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
                         </div>
                     </div>
                 </div>
