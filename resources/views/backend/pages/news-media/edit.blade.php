@@ -183,13 +183,13 @@
 
 @endsection
 @push('scripts')
-<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}"></script>
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor.js') }}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
 <script>
     window.CKEDITOR_ROUTES = {
         upload: "{{ route('ckeditor.upload') }}",
         imagelist: "{{ route('ckeditor.imagelist') }}"
     };
 </script>
-<script src="{{ asset('backend/assets/ckeditor-4/ckeditor-r-create-config.js') }}"></script>
+<script src="{{ asset('backend/assets/ckeditor-4/ckeditor-r-create-config.js') }}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
 
 @endpush

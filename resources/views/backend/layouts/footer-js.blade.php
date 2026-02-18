@@ -13,8 +13,8 @@
 <!-- Bootstrap Tagsinput JS -->
 <!-- <script src="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script> -->
 
-<script src="{{asset('backend/assets/js/script.js')}}"></script>
-<script src="{{asset('backend/assets/plugins/toastr/toastify-js.js')}}"></script>
+<script src="{{asset('backend/assets/js/script.js')}}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
+<script src="{{asset('backend/assets/plugins/toastr/toastify-js.js')}}?v={{ env('ASSET_VERSION', '1.0') }}"></script>
 @stack('scripts')
 @if(session()->has('success'))
 <script>
