@@ -61,11 +61,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/APIs.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>APIs</h2>
                               <p>Высококачественные активные фармацевтические ингредиенты, поддерживающие мировые потребности здравоохранения.</p>
                            </a>
@@ -74,11 +74,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Generics.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>Глобальные дженерики</h2>
                               <p>Доступные и надёжные дженерические лекарства в различных терапевтических областях.</p>
                            </a>
@@ -87,11 +87,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/Biosimilars.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>Биосимиляры</h2>
                               <p>Инновационные альтернативы для современных биологических терапий.</p>
                            </a>
@@ -100,11 +100,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/Custom-Pharmaceutical.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>Индивидуальные фармацевтические решения</h2>
                               <p>Разработка и производство на заказ для партнёров по всему миру.</p>
                            </a>
@@ -113,11 +113,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/Global-Access.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>Глобальный доступ</h2>
                               <p>Обеспечение доступных решений в сфере здравоохранения для пациентов по всему миру.</p>
                            </a>
@@ -126,11 +126,11 @@
                      <div class="swiper-slide">
                         <div class="vast-product-box">
                            <div class="product-box-pic">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                  <img src="{{asset('fronted/assets/hetero-img/focus-area/Key-Therapies.jpg')}}" width="100%">
                               </a>
                            </div>
-                           <a href="">
+                           <a href="javascript:void(0);">
                               <h2>Ключевые направления терапии</h2>
                               <p>Сфокусированная экспертиза в области ВИЧ, онкологии, сердечно-сосудистых и других важных заболеваний.</p>
                            </a>
@@ -191,7 +191,7 @@
             <div class="about-us-footer wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                data-wow-delay="0.1s">
                <div class="about-us-footer-btn">
-                  <a href="#" class="btn-default">Читать далее</a>
+                  <a href="/page/o-nas" class="btn-default">Читать далее</a>
                </div>
             </div>
          </div>

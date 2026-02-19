@@ -17,12 +17,33 @@
          <ul>
             <li class="submenu-open">
                <ul>
+                  
                   <li class="active">
                      <a href="{{ route('dashboard') }}">
                         <i class="ti ti-layout-grid fs-16 me-2"></i>
                         <span>Панель управления</span>
                      </a>
                   </li>
+                  <li class="{{ request()->is('users') ? 'open' : ''}} submenu">
+                     <a href="javascript:void(0);">
+                        <i class="ti ti-layout-grid-add fs-16 me-2"></i>
+                        <span>Manage User</span>
+                        <span class="menu-arrow"></span>
+                     </a>
+                     <ul class="sub-menu" >
+                        <li>
+                           <a class="" href="{{ route('users.index') }}"> User</a>
+                        </li>
+                        <li>
+                           <a class="" href="{{ route('roles.index') }}">Roles</a>
+                        </li>
+                        <li>
+                           <a class="" href="{{ route('permissions.index') }}">Permissions</a>
+                        </li>
+                        
+                     </ul>
+                  </li>
+
                   <li class="submenu">
                      <a href="javascript:void(0);">
                         <i class="ti ti-layout-grid-add fs-16 me-2"></i>

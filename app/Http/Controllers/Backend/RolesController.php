@@ -1,0 +1,133 @@
+<?php
+namespace App\Http\Controllers\Backend;
+
+use DB;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
+
+class RolesController extends Controller
+{
+    public function index(Request $request)
+    {   
+        $roles = Role::with('permissions')->orderBy('id','DESC')->get();
+        return view('backend.pages.roles.index', compact('roles'));
+    }
+
+    public function create()
+    {
+        $permissions = Permission::orderBy('name')->get();
+        return view('backend.pages.roles.create', compact('permissions'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|unique:roles,name|regex:/^[a-zA-Z0-9\-_]+$/',
+            'permissions' => 'required|array',
+            'permissions.*' => 'exists:permissions,id'
+        ]);
+        try {
+            DB::beginTransaction();
+            $role = Role::create([
+                'name' => strtolower(str_replace(' ', '-', $request->name)),
+                'guard_name' => 'web'
+            ]);
+            $permissions = Permission::whereIn('id', $request->permissions)->pluck('name')->toArray();
+            $role->syncPermissions($permissions);            
+            DB::commit();            
+            return redirect()->route('roles.index')->with('success', 'Role created successfully');
+                
+        } catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with('error', 'Something went wrong: ' . $e->getMessage())
+                ->withInput();
+        }
+    }
+
+    public function edit($id)
+    {
+        $role = Role::with('permissions')->findOrFail($id);
+        $permissions = Permission::orderBy('name')->get();
+        $rolePermissions = $role->permissions->pluck('id')->toArray();        
+        return view('backend.pages.roles.edit', compact('role', 'permissions', 'rolePermissions'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|regex:/^[a-zA-Z0-9\-_]+$/|unique:roles,name,' . $id,
+            'permissions' => 'required|array',
+            'permissions.*' => 'exists:permissions,id'
+        ]);
+
+        try {
+            DB::beginTransaction();
+            
+            $role = Role::findOrFail($id);
+            
+            // Update role name
+            $role->name = strtolower(str_replace(' ', '-', $request->name));
+            $role->save();
+            
+            // Get permission names from ids
+            $permissions = Permission::whereIn('id', $request->permissions)->pluck('name')->toArray();
+            
+            // Sync permissions
+            $role->syncPermissions($permissions);
+            
+            DB::commit();
+            
+            return redirect()->route('roles.index')
+                ->with('success', 'Role updated successfully');
+                
+        } catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with('error', 'Something went wrong: ' . $e->getMessage())
+                ->withInput();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+            
+            $role = Role::findOrFail($id);
+            
+            // Check if role is assigned to any user
+            if($role->users()->count() > 0) {
+                return redirect()->route('roles.index')
+                    ->with('error', 'Cannot delete role because it is assigned to users');
+            }
+            
+            // Check if it's a system role (optional)
+            if(in_array($role->name, ['admin', 'super-admin'])) {
+                return redirect()->route('roles.index')
+                    ->with('error', 'Cannot delete system role');
+            }
+            
+            // Remove all permissions from role
+            DB::table('role_has_permissions')->where('role_id', $id)->delete();
+            
+            // Delete role
+            $role->delete();
+            
+            DB::commit();
+            
+            return redirect()->route('roles.index')
+                ->with('success', 'Role deleted successfully');
+                
+        } catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->back()
+                ->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
+    }
+
+    
+}
