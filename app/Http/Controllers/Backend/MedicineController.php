@@ -13,6 +13,15 @@ use App\Models\MedicineContent;
 
 class MedicineController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view medicines')->only('index','show');
+        $this->middleware('permission:create medicines')->only(['create','store']);
+        $this->middleware('permission:edit medicines')->only(['edit','update']);
+        $this->middleware('permission:delete medicines')->only('destroy');
+    }
+
+
     public function index()
     {  
         $medicineContents = MedicineContent::with('medicineCategory')

@@ -1,104 +1,161 @@
 @extends('backend.layouts.master')
 @section('title','Create Role')
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/css/dataTables.bootstrap5.min.css')}}">
+<style>
+    .list-group-item {
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .group-header {
+        background-color: #faf8f8 !important;
+        border-left: 3px solid #007bff;
+        font-weight: 600;
+    }
+    .child-item {
+        padding-left: 35px !important;
+    }
+</style>
 @endpush
+
 @section('main-content')
 <div class="content">
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Create Role</h4>
+                <h4 class="fw-bold"> Создать роль</h4>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('roles.index') }}" class="btn btn-success btn-sm">
-                <i class="fa fa-arrow-left"></i> Back to Roles
+                <i class="fa fa-arrow-left"></i> Назад к списку ролей
             </a>
         </div>
     </div>
+
     <div class="card">
-        <div class="card-body p-3">
-            <form action="{{ route('roles.store') }}" method="POST" enctype="multipart/form-data">
+        <div class="card-body">
+            <form action="{{ route('roles.store') }}" method="POST" id="roleForm">
                 @csrf
+
                 @if($errors->any())
                 <div class="alert alert-danger">
-                    <ul>
+                    <ul class="mb-0">
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
                 @endif
-                <div class="row">
-                    <div class="col-sm-12 col-12">
-                        <div class="mb-3">
-                            <label>Role Name <span class="text-danger">*</span></label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="e.g., editor, manager">
-                            <small class="text-muted">Use only letters, numbers, and hyphens</small>
-                        </div>
-                    </div>
+                <div class="form-group mb-4">
+                    <label class="fw-bold"> Название роли <span class="text-danger">*</span></label>
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
+                           value="{{ old('name') }}" placeholder="e.g., editor, manager">
+                    <small class="text-muted">Используйте только буквы, цифры, дефисы и подчеркивания</small>
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <label>Permissions <span class="text-danger">*</span></label>
-                        <div class="row">
-                            @foreach($permissions->chunk(4) as $chunk)
-                            <div class="col-md-3">
-                                @foreach($chunk as $permission)
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
-                                            {{ in_array($permission->id, old('permissions', [])) ? 'checked' : '' }}>
-                                        {{ $permission->name }}
-                                    </label>
-                                </div>
+                <div class="mb-2">
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="selectAll()">
+                        <i class="fa fa-check"></i> Выбрать все
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="deselectAll()">
+                        <i class="fa fa-times"></i> Снять выделение
+                    </button>
+                </div>
+                <div class="tree-container">
+                    <ul class="list-group" id="permissionTree">
+                        @php $nodeId = 0; @endphp
+                        @forelse($groupedPermissions as $group => $permissions)
+                            @if($group)
+                                <li class="list-group-item node-treeview1 group-header" 
+                                    data-nodeid="{{ $nodeId }}" 
+                                    onclick="toggleNode(this)">
+                                    <span class="permission-name">{{ $group }}</span>                                    
+                                    <span class="float-end">
+                                        <input type="checkbox" 
+                                            class="group-checkbox" 
+                                            data-group="{{ $group }}"
+                                            onclick="event.stopPropagation(); toggleGroup(this)"
+                                            id="group_{{ Str::slug($group) }}">
+                                    </span>
+                                </li>
+                                @foreach($permissions as $permission)
+                                    @php $nodeId++; @endphp
+                                    <li class="list-group-item node-treeview1 child-item child-of-{{ $nodeId-1 }}" 
+                                        data-nodeid="{{ $nodeId }}"
+                                        data-parentid="{{ $nodeId-1 }}"
+                                        style="display: block;">
+                                        <label class="permission-label">
+                                            <input type="checkbox" 
+                                                   name="permissions[]" 
+                                                   value="{{ $permission->id }}"
+                                                   class="permission-checkbox permission-{{ Str::slug($group) }}"
+                                                   data-group="{{ $group }}"
+                                                   onchange="updateGroupCheckbox('{{ $group }}')"
+                                                   {{ in_array($permission->id, old('permissions', [])) ? 'checked' : '' }}>
+                                            {{ $permission->name }}
+                                        </label>
+                                       
+                                    </li>
                                 @endforeach
-                            </div>
-                            @endforeach
-                        </div>
-                    </div> 
-                    <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-info" onclick="selectAll()">
-                            <i class="fa fa-check-square"></i> Select All
-                        </button>
-                        <button type="button" class="btn btn-sm btn-secondary" onclick="deselectAll()">
-                            <i class="fa fa-square"></i> Deselect All
-                        </button>
-                    </div>                   
+                            @endif
+                        @empty
+                            <li class="list-group-item text-center text-muted">
+                                Права доступа не найдены.
+                            </li>
+                        @endforelse
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="d-flex align-items-center justify-content-end mb-4">                           
-                            <a href="{{ route('roles.index') }}" class="btn btn-secondary me-2">
-                                Cancel
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                Create Role
-                            </button>
-                        </div>
-                    </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Создать роль
+                    </button>
+                    <a href="{{ route('roles.index') }}" class="btn btn-secondary">
+                        <i class="fa fa-times"></i> Отмена
+                    </a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 @endsection
+
 @push('scripts')
 <script>
+
+function toggleGroup(checkbox) {
+    let group = checkbox.dataset.group;
+    let isChecked = checkbox.checked;
+    let groupSlug = group.replace(/\s+/g, '-').toLowerCase();    
+    document.querySelectorAll(`.permission-${groupSlug}`).forEach(cb => {
+        cb.checked = isChecked;
+    });    
+    checkbox.indeterminate = false;
+}
+
 function selectAll() {
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.checked = true;
+    document.querySelectorAll('.permission-checkbox').forEach(cb => {
+        cb.checked = true;
+    });
+    document.querySelectorAll('.group-checkbox').forEach(cb => {
+        cb.checked = true;
+        cb.indeterminate = false;
     });
 }
 
 function deselectAll() {
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.checked = false;
+    document.querySelectorAll('.permission-checkbox').forEach(cb => {
+        cb.checked = false;
+    });
+    document.querySelectorAll('.group-checkbox').forEach(cb => {
+        cb.checked = false;
+        cb.indeterminate = false;
     });
 }
+
 </script>
 @endpush

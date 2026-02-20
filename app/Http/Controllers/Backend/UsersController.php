@@ -12,6 +12,15 @@ use DB;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view users')->only('index','show');
+        $this->middleware('permission:create users')->only(['create','store']);
+        $this->middleware('permission:edit users')->only(['edit','update']);
+        $this->middleware('permission:delete users')->only('destroy');
+        $this->middleware('permission:change user password')->only('changePassword');
+        $this->middleware('permission:update user status')->only('updateStatus');
+    }
     public function index(Request $request) 
     {
         $query = User::query();
@@ -30,31 +39,39 @@ class UsersController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|unique:users,email',
-            'phone_number' => 'nullable|min:10',
+            'phone_number' => 'nullable',
             'password' => 'required|min:8|confirmed',
             'role' => 'required',
             'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required|in:1,0'
         ]);
+        
         try {
             DB::beginTransaction();            
+            
             $input = $request->all();  
             $input['user_id'] = 'USR' . time() . rand(100, 999);
             $input['password'] = Hash::make($input['password']);
+            
             if($request->hasFile('profile_img')) {
                 $image = $request->file('profile_img');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('profile-images'), $imageName);
                 $input['profile_img'] = $imageName;
             }
+            
             $user = User::create($input);
             $user->assignRole($request->role);
+            
             DB::commit();            
+            
             return redirect()->route('users.index')->with('success', 'User created successfully');
                 
         } catch(\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage())->withInput();
+            return redirect()->back()
+                ->with('error', 'Something went wrong: ' . $e->getMessage())
+                ->withInput();
         }
     }
 
@@ -72,19 +89,28 @@ class UsersController extends Controller
             'name' => 'required|min:3|max:50',
             'email' => 'required|email|unique:users,email,' . $id,
             'phone_number' => 'nullable|min:10',
+            'password' => 'nullable|min:8|confirmed',
             'role' => 'required',
             'profile_img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required|in:1,0'
         ]);
 
         try {
-            DB::beginTransaction();            
+            DB::beginTransaction(); 
             $user = User::findOrFail($id);
-            $input = $request->all();
+            $input = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'status' => $request->status
+            ];
+            if ($request->filled('password')) {
+                $input['password'] = Hash::make($request->password);
+            }
             if($request->hasFile('profile_img')) {
                 if($user->profile_img && file_exists(public_path('profile-images/' . $user->profile_img))) {
                     unlink(public_path('profile-images/' . $user->profile_img));
-                }                
+                }
                 $image = $request->file('profile_img');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 $image->move(public_path('profile-images'), $imageName);
@@ -92,9 +118,10 @@ class UsersController extends Controller
             }
             $user->update($input);
             DB::table('model_has_roles')->where('model_id', $id)->delete();
-            $user->assignRole($request->role);            
-            DB::commit();            
+            $user->assignRole($request->role);  
+            DB::commit();
             return redirect()->route('users.index')->with('success', 'User updated successfully');                
+            
         } catch(\Exception $e) {
             DB::rollback();
             return redirect()->back()

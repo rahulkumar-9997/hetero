@@ -11,6 +11,15 @@ use App\Models\AwardCategories;
 
 class AwardsCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view award categories')->only('index','show');
+        $this->middleware('permission:create award categories')->only(['create','store']);
+        $this->middleware('permission:edit award categories')->only(['edit','update']);
+        $this->middleware('permission:delete award categories')->only('destroy');
+    }
+
+
     public function index(){
         $awardCategory = AwardCategories::orderBy('id', 'desc')->get();
         return view('backend.pages.award-category.index', compact('awardCategory'));

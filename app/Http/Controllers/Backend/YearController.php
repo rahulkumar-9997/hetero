@@ -11,6 +11,14 @@ use App\Models\Year;
 
 class YearController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view years')->only('index','show');
+        $this->middleware('permission:create years')->only(['create','store']);
+        $this->middleware('permission:edit years')->only(['edit','update']);
+        $this->middleware('permission:delete years')->only('destroy');
+    }
+
     public function index(){
         $years = Year::orderBy('id', 'desc')->get();
         return view('backend.pages.year.index', compact('years'));

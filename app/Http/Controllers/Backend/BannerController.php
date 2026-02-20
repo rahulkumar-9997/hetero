@@ -11,6 +11,14 @@ use App\Models\BannerMedicine;
 
 class BannerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view banners')->only('index','show');
+        $this->middleware('permission:create banners')->only(['create','store']);
+        $this->middleware('permission:edit banners')->only(['edit','update']);
+        $this->middleware('permission:delete banners')->only('destroy');
+    }
+
     public function index()
     {
         $banners = Banner::with('medicines')->orderBy('id', 'desc')->get();

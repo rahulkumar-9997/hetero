@@ -1,21 +1,21 @@
 @extends('backend.layouts.master')
 @section('title','Role List')
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('backend/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/plugins/tabler-icons/tabler-icons.css')}}">
-<link rel="stylesheet" href="{{asset('backend/assets/css/dataTables.bootstrap5.min.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/css/dataTables.bootstrap5.min.css')}}"> -->
 @endpush
 @section('main-content')
 <div class="content">
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Role List</h4>
+                <h4 class="fw-bold">Список ролей</h4>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm">
-                <i class="fa fa-plus"></i> Add New Role
+                <i class="fa fa-plus"></i> Добавить новую роль
             </a>
         </div>
     </div>
@@ -26,12 +26,12 @@
                         <thead>
                             <tr>
                                 <th width="50">#</th>
-                                <th>Role Name</th>
-                                <th>Guard</th>
-                                <th>Permissions</th>
-                                <th>Users Count</th>
-                                <th>Created</th>
-                                <th width="150">Actions</th>
+                                <th>Название роли</th>
+                                <th>Гард</th>
+                                <th>Права доступа</th>
+                                <th>Количество пользователей</th>
+                                <th>Создано</th>
+                                <th width="150">Действия</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                                 </td>
                                 <td>
                                     <span class="badge bg-{{ $role->users_count > 0 ? 'warning' : 'secondary' }}">
-                                        {{ $role->users_count ?? 0 }} Users
+                                        {{ $role->users_count ?? 0 }} пользователей
                                     </span>
                                 </td>
                                 <td>{{ $role->created_at->format('d M Y') }}</td>
@@ -67,10 +67,10 @@
                                     @if(!in_array($role->name, ['admin', 'super-admin']))
                                     <form action="{{ route('roles.destroy', $role->id) }}" method="POST" 
                                           style="display: inline;" 
-                                          onsubmit="return confirm('Are you sure you want to delete this role?')">
+                                         >
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" title="Delete">
+                                        <button type="submit" class="btn btn-danger btn-sm show_confirm" data-name="{{ $role->name }}" title="Delete">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
@@ -92,5 +92,28 @@
 
 @endsection
 @push('scripts')
+<script>
+   $(document).ready(function() {
+      $('.show_confirm').click(function(event) {
+         var form = $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault(); 
 
+         Swal.fire({
+               title: `Are you sure you want to delete this ${name}?`,
+               text: "If you delete this, it will be gone forever.",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonText: "Yes, delete it!",
+               cancelButtonText: "Cancel",
+               dangerMode: true,
+         }).then((result) => {
+               if (result.isConfirmed) {
+                  form.submit();
+               }
+         });
+      });
+           
+   });
+</script>
 @endpush

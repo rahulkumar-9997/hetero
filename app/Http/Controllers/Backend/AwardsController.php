@@ -15,6 +15,14 @@ use App\Models\AwardsImage;
 
 class AwardsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view awards')->only('index','show');
+        $this->middleware('permission:create awards')->only(['create','store']);
+        $this->middleware('permission:edit awards')->only(['edit','update']);
+        $this->middleware('permission:delete awards')->only('destroy');
+    }
+
     public function index(){
         $awards = Awards::with(['awardCategory', 'year', 'awardImages'])
                 ->latest()

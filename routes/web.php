@@ -7,7 +7,7 @@ use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\ForgotPasswordController;
 use App\Http\Controllers\Backend\UsersController;
 use App\Http\Controllers\Backend\RolesController;
-// use App\Http\Controllers\Backend\PermissionsController;
+use App\Http\Controllers\Backend\PermissionsController;
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -49,18 +49,13 @@ Route::prefix('admin')->group(function () {
     Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+// Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UsersController::class);
-    Route::post('users/{user}/status', [UsersController::class, 'updateStatus'])->name('users.status');
-    Route::get('/profile/{id}/edit', [UsersController::class, 'UserProfileEditForm'])->name('profile.edit');
-    Route::post('/profile/{id}/update', [UsersController::class, 'UserProfileEditFormSubmit'])->name('profile.update');
+    Route::post('users/change-password/{id}', [UsersController::class, 'changePassword'])->name('users.change-password');
+    Route::post('users/update-status', [UsersController::class, 'updateStatus'])->name('users.update-status');
     Route::resource('roles', RolesController::class);
-    Route::resource('backend-menus', MenuBackendController::class);
-    Route::post('menus/{menu}/status', [MenuBackendController::class, 'updateStatus'])->name('menus.status');
-    Route::post('menus/reorder', [MenuBackendController::class, 'reorder'])->name('menus.reorder');
-    Route::post('menus/{menu}/sidebar-status', [MenuBackendController::class, 'updateSidebarStatus'])->name('menus.sidebar-status');   
-
-
+    Route::resource('permissions', PermissionsController::class);
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/get-daily-visitors', [DashboardController::class, 'getDailyVisitors'])->name('get-daily-visitors');

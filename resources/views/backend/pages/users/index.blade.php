@@ -10,12 +10,12 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Users List</h4>
+                <h4 class="fw-bold">Список пользователей</h4>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('users.create') }}" class="btn btn-success btn-sm">
-                <i class="fa fa-plus"></i> Add New User
+                <i class="fa fa-plus"></i> Добавить нового пользователя
             </a>
         </div>
     </div>
@@ -26,14 +26,14 @@
                         <thead>
                             <tr>
                                 <th width="50">#</th>
-                                <th>Photo</th>
-                                <th>User ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th width="150">Actions</th>
+                                <th>Фото</th>
+                                <th>ID пользователя</th>
+                                <th>Имя</th>
+                                <th>Электронная почта</th>
+                                <th>Телефон</th>
+                                <th>Роль</th>
+                                <th>Статус</th>
+                                <th width="150">Действия</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,16 +58,16 @@
                                 <td>
                                     @if($user->id != auth()->id())
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input status-toggle" 
-                                               id="status_{{ $user->id }}" 
-                                               data-id="{{ $user->id }}"
-                                               {{ $user->status == 'active' ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="status_{{ $user->id }}">
-                                            {{ ucfirst($user->status) }}
+                                           @if($user->status == '1')
+                                                <span class="badge bg-success">Активный</span>
+                                            @else
+                                                <span class="badge bg-secondary">Неактивный</span>
+                                            @endif
                                         </label>
                                     </div>
                                     @else
-                                        <span class="badge bg-success">Active</span>
+                                        <span class="badge bg-dark">Свои</span>
                                     @endif
                                 </td>
                                 <td>
@@ -81,8 +81,7 @@
                                     </button>
                                     
                                     @if($user->id != auth()->id())
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;" 
-                                          onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display: inline;" class="show_confirm" data-name="{{ $user->name }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" title="Delete">
@@ -147,6 +146,30 @@
 </div>
 @endsection
 @push('scripts')
+<script>
+   $(document).ready(function() {
+      $('.show_confirm').click(function(event) {
+         var form = $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault(); 
+
+         Swal.fire({
+               title: `Are you sure you want to delete this ${name}?`,
+               text: "If you delete this, it will be gone forever.",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonText: "Yes, delete it!",
+               cancelButtonText: "Cancel",
+               dangerMode: true,
+         }).then((result) => {
+               if (result.isConfirmed) {
+                  form.submit();
+               }
+         });
+      });
+           
+   });
+</script>
 <script>
     function changePassword(id, name) {
         $('#userName').text(name);

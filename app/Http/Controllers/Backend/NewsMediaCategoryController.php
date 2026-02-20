@@ -12,6 +12,14 @@ use App\Models\NewsAndMediaCategory;
 
 class NewsMediaCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view news media categories')->only('index','show');
+        $this->middleware('permission:create news media categories')->only(['create','store']);
+        $this->middleware('permission:edit news media categories')->only(['edit','update']);
+        $this->middleware('permission:delete news media categories')->only('destroy');
+    }
+
     public function index(){
         $newsMediaCategories = NewsAndMediaCategory::orderBy('id', 'desc')->get();
         return view('backend.pages.new-media-category.index', compact('newsMediaCategories'));

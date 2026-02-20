@@ -12,6 +12,12 @@ use Illuminate\Validation\Rule;
 
 class CkeditorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:upload ckeditor images')->only('upload');
+        $this->middleware('permission:view ckeditor images')->only('imageList');
+    }
+
     public function upload(Request $request)
     {
         if ($request->hasFile('upload')) {

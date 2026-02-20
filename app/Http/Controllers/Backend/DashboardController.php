@@ -11,6 +11,11 @@ use App\Models\Awards;
 use App\Models\MedicineContent;
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view dashboard')->only('index');
+        $this->middleware('permission:view daily visitors')->only('getDailyVisitors');
+    }
     public function index(){
         $data = [
             'totalBanner' => Banner::count(),

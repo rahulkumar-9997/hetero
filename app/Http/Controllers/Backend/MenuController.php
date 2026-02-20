@@ -14,6 +14,21 @@ use App\Models\MenuItems;
 use App\Models\Page;
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view menus')->only(['index','show']);
+        $this->middleware('permission:create menus')->only(['create','store']);
+        $this->middleware('permission:edit menus')->only(['edit','update']);
+        $this->middleware('permission:delete menus')->only('destroy');
+
+        // menu items
+        $this->middleware('permission:view menu items')->only('displayMenuItem');
+        $this->middleware('permission:create menu items')->only('storeItem');
+        $this->middleware('permission:edit menu items')->only(['editItem','updateItem']);
+        $this->middleware('permission:delete menu items')->only('destroyItem');
+        $this->middleware('permission:order menu items')->only('orderItems');
+    }
+
     /**
      * Display a listing of the resource.
      *

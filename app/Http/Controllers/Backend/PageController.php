@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view pages')->only('index','show');
+        $this->middleware('permission:create pages')->only(['create','store']);
+        $this->middleware('permission:edit pages')->only(['edit','update']);
+        $this->middleware('permission:delete pages')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

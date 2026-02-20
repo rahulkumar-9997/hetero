@@ -11,6 +11,13 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view profile')->only('index');
+        $this->middleware('permission:update profile')->only('update');
+        $this->middleware('permission:delete profile image')->only('deleteImage');
+    }
+
     public function index()
     {
         $user = Auth::user();

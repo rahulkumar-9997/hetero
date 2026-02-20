@@ -10,15 +10,16 @@
     <div class="page-header">
         <div class="add-item d-flex">
             <div class="page-title">
-                <h4 class="fw-bold">Users Form</h4>
+                <h4 class="fw-bold">Форма пользователей</h4>
             </div>
         </div>
         <div class="page-btn">
             <a href="{{ route('users.index') }}" class="btn btn-success btn-sm">
-                <i class="fa fa-arrow-left"></i> Back to Users List
+                <i class="fa fa-arrow-left"></i>Назад к списку пользователей
             </a>
         </div>
     </div>
+    
     <div class="card">
         <div class="card-body p-3">
             <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
@@ -35,40 +36,40 @@
                 <div class="row">
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Name <span class="text-danger">*</span></label>
+                            <label>Имя <span class="text-danger">*</span></label>
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Enter name">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Email <span class="text-danger">*</span></label>
+                            <label>Электронная почта <span class="text-danger">*</span></label>
                             <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Phone Number </label>
+                            <label>Номер телефона </label>
                             <input type="text" name="phone_number" class="form-control" value="{{ old('phone_number') }}" placeholder="Enter phone number">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Password <span class="text-danger">*</span></label>
+                            <label>Пароль <span class="text-danger">*</span></label>
                             <input type="password" name="password" class="form-control" placeholder="Enter password" minlength="8">
                             <small class="text-muted">Minimum 8 characters</small>
                         </div>
                     </div>                        
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Confirm Password <span class="text-danger">*</span></label>
+                            <label> Подтвердить пароль<span class="text-danger">*</span></label>
                             <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm password">
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Select Role <span class="text-danger">*</span></label>
+                            <label>Выберите роль <span class="text-danger">*</span></label>
                             <select name="role" class="form-select form-control">
-                                <option value="">Select Role</option>
+                                <option value="">Выберите роль</option>
                                 @foreach($roles as $role)
                                 <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>
                                     {{ ucfirst($role->name) }}
@@ -79,18 +80,18 @@
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Status <span class="text-danger">*</span></label>
+                            <label>Статус <span class="text-danger">*</span></label>
                             <select name="status" class="form-select form-control">
-                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Active</option>
-                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Inactive</option>
+                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Активный</option>
+                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Неактивный</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6 col-12">
                         <div class="mb-3">
-                            <label>Profile Image</label>
+                            <label>Фото профиля </label>
                             <input type="file" name="profile_img" class="form-control" accept="image/*" onchange="previewImage(this)">
-                            <small class="text-muted">Max size: 2MB. Allowed: jpeg, png, jpg</small>
+                            <small class="text-muted">(Макс. размер: 2 МБ. Разрешены: jpeg, png, jpg)</small>
                         </div>
                         <div class="form-group" id="imagePreview" style="display: none;">
                             <img src="" class="img-thumbnail" style="max-height: 150px;">
@@ -101,10 +102,10 @@
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center justify-content-end mb-4">                           
                             <a href="{{ route('users.index') }}" class="btn btn-secondary me-2">
-                                Cancel
+                                Отмена
                             </a>
                             <button type="submit" class="btn btn-primary">
-                                 Create User
+                                 Создать пользователя
                             </button>
                         </div>
                     </div>

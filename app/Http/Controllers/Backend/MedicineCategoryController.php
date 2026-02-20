@@ -13,6 +13,13 @@ use App\Models\MedicineCategories;
 
 class MedicineCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view medicine categories')->only('index','show');
+        $this->middleware('permission:create medicine categories')->only(['create','store']);
+        $this->middleware('permission:edit medicine categories')->only(['edit','update']);
+        $this->middleware('permission:delete medicine categories')->only('destroy');
+    }
     public function index()
     {        
         $medicineCategory = MedicineCategories::orderBy('id', 'desc')->get();

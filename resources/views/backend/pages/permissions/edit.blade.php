@@ -34,7 +34,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label>Permission Name <span class="text-danger">*</span></label>
                             <input type="text" name="name" class="form-control" 
@@ -46,13 +46,47 @@
                             </small>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-4 col-12">
                         <div class="mb-3">
                             <label>Guard Name</label>
                             <input type="text" class="form-control" value="{{ $permission->guard_name }}" readonly>
                             <small class="text-muted">Guard name cannot be changed</small>
                         </div>
-                    </div>                    
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label>
+                                Group <span class="text-muted">(Optional)</span>
+                            </label>
+                            <input type="text" 
+                                   name="group" 
+                                   id="groupInput"
+                                   class="form-control @error('group') is-invalid @enderror" 
+                                   value="{{ old('group', $permission->group) }}" 
+                                   placeholder="e.g., User Management"
+                                   autocomplete="off">
+                            <small class="info-text">
+                                <i class="fa fa-info-circle"></i> 
+                                Group helps organize permissions (e.g., Users, Roles, Products)
+                            </small>
+                            <div class="suggestions-dropdown" id="suggestions">
+                                <small class="text-danger">
+                                    <i class="fa fa-lightbulb"></i> 
+                                    Suggestions based on existing groups
+                            </small>
+                                @if(!empty($existingGroups))
+                                    @foreach($existingGroups as $group)
+                                        <div class="suggestion-item" onclick="selectGroup('{{ $group }}')">
+                                            {{ $group }}
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            @error('group')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>                      
                 </div>
                 <div class="row">
                     <div class="col-lg-12">

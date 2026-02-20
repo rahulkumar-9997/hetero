@@ -10,6 +10,13 @@ use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view roles')->only('index','show');
+        $this->middleware('permission:create roles')->only(['create','store']);
+        $this->middleware('permission:edit roles')->only(['edit','update']);
+        $this->middleware('permission:delete roles')->only('destroy');
+    }
     public function index(Request $request)
     {   
         $roles = Role::with('permissions')->orderBy('id','DESC')->get();
@@ -18,8 +25,9 @@ class RolesController extends Controller
 
     public function create()
     {
-        $permissions = Permission::orderBy('name')->get();
-        return view('backend.pages.roles.create', compact('permissions'));
+        $permissions = Permission::orderBy('group')->orderBy('name')->get();
+        $groupedPermissions = $permissions->groupBy('group');
+        return view('backend.pages.roles.create', compact('groupedPermissions'));
     }
 
     public function store(Request $request)
@@ -29,16 +37,18 @@ class RolesController extends Controller
             'permissions' => 'required|array',
             'permissions.*' => 'exists:permissions,id'
         ]);
+        
         try {
-            DB::beginTransaction();
+            DB::beginTransaction();            
             $role = Role::create([
                 'name' => strtolower(str_replace(' ', '-', $request->name)),
                 'guard_name' => 'web'
-            ]);
+            ]);            
             $permissions = Permission::whereIn('id', $request->permissions)->pluck('name')->toArray();
-            $role->syncPermissions($permissions);            
-            DB::commit();            
-            return redirect()->route('roles.index')->with('success', 'Role created successfully');
+            $role->syncPermissions($permissions); 
+            DB::commit(); 
+            return redirect()->route('roles.index')
+                ->with('success', 'Role created successfully');
                 
         } catch(\Exception $e) {
             DB::rollback();
@@ -51,9 +61,10 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::with('permissions')->findOrFail($id);
-        $permissions = Permission::orderBy('name')->get();
-        $rolePermissions = $role->permissions->pluck('id')->toArray();        
-        return view('backend.pages.roles.edit', compact('role', 'permissions', 'rolePermissions'));
+        $permissions = Permission::orderBy('group')->orderBy('name')->get();
+        $groupedPermissions = $permissions->groupBy('group');
+        $rolePermissions = $role->permissions->pluck('id')->toArray();
+        return view('backend.pages.roles.edit', compact('role', 'groupedPermissions', 'rolePermissions'));
     }
 
     public function update(Request $request, $id)
@@ -66,21 +77,12 @@ class RolesController extends Controller
 
         try {
             DB::beginTransaction();
-            
             $role = Role::findOrFail($id);
-            
-            // Update role name
             $role->name = strtolower(str_replace(' ', '-', $request->name));
             $role->save();
-            
-            // Get permission names from ids
             $permissions = Permission::whereIn('id', $request->permissions)->pluck('name')->toArray();
-            
-            // Sync permissions
-            $role->syncPermissions($permissions);
-            
-            DB::commit();
-            
+            $role->syncPermissions($permissions);            
+            DB::commit();            
             return redirect()->route('roles.index')
                 ->with('success', 'Role updated successfully');
                 
@@ -95,30 +97,19 @@ class RolesController extends Controller
     public function destroy($id)
     {
         try {
-            DB::beginTransaction();
-            
+            DB::beginTransaction();            
             $role = Role::findOrFail($id);
-            
-            // Check if role is assigned to any user
             if($role->users()->count() > 0) {
                 return redirect()->route('roles.index')
                     ->with('error', 'Cannot delete role because it is assigned to users');
             }
-            
-            // Check if it's a system role (optional)
             if(in_array($role->name, ['admin', 'super-admin'])) {
                 return redirect()->route('roles.index')
                     ->with('error', 'Cannot delete system role');
             }
-            
-            // Remove all permissions from role
             DB::table('role_has_permissions')->where('role_id', $id)->delete();
-            
-            // Delete role
             $role->delete();
-            
             DB::commit();
-            
             return redirect()->route('roles.index')
                 ->with('success', 'Role deleted successfully');
                 
@@ -128,6 +119,4 @@ class RolesController extends Controller
                 ->with('error', 'Something went wrong: ' . $e->getMessage());
         }
     }
-
-    
 }

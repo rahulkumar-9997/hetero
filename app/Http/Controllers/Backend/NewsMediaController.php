@@ -18,6 +18,18 @@ use App\Models\FeaturedStory;
 
 class NewsMediaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view news media')->only('index','show');
+        $this->middleware('permission:create news media')->only(['create','store']);
+        $this->middleware('permission:edit news media')->only(['edit','update']);
+        $this->middleware('permission:delete news media')->only('destroy');
+
+        $this->middleware('permission:update news room')->only('newRoomUpdate');
+        $this->middleware('permission:delete news room')->only('newRoomDelete');
+    }
+
+
     public function index(Request $request)
     {
         $newsMediaCategories = NewsAndMediaCategory::orderBy('id', 'desc')->get();
