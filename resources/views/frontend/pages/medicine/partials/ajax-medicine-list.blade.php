@@ -1,7 +1,7 @@
 <div class="row">
     @foreach($medicineContents as $index => $content)
     <div class="col-md-4 mb-3 wow fadeInUp" data-wow-offset="100" data-wow-duration="1s" data-wow-delay="{{ 0.2 + ($index * 0.1) }}s">
-        <div class="expertise-box medicine-list exp-bg{{ ($index % 4) + 1 }}">
+        <div class="expertise-box medicine-list exp-bg{{ ($index % 4) + 1 }} position-relative">
             <div class="exp-pic">
                 <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}">
                     @if($content->image && file_exists(public_path('upload/medicine/' . $content->image)))
@@ -29,11 +29,13 @@
                     @endif MulishBold">
                     {!! Str::limit(strip_tags($content->short_content), 150) !!}
                 </h5> -->
-                <div class="mt-3">
-                    <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
-                        class="readmore exp-read{{ ($index % 4) + 1 }}">
-                        Подробнее
-                    </a>
+                <div class="medicine-btn">
+                    <div class="mt-2">
+                        <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
+                            class="readmore exp-read{{ ($index % 4) + 1 }}">
+                            Подробнее
+                        </a>
+                    </div>
                 </div>
             </div>
            

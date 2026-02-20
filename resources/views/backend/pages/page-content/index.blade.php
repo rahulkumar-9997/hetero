@@ -77,7 +77,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th>Заголовок</th>
-                            <!-- <th>Slug</th> -->
+                            <th>Слизень</th>
                             <th>Маршрут</th>
                             <th>Родитель</th>
                             <th>Порядок</th>

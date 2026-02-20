@@ -2292,11 +2292,21 @@ button {
 	box-shadow: #63636326 0 2px 8px;
     position: relative;
     background-color: #f9f9fb;
+	height: 100%;
     /* padding-inline: 8px; */
 }
+.expertise-box{
+    padding-bottom:60px; /* button ke liye space */
+}
 
+.medicine-btn{
+   	position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .expertise-box .sub-ttlh2 {
-	color: #000;
+	color: #9F0C25;
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 600
@@ -5159,14 +5169,15 @@ button {
 		font-weight: 600;
 	}
 
-	.expertise-box {
+	/* .expertise-box {
 		height: auto
-	}
+	} */
 
 	.expertise-box .readmore {
 		position: relative;
-		bottom: 0;
-		left: 20px
+		bottom: 10px;
+		top: 5px;
+		/* left: 20px */
 	}
 
 	.Expertise-overview-banner h2 {
@@ -7001,8 +7012,8 @@ button {
 
 	.expertise-box .readmore {
 		position: relative;
-		bottom: 0;
-		left: 20px
+        bottom: 10px;
+        top: 5px;
 	}
 
 	.Expertise-overview-banner h2 {
@@ -7536,8 +7547,9 @@ button {
 
 	.expertise-box .readmore {
 		position: relative;
-		bottom: 0;
-		left: 20px
+        bottom: 10px;
+        top: 5px;
+		/* left: 20px */
 	}
 
 	.latest-awards-wrp .swiper-button-prev {

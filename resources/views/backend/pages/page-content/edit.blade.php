@@ -50,6 +50,14 @@
                         <div class="mb-3">
                             <label class="form-label"> Основное изображение</label>
                             <input type="file" class="form-control" name="main_image">
+                            @if($page->main_image)
+                                <img src="{{ asset('upload/page/'.$page->main_image) }}" 
+                                    class="img-fluid rounded" alt="{{ $page->title }}" style="margin-top: 10px; max-width: 200px;">
+                            @else
+                                <img src="{{ asset('fronted/assets/images/Logo.png') }}" 
+                                    class="img-fluid rounded" alt="Default" style="margin-top: 10px; max-width: 200px;">
+                            @endif
+
                         </div>
                     </div>
                     <div class="col-sm-6">

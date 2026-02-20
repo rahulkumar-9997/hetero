@@ -15,7 +15,7 @@
             </span>
         </div>
     </td>
-    <!-- <td>{{ $page->slug }}</td> -->
+    <td>{{ $page->slug }}</td>
     <td>{{ $page->route_name }}</td>
     <td>{{ $page->parent ? $page->parent->title : '-' }}</td>
     <td>{{ $page->order }}</td>
