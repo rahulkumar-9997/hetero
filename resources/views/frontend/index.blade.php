@@ -34,7 +34,7 @@
                   </div>
                   @endif
                   @if($banner->banner_link)
-                  <a href="{{ $banner->banner_link }}" class="readmore">Читать далее</a>
+                  <a href="{{ $banner->banner_link }}" class="readmore">Подробнее</a>
                   @endif
                </div>
             </div>
@@ -191,7 +191,7 @@
             <div class="about-us-footer wow fadeInUp" data-wow-offset="200" data-wow-duration="1s"
                data-wow-delay="0.1s">
                <div class="about-us-footer-btn">
-                  <a href="/page/o-nas" class="btn-default">Читать далее</a>
+                  <a href="/page/o-nas" class="btn-default">Подробнее</a>
                </div>
             </div>
          </div>

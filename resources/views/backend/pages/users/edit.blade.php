@@ -71,10 +71,13 @@
                             <select name="role" class="form-select form-control">
                                 <option value="">Выберите роль</option>
                                 @foreach($roles as $role)
-                                <option value="{{ $role->name }}" 
-                                    {{ ($userRole == $role->name) ? 'selected' : '' }}>
-                                    {{ ucfirst($role->name) }}
-                                </option>
+                                    @if(!auth()->user()->hasRole('Admin') && $role->name === 'Admin')
+                                        @continue
+                                    @endif
+                                    <option value="{{ $role->name }}"
+                                        {{ ($userRole == $role->name) ? 'selected' : '' }}>
+                                        {{ ucfirst($role->name) }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

@@ -32,7 +32,7 @@
                 <div class="mt-3">
                     <a href="{{ route('lekarstvennye-preparaty.detail', ['slug' => $content->slug]) }}"
                         class="readmore exp-read{{ ($index % 4) + 1 }}">
-                        Читать далее
+                        Подробнее
                     </a>
                 </div>
             </div>

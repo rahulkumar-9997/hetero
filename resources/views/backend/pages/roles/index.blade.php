@@ -35,54 +35,68 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($roles as $key => $role)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>
-                                    <strong>{{ ucfirst($role->name) }}</strong>
-                                    @if(in_array($role->name, ['admin', 'super-admin']))
-                                        <span class="badge bg-danger">System</span>
-                                    @endif
-                                </td>
-                                <td><span class="badge bg-info">{{ $role->guard_name }}</span></td>
-                                <td>
-                                    @foreach($role->permissions->take(5) as $permission)
-                                        <span class="badge bg-primary">{{ $permission->name }}</span>
-                                    @endforeach
-                                    @if($role->permissions->count() > 5)
-                                        <span class="badge bg-secondary">+{{ $role->permissions->count() - 5 }} more</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <span class="badge bg-{{ $role->users_count > 0 ? 'warning' : 'secondary' }}">
-                                        {{ $role->users_count ?? 0 }} пользователей
-                                    </span>
-                                </td>
-                                <td>{{ $role->created_at->format('d M Y') }}</td>
-                                <td>
-                                    <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info btn-sm" title="Edit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    
-                                    @if(!in_array($role->name, ['admin', 'super-admin']))
-                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST" 
-                                          style="display: inline;" 
-                                         >
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm show_confirm" data-name="{{ $role->name }}" title="Delete">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                    @endif
-                                </td>
-                            </tr>
+                            @php $i = 1; @endphp
+                            @forelse($roles as $role)
+                                @if(!auth()->user()->hasRole('Admin') && $role->name === 'Admin')
+                                    @continue
+                                @endif
+                                <tr>
+                                    <td>{{ $i++ }}</td>
+                                    <td>
+                                        <strong>{{ ucfirst($role->name) }}</strong>
+                                        @if(in_array($role->name, ['Admin', 'webadmin']))
+                                            <br><span class="badge bg-danger">Системная роль</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-info">{{ $role->guard_name }}</span>
+                                    </td>
+                                    <td>
+                                        @foreach($role->permissions->take(5) as $permission)
+                                            <span class="badge bg-primary">{{ $permission->name }}</span>
+                                        @endforeach
+
+                                        @if($role->permissions->count() > 5)
+                                            <span class="badge bg-secondary">
+                                                +{{ $role->permissions->count() - 5 }} more
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-{{ $role->users_count > 0 ? 'warning' : 'secondary' }}">
+                                            {{ $role->users_count ?? 0 }} пользователей
+                                        </span>
+                                    </td>
+                                    <td>{{ $role->created_at->format('d M Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('roles.edit', $role->id) }}"
+                                        class="btn btn-info btn-sm" title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        @if(!in_array($role->name, ['Admin','webadmin']))
+                                            <form action="{{ route('roles.destroy', $role->id) }}"
+                                                method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                        class="btn btn-danger btn-sm show_confirm"
+                                                        data-name="{{ $role->name }}"
+                                                        title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                </tr>
+
                             @empty
                             <tr>
                                 <td colspan="7" class="text-center">No roles found.</td>
                             </tr>
                             @endforelse
-                        </tbody>
+                            </tbody>
+
                     </table>
                 </div>
             </div>

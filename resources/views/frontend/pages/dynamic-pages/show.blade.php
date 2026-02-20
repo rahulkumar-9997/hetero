@@ -94,7 +94,7 @@ $metaDescription = \Illuminate\Support\Str::limit(strip_tags($metaDesc), 160);
                                 </div>
                             </a>
                             <a href="{{ route('page.show', $sidebarPage->slug) }}" class="readmore">
-                                Читать далее
+                                Подробнее
                             </a>
                             
                         </div>
