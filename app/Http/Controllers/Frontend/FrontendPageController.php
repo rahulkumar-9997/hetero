@@ -75,8 +75,8 @@ class FrontendPageController extends Controller
                 Log::error('Failed to send email to user: ' . $e->getMessage() . ' | Email: ' . $request->email);
             }
             try {
-                Mail::to("rahulkumarmaurya464@gmail.com")->send(new AdverseReactionNotificationMail($validated, 'admin'));
-                Log::info('Admin email sent successfully to: rahulkumarmaurya464@gmail.com');
+                Mail::to("akshat.gd@gmail.com")->send(new AdverseReactionNotificationMail($validated, 'admin'));
+                Log::info('Admin email sent successfully to: akshat.gd@gmail.com');
             } catch (\Exception $e) {
                 Log::error('Failed to send email to admin: ' . $e->getMessage());
             }
