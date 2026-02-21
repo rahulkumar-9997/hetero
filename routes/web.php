@@ -102,4 +102,5 @@ Route::get('/captcha-refresh', [FrontHomeController::class, 'refreshCaptcha'])->
 Route::get('/page/{slug}', [FrontendPageController::class, 'show'])->name('page.show');
 
 Route::get('sitemap.xml', [SiteMapController::class, 'index'])->name('sitemap');
+Route::post('adverse-reaction/store', [FrontendPageController::class, 'adverseReactionStore'])->name('adverse-reaction.store');
 

@@ -2323,6 +2323,20 @@ button {
 	line-height: 24px;
 	font-weight: 600
 }
+.form_farmakonnadzor {
+ 	background-color: #e5e5e53b;
+    padding: 25px 20px;
+    border-radius: 8px;
+}
+.other_med_item {
+    border-top: 1px dotted #AAA;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.event_report_form{
+	margin-top: -35px;
+	padding-bottom: 30px;
+}
 
 .expertise-box .exp-info {
 	line-height: 22px;
@@ -8411,6 +8425,9 @@ button {
 	.pr-card .card-ttle{
 		font-size: 18px;
 		line-height: 22px;
+	}
+	#event_report_form_form h4{
+		font-size: 20px;
 	}
 }
 .about-counter h2::after,

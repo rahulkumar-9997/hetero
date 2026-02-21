@@ -15,9 +15,13 @@
                                     @php
                                         $itemUrl = $item->url ? $item->url : 'javascript:void(0)';
                                     @endphp
-                                    <a href="{{ $itemUrl }}">
+                                    @if(!empty($item->url) && $item->url !== '#')
+                                        <a href="{{ $itemUrl }}">
+                                            {{ $item->title }}
+                                        </a>
+                                    @else
                                         {{ $item->title }}
-                                    </a>
+                                    @endif
                                 </h2>
                                 @if($item->children->count())
                                     <ul>
