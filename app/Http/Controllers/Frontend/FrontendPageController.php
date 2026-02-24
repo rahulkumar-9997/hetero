@@ -35,7 +35,9 @@ class FrontendPageController extends Controller
             'age' => 'nullable|string|max:50',
             'gender' => 'nullable|in:Мужской,Женский',
             'pregnancy' => 'nullable|in:Да,Нет',
+            'pregnancy_time' => 'required_if:pregnancy,Да|max:100',
             'allergy' => 'nullable|in:Да,Нет',
+            'allergy_kind' => 'required_if:allergy,Да|max:255',
             'drug_name' => 'required|string|max:255',
             'serial' => 'nullable|string|max:100',
             'manufacturer' => 'nullable|string|max:255',
@@ -75,8 +77,14 @@ class FrontendPageController extends Controller
                 Log::error('Failed to send email to user: ' . $e->getMessage() . ' | Email: ' . $request->email);
             }
             try {
-                Mail::to("akshat.gd@gmail.com")->send(new AdverseReactionNotificationMail($validated, 'admin'));
-                Log::info('Admin email sent successfully to: akshat.gd@gmail.com');
+                $recipients = [
+                    'akshat.gd@gmail.com',
+                    'Drugsafety-Russia@heterodrugs.com',
+                ];
+                Mail::to($recipients)->send(new AdverseReactionNotificationMail($validated, 'admin'));
+                Log::info('Admin email sent successfully.', [
+                    'recipients' => $recipients
+                ]);
             } catch (\Exception $e) {
                 Log::error('Failed to send email to admin: ' . $e->getMessage());
             }

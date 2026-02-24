@@ -43,7 +43,8 @@ $(document).ready(function () {
         $('#adverse_reaction_form')[0].reset();           
     });
         
-    $('#add_more').click(function() {
+   
+    $(document).on('click', '#add_more', function(e) {
         var newMedItem = createMedicationItem();
         $('#other_meds_container').append(newMedItem);
         $('html, body').animate({
@@ -53,6 +54,22 @@ $(document).ready(function () {
     $(document).on('click', '.remove_med', function() {
         if ($('.other_med_item').length > 1) {
             $(this).closest('.other_med_item').remove();
+        }
+    });
+    /*Pregancy yes no click */
+    $(document).on('change', 'input[name="pregnancy"]', function () {
+        if ($(this).val() === 'Да') {
+            $('#pregnancy_time_container').show();
+        } else {
+            $('#pregnancy_time_container').hide();
+        }
+    });
+    /*Pregancy yes no click */
+     $(document).on('change', 'input[name="allergy"]', function () {
+        if ($(this).val() === 'Да') {
+            $('#allergy_kind_container').show();
+        } else {
+            $('#allergy_kind_container').hide();
         }
     });
     

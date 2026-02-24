@@ -18,8 +18,19 @@
     <p><strong>Вес:</strong> {{ $data['weight'] ?? 'N/A' }}</p>
     <p><strong>Возраст:</strong> {{ $data['age'] ?? 'N/A' }}</p>
     <p><strong>Пол:</strong> {{ $data['gender'] ?? 'N/A' }}</p>
-    <p><strong>Беременность:</strong> {{ $data['pregnancy'] ?? 'N/A' }}</p>
-    <p><strong>Есть аллергия:</strong> {{ $data['allergy'] ?? 'N/A' }}</p>
+    <p><strong>Беременность:</strong> 
+        {{ $data['pregnancy'] ?? 'N/A' }} <br>
+        @if(isset($data['pregnancy']) && $data['pregnancy'] === 'Да')
+            (Срок : {{ $data['pregnancy_time'] ?? 'N/A' }})
+        @endif
+    </p>
+    <p>
+        <strong>Есть аллергия:</strong>
+        {{ $data['allergy'] ?? 'N/A' }}<br>
+        @if(isset($data['allergy']) && $data['allergy'] === 'Да')
+            (На что аллергия : {{ $data['allergy_kind'] ?? 'N/A' }})
+        @endif
+    </p>
     
     <h3>Информация о препарате, предположительно вызвавшем НР:</h3>
     <p><strong>Наименование ЛС (торговое):</strong> {{ $data['drug_name'] ?? 'N/A' }}</p>

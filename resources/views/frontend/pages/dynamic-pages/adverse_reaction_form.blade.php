@@ -70,14 +70,16 @@
                     <div class="form-group col-md-6">
                         <label>Беременность</label>
                         <div class="form-check">
-                            <input class="form-check-input updater" type="radio" name="pregnancy" id="pregnancy"
-                                value="Нет" checked>
+                            <input class="form-check-input updater pregnancy_no_click" type="radio" name="pregnancy" id="pregnancy" value="Нет" checked>
                             <label class="form-check-label" for="pregnancy">Нет</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input updater" type="radio" name="pregnancy" id="pregnancy"
-                                value="Да">
+                            <input class="form-check-input updater pregnancy_yes_click" type="radio" name="pregnancy" id="pregnancy" value="Да">
                             <label class="form-check-label" for="pregnancy">Да</label>
+                        </div>
+                        <div class="form-group" style="display: none;" id="pregnancy_time_container">
+                            <label>Срок:</label>
+                            <input type="text" class="form-control" name="pregnancy_time" value="">
                         </div>
                     </div>
                 </div>
@@ -97,6 +99,10 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
+						<div class="form-group" id="allergy_kind_container" style="display: none;">
+                            <label>На что аллергия:</label>
+                            <input type="text" class="form-control" name="allergy_kind" value="">
+                        </div>
                     </div>
                 </div>
 
