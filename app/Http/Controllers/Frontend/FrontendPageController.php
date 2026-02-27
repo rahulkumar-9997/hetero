@@ -78,7 +78,7 @@ class FrontendPageController extends Controller
             }
             try {
                 $recipients = [
-                    'akshat.gd@gmail.com',
+                    'akshat.gd@gmail.com',					
                     'Drugsafety-Russia@heterodrugs.com',
                 ];
                 Mail::to($recipients)->send(new AdverseReactionNotificationMail($validated, 'admin'));
