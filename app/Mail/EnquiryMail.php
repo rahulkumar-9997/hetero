@@ -22,7 +22,7 @@ class EnquiryMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Enquiry Mail')
+        return $this->subject('Новый запрос с сайта')
         ->view('frontend.mail.enquiry_mail');
     }
 }

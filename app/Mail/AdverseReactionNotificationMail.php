@@ -23,7 +23,7 @@ class AdverseReactionNotificationMail extends Mailable
 			return $this
 			->from(config('mail.from.address'), config('mail.from.name'))
 			->replyTo(config('mail.from.address'))
-			->subject('New Adverse Reaction Report')
+			->subject('Новый отчет о побочной реакции')
 			->view('frontend.mail.adverse-reaction-admin');
 		}
 		return $this

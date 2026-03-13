@@ -77,11 +77,13 @@ class FrontendPageController extends Controller
                 Log::error('Failed to send email to user: ' . $e->getMessage() . ' | Email: ' . $request->email);
             }
             try {
-                $recipients = [
-                    'akshat.gd@gmail.com',					
-                    'Drugsafety-Russia@heterodrugs.com',
+				$recipients = [
+                    'InfoRussia@hetero.com',
+					'drugsafety-ressia@hetero.com',					
+                    'heterowizard@makizpharma.moscow',
                 ];
                 Mail::to($recipients)->send(new AdverseReactionNotificationMail($validated, 'admin'));
+				Mail::to("akshat.gd@gmail.com")->send(new AdverseReactionNotificationMail($validated, 'admin'));
                 Log::info('Admin email sent successfully.', [
                     'recipients' => $recipients
                 ]);
