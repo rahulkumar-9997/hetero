@@ -32,7 +32,7 @@ class AdminResetPasswordMail extends Mailable
     public function build()
     {
         return $this->view('backend.mail.forget-password')
-                    ->subject('Reset Password')
+                    ->subject('Сброс пароля')
                     ->with('data', $this->data);
     }
 }
