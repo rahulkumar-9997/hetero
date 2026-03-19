@@ -34,7 +34,7 @@
                     <select name="mail_mailer"
                         class="form-select form-control @error('mail_mailer') is-invalid @enderror">
                         <option value="smtp" {{ old('mail_mailer', $setting->mail_mailer ?? '') == 'smtp' ? 'selected' : '' }}>SMTP</option>
-                        <option value="sendmail" {{ old('mail_mailer', $setting->mail_mailer ?? '') == 'sendmail' ? 'selected' : '' }}>Sendmail</option>
+                        <!-- <option value="sendmail" {{ old('mail_mailer', $setting->mail_mailer ?? '') == 'sendmail' ? 'selected' : '' }}>Sendmail</option> -->
                     </select>
                     @error('mail_mailer')
                     <div class="invalid-feedback">{{ $message }}</div>
