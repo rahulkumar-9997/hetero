@@ -35,8 +35,8 @@ class ForgotPasswordController extends Controller
             $data = [
                 'token' => $token,
             ];
-            Mail::to($request->email)->send(new AdminResetPasswordMail($data));  
-            Log::info('Email sent successfully to forgotpassword '.$request->email.'');
+            Mail::to($request->email)->queue(new AdminResetPasswordMail($data));
+            Log::info('Email sent successfully to '.$request->email.'');
         } 
         catch(Exception $e){
             Log::error('Error sending email: ' . $e->getMessage());

@@ -178,11 +178,15 @@ class FrontHomeController extends Controller
         try {
 			$recipients = [
 				'InfoRussia@hetero.com',
-				'drugsafety-ressia@hetero.com',					
+				'drugsafety-russia@hetero.com',					
 				'heterowizard@makizpharma.moscow',
 			];
             Mail::to($recipients)->send(new EnquiryMail($data));
 			Mail::to("akshat.gd@gmail.com")->send(new EnquiryMail($data));
+			// Mail::to("rahulkumarmaurya464@gmail.com")->send(new EnquiryMail($data));
+			// Log::info('Contact Us Enquiry Mail sent successfully.', [
+				// 'email' => 'rahulkumarmaurya464@gmail.com'
+			// ]);
 			Log::info('Contact Us Enquiry Mail sent successfully.', [
 				'recipients' => $recipients
 			]);
