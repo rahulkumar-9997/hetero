@@ -175,7 +175,20 @@ return false;
                         </li>
                      </ul>
                   </li>
-
+                  <li class="submenu {{ request()->is('settings*') ? 'open' : '' }}">
+                     <a href="javascript:void(0);">
+                        <i class="ti ti-medicine-syrup fs-16 me-2"></i>
+                        <span> Управление настройками</span>
+                        <span class="menu-arrow"></span>
+                     </a>
+                     <ul style="display: {{ request()->is('settings*') ? 'block' : 'none' }};">
+                        <li class="{{ request()->routeIs('settings.index') ? 'active' : '' }}">
+                              <a href="{{ route('settings.index') }}">
+                                 SMTP почта
+                              </a>
+                        </li>
+                     </ul>
+                  </li>
                </ul>
             </li>
          </ul>

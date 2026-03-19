@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        App\Providers\MailConfigServiceProvider::class,
         /*
          * Package Service Providers...
          */

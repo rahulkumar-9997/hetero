@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\MedicineController;
 use App\Http\Controllers\Backend\CacheController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\MenuController;
+use App\Http\Controllers\Backend\SettingController;
 /**Backend controller */
 
 
@@ -87,6 +88,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('menus/{menu}/items/order', [MenuController::class, 'orderItems'])->name('menus.items.order');
     Route::post('/ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
     Route::get('/ckeditor/images', [CkeditorController::class, 'imageList'])->name('ckeditor.imagelist');
+    Route::resource('settings', SettingController::class)->only(['index', 'update']);
 });
 
 Route::get('/', [FrontHomeController::class, 'home'])->name('home');
