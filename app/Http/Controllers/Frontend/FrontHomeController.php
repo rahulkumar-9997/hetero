@@ -55,8 +55,7 @@ class FrontHomeController extends Controller
         return view('frontend.pages.news.news-details', compact('newsRoom'));
     }
 
-    public function medicineList()
-    {   
+    public function medicineList(){   
         $medicineCategories = MedicineCategories::orderBy('id', 'desc')
             ->where('status', 1)
             ->get();            
@@ -149,46 +148,92 @@ class FrontHomeController extends Controller
 
     public function contactFormSubmit(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email|max:255',
-            'message' => 'nullable|string|max:1000',
-            'captcha' => 'required|captcha',
-        ], [
-            'captcha.required' => 'Введите код с картинки',
-            'captcha.captcha'  => 'Неверный код с картинки',
-        ]);
+		/* Honeypot check */
+		if ($request->filled('website')) {
+			Log::warning('Spam blocked (honeypot)', [
+				'ip' => $request->ip(),
+				'data' => $request->all()
+			]);
 
+			return response()->json([
+				'status' => 'error',
+				'message' => 'Spam detected'
+			], 422);
+		}
+		/* Suspicious name check */
+		if (preg_match('/[<>]{2,}|[^a-zA-Zа-яА-Я\s]/u', $request->name)) {
+			return response()->json([
+				'status' => 'error',
+				'message' => 'Invalid name format'
+			], 422);
+		}
+
+		$linkDetected = preg_match('/(https?:\/\/|www\.|<\s*a\b|<\/\s*a\s*>|href\s*=)/i', $request->input('message'));
+        if($linkDetected){
+            return response()->json([
+				'status' => 'error',
+				'message' => 'Invalid name format'
+			], 422);
+        }
+		/*
+		if (preg_match('/(https?:\/\/|www\.|<\s*a\b|<\/\s*a\s*>|href\s*=)/i', $request->message)) {
+			return response()->json([
+				'status' => 'error',
+				'message' => 'Links or HTML tags are not allowed in message'
+			], 422);
+		}
+		*/
+        $validator = Validator::make($request->all(), [
+			'name' => [
+				'required',
+				'string',
+				'max:255',
+				/* Allow English + Russian + ё + space + . ' - */
+				'regex:/^[a-zA-Zа-яА-ЯёЁ\s\.\'\-]+$/u'
+			],
+			'email'   => 'required|email|max:255',
+			'message' => 'required|string|min:10|max:1000',
+			'captcha' => 'required|captcha',
+		], [
+			'name.regex'        => 'Введите корректное имя',
+			'captcha.required'  => 'Введите код с картинки',
+			'captcha.captcha'   => 'Неверный код с картинки',
+		]);
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'errors' => $validator->errors(),
             ], 422);
         }
-
         $validated = $validator->validated();
-
         $data = [
             'name'    => $validated['name'],
             'email'   => $validated['email'] ?? null,
             'phone'   => $validated['phone'] ?? null,
             'message' => $validated['message'] ?? null,
         ];
-
         try {
 			$recipients = [
 				'InfoRussia@hetero.com',
 				'drugsafety-russia@hetero.com',					
 				'heterowizard@makizpharma.moscow',
 			];
-            Mail::to($recipients)->send(new EnquiryMail($data));
-			Mail::to("akshat.gd@gmail.com")->send(new EnquiryMail($data));
-			// Mail::to("rahulkumarmaurya464@gmail.com")->send(new EnquiryMail($data));
-			// Log::info('Contact Us Enquiry Mail sent successfully.', [
-				// 'email' => 'rahulkumarmaurya464@gmail.com'
-			// ]);
-			Log::info('Contact Us Enquiry Mail sent successfully.', [
-				'recipients' => $recipients
+			if ($linkDetected) {
+				Mail::to("akshat.gd@gmail.com")->send(new EnquiryMail($data));
+				Log::warning('Link detected - mail sent only to Akshat', [
+					'message' => $request->message
+				]);
+			}else{
+				Mail::to($recipients)->send(new EnquiryMail($data));
+				Log::info('Normal enquiry mail sent');
+				Log::info('Contact Us Enquiry Mail sent successfully.', [
+					'recipients' => $recipients
+				]);
+			}
+			
+			Log::info('Enquiry mail sent', [
+				'ip' => $request->ip(),
+				'email' => $validated['email']
 			]);
         } catch (\Exception $e) {
             Log::error('Failed to send enquiry email: ' . $e->getMessage());

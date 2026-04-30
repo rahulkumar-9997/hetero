@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mac Capital">
+    <meta name="author" content="Hetero World">
     <meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Hetero :: Forgot Password</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/assets/back-img/logo.png')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('backend/assets/back-img/logo.png')}}">

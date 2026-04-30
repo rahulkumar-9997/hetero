@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mac Capital">
+    <meta name="author" content="Hetero World">
     <meta name="robots" content="index, follow">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Hetero :: Login</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/assets/back-img/logo.png')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('backend/assets/back-img/logo.png')}}">
@@ -57,6 +58,12 @@
                                             {{ session()->get('success') }}
                                         </div>
                                         @endif
+										<!--
+										{{ request()->getScheme() }}
+										Current URL: {{ url()->current() }}<br>
+										Form Action: {{ route('login') }}<br>
+										APP_URL: {{ config('app.url') }}
+										-->
                                         <div class="mb-3">
                                             <label class="form-label">Электронная почта или идентификатор пользователя<span class="text-danger"> *</span></label>
                                             <div class="input-group">

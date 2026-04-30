@@ -4,8 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <meta name="base-url" content="{{URL::to('/')}}">
-<meta name="author" content="Mac Capital">
+<meta name="author" content="Hetero Word">
 <meta name="robots" content="index, follow">
+<!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
 @yield('meta')
 <title>@yield('title')</title>
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('backend/assets/back-img/logo.png')}}">

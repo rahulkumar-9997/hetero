@@ -60,6 +60,7 @@
                 <div class="form_block side_form ask_form ajaxform" id="right_feedback">
                     <form action="{{ route('contact.submit') }}" method="POST" id="contactForm">
                         @csrf
+						<input type="text" name="website" style="display:none">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="name">ФИО:</label>
@@ -87,13 +88,14 @@
                             </div>
                             <div class="form-group col-md-6 mb-6 contact-captcha">
                                 <div class="d-flex align-items-center">
-                                    <span class="captcha-img">{!! captcha_img('flat') !!}</span>
+                                    <span class="captcha-img">{!! captcha_img('default') !!}</span>
                                     <button type="button" class="btn btn-link ml-4 p-0" id="refresh-captcha">Обновить</button>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-primary" type="submit" style="background:#FF0000;">Отправить заявку</button>
                     </form>
+                    
                 </div>
             </div>
             <div class="col-md-6 mt-4">
